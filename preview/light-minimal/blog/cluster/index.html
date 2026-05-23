@@ -1,0 +1,136 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Devito Cluster - the whys and the whats · Devito Codes</title><meta name="description" content="Core to the Devito mission is performance portability. Of course, if it is not tested then it is assumed to be broken. We maintain a dedicated cluster for all our DevOps needs."><link rel="canonical" href="https://devitocodespro.github.io/devitocodes-web/preview/light-minimal/blog/cluster/"><link rel="icon" href="/devitocodes-web/preview/light-minimal/favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="32x32" href="/devitocodes-web/preview/light-minimal/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/devitocodes-web/preview/light-minimal/favicon-16x16.png"><meta property="og:type" content="website"><meta property="og:site_name" content="Devito Codes"><meta property="og:title" content="Devito Cluster - the whys and the whats · Devito Codes"><meta property="og:description" content="Core to the Devito mission is performance portability. Of course, if it is not tested then it is assumed to be broken. We maintain a dedicated cluster for all our DevOps needs."><meta property="og:image" content="https://devitocodespro.github.io/devitocodes-web/preview/light-minimal/images/robot_devito_pro_banner-opt.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@devitocodes"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"><script async src="https://www.googletagmanager.com/gtag/js?id=G-39F3JRV5HY"></script><script>(function(){const id = "G-39F3JRV5HY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', id);
+    })();</script><link rel="stylesheet" href="/devitocodes-web/preview/light-minimal/_astro/Base.DIIXVtS0.css"></head> <body class="min-h-screen flex flex-col"> <header class="sticky top-0 z-50 backdrop-blur bg-base/80 border-b border-line/70"> <nav class="container-x flex items-center justify-between h-16"> <a href="/devitocodes-web/preview/light-minimal/" class="flex items-center gap-2.5 font-extrabold text-ink tracking-tight"> <span class="inline-block w-2.5 h-2.5 rounded-sm bg-accent"></span>
+Devito<span class="text-muted font-semibold">Codes</span> </a> <input type="checkbox" id="navtoggle" class="peer hidden" aria-hidden="true"> <div class="hidden md:flex items-center gap-7 text-sm font-medium text-muted"> <a href="/devitocodes-web/preview/light-minimal/features" class="hover:text-ink transition-colors">Product</a><a href="/devitocodes-web/preview/light-minimal/#performance" class="hover:text-ink transition-colors">Performance</a><a href="/devitocodes-web/preview/light-minimal/#use-cases" class="hover:text-ink transition-colors">Use cases</a><a href="/devitocodes-web/preview/light-minimal/case-studies" class="hover:text-ink transition-colors">Case studies</a><a href="/devitocodes-web/preview/light-minimal/blog" class="hover:text-ink transition-colors">Blog</a><a href="/devitocodes-web/preview/light-minimal/about" class="hover:text-ink transition-colors">About</a> <a href="/devitocodes-web/preview/light-minimal/contact" class="btn btn-primary text-sm">Book a technical call</a> </div> <label for="navtoggle" class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg border border-line text-ink cursor-pointer select-none" aria-label="Toggle menu"> <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"></path></svg> </label> <div class="absolute top-16 inset-x-0 hidden peer-checked:block md:hidden bg-surface border-b border-line"> <div class="container-x py-4 flex flex-col gap-1"> <a href="/devitocodes-web/preview/light-minimal/features" class="py-2 text-muted hover:text-ink transition-colors">Product</a><a href="/devitocodes-web/preview/light-minimal/#performance" class="py-2 text-muted hover:text-ink transition-colors">Performance</a><a href="/devitocodes-web/preview/light-minimal/#use-cases" class="py-2 text-muted hover:text-ink transition-colors">Use cases</a><a href="/devitocodes-web/preview/light-minimal/case-studies" class="py-2 text-muted hover:text-ink transition-colors">Case studies</a><a href="/devitocodes-web/preview/light-minimal/blog" class="py-2 text-muted hover:text-ink transition-colors">Blog</a><a href="/devitocodes-web/preview/light-minimal/about" class="py-2 text-muted hover:text-ink transition-colors">About</a> <a href="/devitocodes-web/preview/light-minimal/contact" class="btn btn-primary mt-2 justify-center">Book a technical call</a> </div> </div> </nav> </header> <main class="flex-1"> <article class="container-x py-24 max-w-3xl"> <header class="mb-10"> <h1 class="text-4xl md:text-5xl font-extrabold text-ink text-balance">Devito Cluster - the whys and the whats</h1> <p class="mt-4 text-sm text-muted font-mono"> <time datetime="2022-06-07T23:48:05.000Z"> 7 June 2022 </time>  ·  Gerard Gorman (Director) </p> </header> <div class="prose"> <p>One of Devito’s core missions is performance portability. Our current roadmap
+targets the matrix of architectures and parallel programming models below.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Architecture</th><th>CUDA</th><th>HIP</th><th>MPI</th><th>OpenACC</th><th>OpenMP</th></tr></thead><tbody><tr><td>AMD/CPU</td><td></td><td></td><td>Yes</td><td></td><td>Yes</td></tr><tr><td>AMD/GPU</td><td></td><td>Nov’22</td><td>Yes</td><td></td><td>N/A</td></tr><tr><td>ARM</td><td></td><td></td><td>Yes</td><td>N/A</td><td>Yes</td></tr><tr><td>Intel/CPU</td><td></td><td></td><td>Yes</td><td>N/A</td><td>Yes</td></tr><tr><td>Intel/KNC,KNL</td><td></td><td></td><td>Yes</td><td>N/A</td><td>Yes</td></tr><tr><td>Intel/GPU</td><td></td><td></td><td>TBA</td><td></td><td>TBA</td></tr><tr><td>NVidia</td><td>Yes</td><td></td><td>Yes</td><td>Yes</td><td>Yes</td></tr></tbody></table>
+<p>To support the delivery of this vision, since January 2020 Devito Codes has
+maintained a distributed cluster as part of our DevOps infrastructure for both
+open-source Devito and DevitoPRO. This provides services such as:</p>
+<ul>
+<li>Testing (i.e. CI) <sup><a href="#user-content-fn-1" id="user-content-fnref-1" data-footnote-ref="" aria-describedby="footnote-label">1</a></sup>.</li>
+<li>Performance optimization on ‘bare metal’ target platforms.</li>
+<li>Performance benchmarking <sup><a href="#user-content-fn-2" id="user-content-fnref-2" data-footnote-ref="" aria-describedby="footnote-label">2</a></sup>.</li>
+<li>Deployment (i.e. CD via Docker and release mirrors).</li>
+</ul>
+<p>While Devito Codes invested directly in hardware at the outset, long term loans
+and donations now make up the majority of the cluster <sup><a href="#user-content-fn-3" id="user-content-fnref-3" data-footnote-ref="" aria-describedby="footnote-label">3</a></sup>. At the time of
+writing the cluster is comprised of:</p>
+<p>| Supplier            | units | CPU               | GPU                  | Sponsor                            |
+|---------------------|---------------------------|----------------------|------------------------------------|
+| Dell                | 1     | AMD               | 4 X A100 (80G)       | NVidia &#x26; Dell                      |
+| HP                  | 1     | Intel Xeon        |                      | Devito Codes                       |
+| Fujitsu             | 1     | ARM64             |                      | Fujitsu                            |
+| self (custom build) | 1     | AMD               | 2 x MI50             | Devito Codes (server) &#x26; AMD (GPUs) |
+| self (custom build) | 4     | Intel/AMD PC CPUs | 3 x RTX3090, RTX3080 | Devito Codes                       |
+| Supermicro          | 4     | Intel Xeon Gold   | 4 x V100             | NVidia &#x26; Supermicro                |</p>
+<p>While we were optimizing for the Intel KNC and KNL, [DUG]{<a href="https://dug.com/%7D">https://dug.com/}</a>
+provided us with access to nodes for DevOps. Today they are running their own
+DevOps on KNC and KNL for <a href="https://dug.com/geoscience-services/full-waveform-inversion-fwi/">DUG
+Wave</a> which
+depends upon Devito. So far no problems have been experienced so long as we
+monitor for performance regression on Intel Xeon’s running with OpenMP.</p>
+<p>We do all our deployment on the cluster using Docker containers. We do this to
+ensure that the same environment is used for testing and deployment. This has
+also been useful for performance debugging on Cloud platforms, such as AWS and
+Azure, because we can differentiated between Docker related issues and the
+underlying platform.</p>
+<p>Early on we relied on Cloud computing nodes rather than our own hardware. However, we ran into a number of issues:</p>
+<ul>
+<li>Sponsored Cloud credit severely limited what architectures we were able to test on - in particular we would not use any modern GPU.</li>
+<li>It was difficult to control costs. We make heavy use of <em>GitHub Actions</em> for automation. Self hosted runners require you to run a client on your <em>self-hosted runner</em>. This <em>always on</em> model meant we would rack up an eye-watering bill at the end of each month - in fact, this is what provided the initial motivation to build our own cluster.</li>
+</ul>
+<p>There is no doubt that we will revisit the Cloud in the future with a smarter
+strategy to control costs. However, we are committed to continuing with our
+strategy of maintaining our own hardware so we can always drill down to bare
+metal when we are looking for maximum performance.</p>
+<section data-footnotes="" class="footnotes"><h2 class="sr-only" id="footnote-label">Footnotes</h2>
+<ol>
+<li id="user-content-fn-1">
+<p>If it is not tested, then it is broken. <a href="#user-content-fnref-1" data-footnote-backref="" aria-label="Back to reference 1" class="data-footnote-backref">↩</a></p>
+</li>
+<li id="user-content-fn-2">
+<p>Performance benchmark specification includes code verification for correctness. <a href="#user-content-fnref-2" data-footnote-backref="" aria-label="Back to reference 2" class="data-footnote-backref">↩</a></p>
+</li>
+<li id="user-content-fn-3">
+<p>Many thanks to all the vendors that helped make the Devito Cluster happen: AMD, Dell, DUG, NVidia, Supermicro <a href="#user-content-fnref-3" data-footnote-backref="" aria-label="Back to reference 3" class="data-footnote-backref">↩</a></p>
+</li>
+</ol>
+</section> </div> </article> </main> <footer class="bg-surface border-t border-line"> <div class="container-x py-16"> <div class="grid gap-10 md:grid-cols-4"> <div class="md:col-span-1"> <div class="flex items-center gap-2.5 font-extrabold text-ink"> <span class="inline-block w-2.5 h-2.5 rounded-sm bg-accent"></span>
+Devito<span class="text-muted font-semibold">Codes</span> </div> <p class="mt-4 text-sm text-muted leading-relaxed max-w-xs">
+The commercial arm of the open-source Devito project — performance-portable
+          finite-difference HPC for seismic imaging.
+</p> <div class="mt-5 flex gap-4 text-muted"> <a href="https://github.com/devitocodes" target="_blank" rel="noopener noreferrer" class="hover:text-ink">GitHub</a> <a href="https://x.com/devitocodes" target="_blank" rel="noopener noreferrer" class="hover:text-ink">X</a> <a href="https://www.linkedin.com/company/devitocodes" target="_blank" rel="noopener noreferrer" class="hover:text-ink">LinkedIn</a> </div> </div> <div> <h3 class="text-xs font-semibold uppercase tracking-wider text-ink/80">Product</h3> <ul class="mt-4 space-y-2.5 text-sm"> <li><a href="/devitocodes-web/preview/light-minimal/features" class="text-muted hover:text-ink transition-colors">Features</a></li><li><a href="/devitocodes-web/preview/light-minimal/#performance" class="text-muted hover:text-ink transition-colors">Performance</a></li><li><a href="/devitocodes-web/preview/light-minimal/#use-cases" class="text-muted hover:text-ink transition-colors">Use cases</a></li><li><a href="/devitocodes-web/preview/light-minimal/case-studies" class="text-muted hover:text-ink transition-colors">Case studies</a></li> </ul> </div><div> <h3 class="text-xs font-semibold uppercase tracking-wider text-ink/80">Company</h3> <ul class="mt-4 space-y-2.5 text-sm"> <li><a href="/devitocodes-web/preview/light-minimal/about" class="text-muted hover:text-ink transition-colors">About</a></li><li><a href="/devitocodes-web/preview/light-minimal/blog" class="text-muted hover:text-ink transition-colors">Blog</a></li><li><a href="/devitocodes-web/preview/light-minimal/contact" class="text-muted hover:text-ink transition-colors">Contact</a></li><li><a href="https://www.devitoproject.org" class="text-muted hover:text-ink transition-colors">Open-source Devito</a></li> </ul> </div><div> <h3 class="text-xs font-semibold uppercase tracking-wider text-ink/80">Legal</h3> <ul class="mt-4 space-y-2.5 text-sm"> <li><a href="/devitocodes-web/preview/light-minimal/Code_of_Conduct" class="text-muted hover:text-ink transition-colors">Code of Conduct</a></li><li><a href="/devitocodes-web/preview/light-minimal/Data_Protection_Policy" class="text-muted hover:text-ink transition-colors">Data Protection Policy</a></li> </ul> </div> </div> <div class="mt-14 pt-6 border-t border-line/70 flex flex-col sm:flex-row gap-2 justify-between text-xs text-muted"> <p>© 2026 Devito Codes Ltd. All rights reserved.</p> <p>Built with Astro · deployed on GitHub Pages.</p> </div> </div> </footer> </body></html>

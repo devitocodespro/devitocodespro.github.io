@@ -1,0 +1,253 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Benchmarking DevitoPRO on Intel® Xeon® 6 Processors · Devito Codes</title><meta name="description" content="Explore the cutting-edge performance of DevitoPRO on Intel® Xeon® 6 6980P processors in this comprehensive benchmark study. This blog post reveals how next-generation hardware accelerates finite-difference seismic imaging simulations, delivering over 2.6× higher computational throughput and 2.1× faster compute performance compared to 5th Gen Intel® Xeon® Platinum systems. With a focus on both acoustic TTI and elastic propagator models, we examine the benefits of mixed-precision techniques that combine FP16 storage with FP32 arithmetic for optimized memory bandwidth and accuracy. Learn how NUMA-aware hybrid MPI/OpenMP configurations further boost performance, enabling scalable and efficient high-fidelity geophysical simulations. Discover the full benchmark results."><link rel="canonical" href="https://devitocodespro.github.io/devitocodes-web/preview/light-minimal/blog/granite/"><link rel="icon" href="/devitocodes-web/preview/light-minimal/favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="32x32" href="/devitocodes-web/preview/light-minimal/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/devitocodes-web/preview/light-minimal/favicon-16x16.png"><meta property="og:type" content="website"><meta property="og:site_name" content="Devito Codes"><meta property="og:title" content="Benchmarking DevitoPRO on Intel® Xeon® 6 Processors · Devito Codes"><meta property="og:description" content="Explore the cutting-edge performance of DevitoPRO on Intel® Xeon® 6 6980P processors in this comprehensive benchmark study. This blog post reveals how next-generation hardware accelerates finite-difference seismic imaging simulations, delivering over 2.6× higher computational throughput and 2.1× faster compute performance compared to 5th Gen Intel® Xeon® Platinum systems. With a focus on both acoustic TTI and elastic propagator models, we examine the benefits of mixed-precision techniques that combine FP16 storage with FP32 arithmetic for optimized memory bandwidth and accuracy. Learn how NUMA-aware hybrid MPI/OpenMP configurations further boost performance, enabling scalable and efficient high-fidelity geophysical simulations. Discover the full benchmark results."><meta property="og:image" content="https://devitocodespro.github.io/devitocodes-web/preview/light-minimal/images/robot_devito_pro_banner-opt.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@devitocodes"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"><script async src="https://www.googletagmanager.com/gtag/js?id=G-39F3JRV5HY"></script><script>(function(){const id = "G-39F3JRV5HY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', id);
+    })();</script><link rel="stylesheet" href="/devitocodes-web/preview/light-minimal/_astro/Base.DIIXVtS0.css"></head> <body class="min-h-screen flex flex-col"> <header class="sticky top-0 z-50 backdrop-blur bg-base/80 border-b border-line/70"> <nav class="container-x flex items-center justify-between h-16"> <a href="/devitocodes-web/preview/light-minimal/" class="flex items-center gap-2.5 font-extrabold text-ink tracking-tight"> <span class="inline-block w-2.5 h-2.5 rounded-sm bg-accent"></span>
+Devito<span class="text-muted font-semibold">Codes</span> </a> <input type="checkbox" id="navtoggle" class="peer hidden" aria-hidden="true"> <div class="hidden md:flex items-center gap-7 text-sm font-medium text-muted"> <a href="/devitocodes-web/preview/light-minimal/features" class="hover:text-ink transition-colors">Product</a><a href="/devitocodes-web/preview/light-minimal/#performance" class="hover:text-ink transition-colors">Performance</a><a href="/devitocodes-web/preview/light-minimal/#use-cases" class="hover:text-ink transition-colors">Use cases</a><a href="/devitocodes-web/preview/light-minimal/case-studies" class="hover:text-ink transition-colors">Case studies</a><a href="/devitocodes-web/preview/light-minimal/blog" class="hover:text-ink transition-colors">Blog</a><a href="/devitocodes-web/preview/light-minimal/about" class="hover:text-ink transition-colors">About</a> <a href="/devitocodes-web/preview/light-minimal/contact" class="btn btn-primary text-sm">Book a technical call</a> </div> <label for="navtoggle" class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg border border-line text-ink cursor-pointer select-none" aria-label="Toggle menu"> <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"></path></svg> </label> <div class="absolute top-16 inset-x-0 hidden peer-checked:block md:hidden bg-surface border-b border-line"> <div class="container-x py-4 flex flex-col gap-1"> <a href="/devitocodes-web/preview/light-minimal/features" class="py-2 text-muted hover:text-ink transition-colors">Product</a><a href="/devitocodes-web/preview/light-minimal/#performance" class="py-2 text-muted hover:text-ink transition-colors">Performance</a><a href="/devitocodes-web/preview/light-minimal/#use-cases" class="py-2 text-muted hover:text-ink transition-colors">Use cases</a><a href="/devitocodes-web/preview/light-minimal/case-studies" class="py-2 text-muted hover:text-ink transition-colors">Case studies</a><a href="/devitocodes-web/preview/light-minimal/blog" class="py-2 text-muted hover:text-ink transition-colors">Blog</a><a href="/devitocodes-web/preview/light-minimal/about" class="py-2 text-muted hover:text-ink transition-colors">About</a> <a href="/devitocodes-web/preview/light-minimal/contact" class="btn btn-primary mt-2 justify-center">Book a technical call</a> </div> </div> </nav> </header> <main class="flex-1"> <article class="container-x py-24 max-w-3xl"> <header class="mb-10"> <h1 class="text-4xl md:text-5xl font-extrabold text-ink text-balance">Benchmarking DevitoPRO on Intel® Xeon® 6 Processors</h1> <p class="mt-4 text-sm text-muted font-mono"> <time datetime="2025-02-07T00:01:00.000Z"> 7 February 2025 </time>  ·  mlouboutin </p> </header> <div class="prose"> <h2 id="introduction">Introduction</h2>
+<p>High-performance computing (HPC) plays a critical role in scientific and engineering applications, from seismic imaging to simulation. DevitoPRO is designed to help researchers and engineers automate HPC code generation, allowing them to focus on algorithmic development for their domain-specific challenges while ensuring their simulations run efficiently on modern hardware.</p>
+<p>As part of our ongoing efforts to optimize performance across multiple architectures, this post presents benchmark results for <strong>DevitoPRO on Intel® Xeon® 6 6980P processors</strong>, comparing them to the previous-generation <strong>5th Gen Intel® Xeon® Platinum 8592+ processors</strong>. These results provide insights into <strong>computational throughput, data transfer performance, and mixed-precision acceleration</strong>—all key factors in achieving <strong>high-performance finite-difference seismic imaging kernels</strong>.</p>
+<h2 id="benchmarking-setup">Benchmarking Setup</h2>
+<p>The goal of this benchmarking study is to evaluate:</p>
+<ul>
+<li>Generational performance improvements when moving from 5th Gen Intel® Xeon® Platinum 8592+ processors (Emerald Rapids) to Intel® Xeon® 6 6980P processors (Granite Rapids).</li>
+<li>The impact of mixed-precision computing, where FP16 is used for storage to improve memory bandwidth utilization, while FP32 is retained for arithmetic to maintain numerical stability and accuracy, assessing its effect on compute throughput and data movement efficiency.</li>
+</ul>
+<h3 id="benchmarks">Benchmarks</h3>
+<p>The benchmarks use two workloads:</p>
+<ol>
+<li>Acoustic anisotropic propagator (acoustic TTI model) – A widely used model in seismic imaging for energy applications, testing floating-point operations per second (FLOPS) and data transfer rates.</li>
+<li>Elastic propagator – A more complex model incorporating mixed-precision techniques (FP32/FP16) to evaluate performance improvements in multi-node MPI environments.</li>
+</ol>
+<h3 id="processor-specifications">Processor Specifications</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="center">Processor</th><th align="center">Physical Cores</th><th align="center">Sockets</th><th align="center">Architecture</th><th align="center">HBM</th><th align="center">Memory</th></tr></thead><tbody><tr><td align="center">5th Gen Intel® Xeon® Platinum 8592+ (Emerald Rapids)</td><td align="center">128</td><td align="center">2</td><td align="center">x86_64</td><td align="center">No</td><td align="center">Supports DDR5 memory with an eight-channel interface</td></tr><tr><td align="center">Intel® Xeon® 6 6980P (Granite Rapids)</td><td align="center">256</td><td align="center">2</td><td align="center">x86_64</td><td align="center">No</td><td align="center">Supports DDR5 memory with an twelve-channel interface</td></tr></tbody></table>
+<p>Benchmarks were conducted using identical compilers, software environments, and
+simulation parameters to ensure fair comparisons.</p>
+<ul>
+<li>Compilers: Intel(R) oneAPI DPC++/C++ Compiler 2024.2.1</li>
+<li>MPI Library: Intel(R) MPI 2021.13</li>
+<li>Optimization Flags: <code>-O3 -g -fPIC -Wall -std=c99 -xHost -fp-model=fast -qopt-zmm-usage=high -shared -qopenmp</code></li>
+<li>Software Stack: Benchmarks were conducted using <strong>DevitoPRO v4.8.x</strong>, which includes <strong>an experimental mixed-precision implementation</strong>. While this version incorporates <strong>early optimizations for FP32/FP16 computing</strong>, ongoing development efforts are focused on further refining precision handling, improving stability, and enhancing performance scalability across diverse hardware architectures.</li>
+</ul>
+<h2 id="performance-results">Performance Results</h2>
+<h3 id="generational-performance-gains-for-acoustic-tti">Generational Performance Gains for acoustic TTI</h3>
+<p>The acoustic TTI benchmark measures the efficiency of seismic wave propagation simulations, a key workload in geophysical exploration. The benchmark was conducted using a 1024×2048×1024 computational grid with 5000 time steps, ensuring a realistic and computationally demanding test case. The simulations were executed using <strong>DevitoPRO</strong>, leveraging optimized code generation for modern CPU architectures.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="center">Metric</th><th align="center">5th Gen Intel® Xeon® Platinum 8592+ (Emerald Rapids)</th><th align="center">Intel® Xeon® 6 6980P (Granite Rapids)</th><th align="center">Improvement</th></tr></thead><tbody><tr><td align="center">Operations</td><td align="center">2.28 TFlops</td><td align="center">5.96 TFlops</td><td align="center">2.6x faster</td></tr><tr><td align="center">FD-throughput (GPts/s)</td><td align="center">7.45 GPts/s</td><td align="center">15.74 GPts/s</td><td align="center">2.1x faster</td></tr></tbody></table>
+<p>To fully exploit the hardware capabilities, the benchmark used a <strong>NUMA-aware hybrid MPI-OpenMP configuration</strong>, optimizing both <strong>computation</strong> and <strong>data locality</strong>:</p>
+<ul>
+<li><strong>Emerald Rapids (EMR) Configuration:</strong>
+<ul>
+<li><strong>Physical cores per socket:</strong> 64</li>
+<li><strong>Total physical cores (dual-socket):</strong> 128</li>
+<li><strong>NUMA domain per socket:</strong> 2</li>
+<li><strong>MPI ranks:</strong> 4 (<strong>1 per NUMA domain</strong>)</li>
+<li><strong>OpenMP threads per rank:</strong> 32</li>
+<li><strong>Pinning:</strong> <code>I_MPI_PIN_DOMAIN=numa</code>, <code>I_MPI_PIN_ORDER=bunch</code>, <code>I_MPI_PIN_CELL=core</code></li>
+</ul>
+</li>
+<li><strong>Granite Rapids (GNR) Configuration:</strong>
+<ul>
+<li><strong>Physical cores per socket:</strong> 128</li>
+<li><strong>Total physical cores (dual-socket):</strong> 256</li>
+<li><strong>NUMA domain per socket:</strong> 3</li>
+<li><strong>MPI ranks:</strong> 6 (<strong>1 per NUMA domain</strong>)</li>
+<li><strong>OpenMP threads per rank:</strong> 42 (NUMA domains on GNR are unbalanced with two NUMA domains with 43 cores and one NUMA domain with 42 cores per socket. We use 42 cores per NUMA domain to keep the configuration uniform.)</li>
+<li><strong>Pinning:</strong> <code>I_MPI_PIN_DOMAIN=numa</code>, <code>I_MPI_PIN_ORDER=bunch</code>, <code>I_MPI_PIN_CELL=core</code></li>
+</ul>
+</li>
+</ul>
+<p>The NUMA-aware process placement ensured that:</p>
+<ul>
+<li>MPI ranks were confined within NUMA nodes, minimizing cross-socket communication overhead.</li>
+<li>OpenMP threads were pinned to physical cores within NUMA domains, reducing memory latency.</li>
+<li>Halo exchange efficiency was maximized through optimized memory access patterns.</li>
+</ul>
+<h3 id="key-factors-driving-performance-gains">Key Factors Driving Performance Gains</h3>
+<p>Granite Rapids exhibited over twice the performance of Emerald Rapids due to:</p>
+<ol>
+<li>Higher Memory Bandwidth:
+<ul>
+<li>GNR features twelve DDR5 memory channels per socket, improving data movement efficiency.</li>
+</ul>
+</li>
+<li>Increased Core Count:
+<ul>
+<li>GNR doubles the physical core count (256 vs. 128) compared to EMR, significantly boosting parallel execution.</li>
+</ul>
+</li>
+</ol>
+<p>These architectural and software improvements collectively delivered 2.6x higher floating-point performance and 2.1x faster compute throughput (GPts/s), demonstrating the generational leap in efficiency from Emerald Rapids to Granite Rapids.</p>
+<h3 id="mixed-precision-performance-gains-for-isotropic-elastic-on-granite-rapids-gen-6">Mixed-precision performance gains for Isotropic Elastic on Granite Rapids (Gen 6)</h3>
+<p>The isotropic elastic benchmark evaluates the efficiency of multi-component wave
+propagation simulations, a crucial workload in geophysical imaging. This test
+was conducted on a 1024 × 2048 × 1024 computational grid with 5000 time steps.</p>
+<p>Unlike acoustic TTI, which was benchmarked exclusively in FP32 precision,
+isotropic elastic simulations were tested in both FP32-only and mixed FP32/FP16
+modes. The introduction of mixed precision yielded significant computational and
+memory efficiency improvements.</p>
+<p>We use the same hybrid MPI-OpenMP parallelism with NUMA-aware pinning as with
+the acoustic TTI  benchmark.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="center">Precision Mode</th><th align="center">Operations</th><th align="center">Compute Throughput (GPts/s)</th><th align="center">Improvement</th></tr></thead><tbody><tr><td align="center">FP32</td><td align="center">1.02 TFlops</td><td align="center">3.59 GPts/s</td><td align="center">-</td></tr><tr><td align="center">FP32/FP16 (Mixed)</td><td align="center">2.37 TFlops</td><td align="center">8.30 GPts/s</td><td align="center">~2.3x faster</td></tr></tbody></table>
+<h3 id="why-does-mixed-precision-matter">Why Does Mixed Precision Matter?</h3>
+<p>Switching from FP32-only computation to a mixed FP32/FP16 approach provided a
+~2.3x speedup, achieved through a balanced approach that optimizes both storage
+and arithmetic precision. Since finite difference methods are memory-bound, the
+key to performance gains lies in reducing memory bandwidth pressure while
+maintaining numerical accuracy.</p>
+<p>The mixed-precision strategy used in DevitoPRO follows this principle:</p>
+<ul>
+<li>FP16 for storage: Reduces memory footprint and accelerates data movement.</li>
+<li>FP32 for arithmetic: Preserves computational accuracy by minimizing rounding errors.</li>
+</ul>
+<p>This approach ensures that precision is maintained where it matters most while
+taking advantage of FP16’s efficiency for memory operations.</p>
+<h3 id="key-benefits-of-mixed-precision">Key Benefits of Mixed Precision</h3>
+<ol>
+<li>Lower Memory Footprint:
+<ul>
+<li>FP16 values take up half the memory of FP32, doubling effective cache capacity and reducing pressure on memory bandwidth.</li>
+<li>More wavefield data can fit in fast-access memory, improving locality and cache reuse.</li>
+</ul>
+</li>
+<li>Reduced Communication Overhead:
+<ul>
+<li>In MPI-based distributed environments, using FP16 for storage reduces halo exchange size, halving inter-rank data transfer costs.</li>
+<li>This is particularly beneficial in multi-node scaling scenarios, where communication is a major bottleneck.</li>
+</ul>
+</li>
+<li>Faster Computation:
+<ul>
+<li>Intel Xeon 6 processors feature optimized FP16 vector and tensor operations, accelerating data movement and memory loads.</li>
+<li>Arithmetic remains in FP32, avoiding excessive rounding errors while still benefiting from higher memory bandwidth efficiency.</li>
+</ul>
+</li>
+</ol>
+<p>By carefully combining FP16 for storage and FP32 for arithmetic, DevitoPRO
+achieves significant speedups while ensuring numerical stability, making this
+approach ideal for large-scale elastic wave simulations.</p>
+<h3 id="impact-on-elastic-wave-simulations">Impact on Elastic Wave Simulations</h3>
+<p>Elastic wave simulations require multiple coupled wavefields, significantly
+increasing memory and computational demands.  By leveraging mixed FP32/FP16
+precision, DevitoPRO achieves:</p>
+<ul>
+<li>Higher performance with reduced memory bandwidth constraints**.</li>
+<li>More efficient inter-rank communication, crucial for large-scale multi-node workloads.</li>
+<li>Improved scalability, making mixed precision a practical choice for high-fidelity seismic modeling.</li>
+</ul>
+<p>These optimizations ensure Granite Rapids delivers superior elastic wave
+simulation performance, making it a compelling choice for next-generation
+geophysical imaging workloads.</p>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ul>
+<li>
+<p>Intel Xeon 6 delivers substantial generational performance gains for finite-difference simulations, achieving 2.6× higher computational throughput and 2.1× faster compute performance (GPts/s) compared to its predecessor.</p>
+</li>
+<li>
+<p>Mixed-precision computing (FP32/FP16) significantly enhances efficiency by reducing memory footprint and accelerating computations, making it a crucial optimization for large-scale seismic workloads. Using FP16 for storage while maintaining FP32 for arithmetic strikes the right balance between performance and numerical accuracy.</p>
+</li>
+<li>
+<p>DevitoPRO automates high-performance code generation, allowing users to fully exploit modern hardware without requiring manual tuning. Optimized memory layouts, vectorization, and hybrid MPI/OpenMP parallelism are applied transparently, enabling peak efficiency across different architectures.</p>
+</li>
+<li>
+<p>Hardware-aware code generation is essential for performance portability, ensuring that computational workloads can scale efficiently on diverse hardware platforms. These results reinforce DevitoPRO’s approach, where automated performance tuning maximizes computational efficiency without sacrificing precision.</p>
+</li>
+</ul>
+<h2 id="looking-ahead">Looking Ahead</h2>
+<p>At Devito Codes, we remain committed to hardware-neutral performance
+optimization. While this benchmarking study focuses on Intel Xeon 6, we are
+actively working on:</p>
+<ul>
+<li>
+<p>Performance analysis on other architectures, including AMD EPYC, NVIDIA Hopper, and ARM-based HPC systems.</p>
+</li>
+<li>
+<p>Refining mixed-precision strategies to balance accuracy, performance, and memory efficiency.</p>
+</li>
+<li>
+<p>Expanding code portability, ensuring DevitoPRO runs optimally across a diverse range of HPC platforms.</p>
+</li>
+</ul>
+<p>Users and organizations interested in seismic imaging, medical imaging, or
+wave-based simulations can explore DevitoPRO’s capabilities at
+<a href="https://www.devitocodes.com/features/">https://www.devitocodes.com/features/</a>.</p>
+<p>Would you like more details? Feel free to reach out!</p> </div> </article> </main> <footer class="bg-surface border-t border-line"> <div class="container-x py-16"> <div class="grid gap-10 md:grid-cols-4"> <div class="md:col-span-1"> <div class="flex items-center gap-2.5 font-extrabold text-ink"> <span class="inline-block w-2.5 h-2.5 rounded-sm bg-accent"></span>
+Devito<span class="text-muted font-semibold">Codes</span> </div> <p class="mt-4 text-sm text-muted leading-relaxed max-w-xs">
+The commercial arm of the open-source Devito project — performance-portable
+          finite-difference HPC for seismic imaging.
+</p> <div class="mt-5 flex gap-4 text-muted"> <a href="https://github.com/devitocodes" target="_blank" rel="noopener noreferrer" class="hover:text-ink">GitHub</a> <a href="https://x.com/devitocodes" target="_blank" rel="noopener noreferrer" class="hover:text-ink">X</a> <a href="https://www.linkedin.com/company/devitocodes" target="_blank" rel="noopener noreferrer" class="hover:text-ink">LinkedIn</a> </div> </div> <div> <h3 class="text-xs font-semibold uppercase tracking-wider text-ink/80">Product</h3> <ul class="mt-4 space-y-2.5 text-sm"> <li><a href="/devitocodes-web/preview/light-minimal/features" class="text-muted hover:text-ink transition-colors">Features</a></li><li><a href="/devitocodes-web/preview/light-minimal/#performance" class="text-muted hover:text-ink transition-colors">Performance</a></li><li><a href="/devitocodes-web/preview/light-minimal/#use-cases" class="text-muted hover:text-ink transition-colors">Use cases</a></li><li><a href="/devitocodes-web/preview/light-minimal/case-studies" class="text-muted hover:text-ink transition-colors">Case studies</a></li> </ul> </div><div> <h3 class="text-xs font-semibold uppercase tracking-wider text-ink/80">Company</h3> <ul class="mt-4 space-y-2.5 text-sm"> <li><a href="/devitocodes-web/preview/light-minimal/about" class="text-muted hover:text-ink transition-colors">About</a></li><li><a href="/devitocodes-web/preview/light-minimal/blog" class="text-muted hover:text-ink transition-colors">Blog</a></li><li><a href="/devitocodes-web/preview/light-minimal/contact" class="text-muted hover:text-ink transition-colors">Contact</a></li><li><a href="https://www.devitoproject.org" class="text-muted hover:text-ink transition-colors">Open-source Devito</a></li> </ul> </div><div> <h3 class="text-xs font-semibold uppercase tracking-wider text-ink/80">Legal</h3> <ul class="mt-4 space-y-2.5 text-sm"> <li><a href="/devitocodes-web/preview/light-minimal/Code_of_Conduct" class="text-muted hover:text-ink transition-colors">Code of Conduct</a></li><li><a href="/devitocodes-web/preview/light-minimal/Data_Protection_Policy" class="text-muted hover:text-ink transition-colors">Data Protection Policy</a></li> </ul> </div> </div> <div class="mt-14 pt-6 border-t border-line/70 flex flex-col sm:flex-row gap-2 justify-between text-xs text-muted"> <p>© 2026 Devito Codes Ltd. All rights reserved.</p> <p>Built with Astro · deployed on GitHub Pages.</p> </div> </div> </footer> </body></html>

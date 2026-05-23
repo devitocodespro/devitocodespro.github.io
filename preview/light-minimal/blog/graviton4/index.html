@@ -1,0 +1,148 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Seismic Imaging Performance with AWS Graviton4 · Devito Codes</title><meta name="description" content="AWS Graviton4 demonstrates significant performance improvements for seismic imaging using DevitoPRO's 3D acoustic wave propagation kernels. Benchmarks show Graviton4 is up to 3.6 times faster than Graviton2 and up to 81%25 faster than Graviton3, especially benefiting memory-bound HPC applications. Compiling with GCC 14.1 optimizes performance on Graviton4’s Neoverse V2 cores. While there are some performance nuances, overall Graviton4 delivers superior throughput per dollar, making it a cost-effective choice for demanding workloads. These advancements underscore Graviton4's capabilities in enhancing computational efficiency for seismic imaging and other high-performance computing tasks."><link rel="canonical" href="https://devitocodespro.github.io/devitocodes-web/preview/light-minimal/blog/graviton4/"><link rel="icon" href="/devitocodes-web/preview/light-minimal/favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="32x32" href="/devitocodes-web/preview/light-minimal/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/devitocodes-web/preview/light-minimal/favicon-16x16.png"><meta property="og:type" content="website"><meta property="og:site_name" content="Devito Codes"><meta property="og:title" content="Seismic Imaging Performance with AWS Graviton4 · Devito Codes"><meta property="og:description" content="AWS Graviton4 demonstrates significant performance improvements for seismic imaging using DevitoPRO's 3D acoustic wave propagation kernels. Benchmarks show Graviton4 is up to 3.6 times faster than Graviton2 and up to 81%25 faster than Graviton3, especially benefiting memory-bound HPC applications. Compiling with GCC 14.1 optimizes performance on Graviton4’s Neoverse V2 cores. While there are some performance nuances, overall Graviton4 delivers superior throughput per dollar, making it a cost-effective choice for demanding workloads. These advancements underscore Graviton4's capabilities in enhancing computational efficiency for seismic imaging and other high-performance computing tasks."><meta property="og:image" content="https://devitocodespro.github.io/devitocodes-web/preview/light-minimal/images/robot_devito_pro_banner-opt.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@devitocodes"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"><script async src="https://www.googletagmanager.com/gtag/js?id=G-39F3JRV5HY"></script><script>(function(){const id = "G-39F3JRV5HY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', id);
+    })();</script><link rel="stylesheet" href="/devitocodes-web/preview/light-minimal/_astro/Base.DIIXVtS0.css"></head> <body class="min-h-screen flex flex-col"> <header class="sticky top-0 z-50 backdrop-blur bg-base/80 border-b border-line/70"> <nav class="container-x flex items-center justify-between h-16"> <a href="/devitocodes-web/preview/light-minimal/" class="flex items-center gap-2.5 font-extrabold text-ink tracking-tight"> <span class="inline-block w-2.5 h-2.5 rounded-sm bg-accent"></span>
+Devito<span class="text-muted font-semibold">Codes</span> </a> <input type="checkbox" id="navtoggle" class="peer hidden" aria-hidden="true"> <div class="hidden md:flex items-center gap-7 text-sm font-medium text-muted"> <a href="/devitocodes-web/preview/light-minimal/features" class="hover:text-ink transition-colors">Product</a><a href="/devitocodes-web/preview/light-minimal/#performance" class="hover:text-ink transition-colors">Performance</a><a href="/devitocodes-web/preview/light-minimal/#use-cases" class="hover:text-ink transition-colors">Use cases</a><a href="/devitocodes-web/preview/light-minimal/case-studies" class="hover:text-ink transition-colors">Case studies</a><a href="/devitocodes-web/preview/light-minimal/blog" class="hover:text-ink transition-colors">Blog</a><a href="/devitocodes-web/preview/light-minimal/about" class="hover:text-ink transition-colors">About</a> <a href="/devitocodes-web/preview/light-minimal/contact" class="btn btn-primary text-sm">Book a technical call</a> </div> <label for="navtoggle" class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg border border-line text-ink cursor-pointer select-none" aria-label="Toggle menu"> <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"></path></svg> </label> <div class="absolute top-16 inset-x-0 hidden peer-checked:block md:hidden bg-surface border-b border-line"> <div class="container-x py-4 flex flex-col gap-1"> <a href="/devitocodes-web/preview/light-minimal/features" class="py-2 text-muted hover:text-ink transition-colors">Product</a><a href="/devitocodes-web/preview/light-minimal/#performance" class="py-2 text-muted hover:text-ink transition-colors">Performance</a><a href="/devitocodes-web/preview/light-minimal/#use-cases" class="py-2 text-muted hover:text-ink transition-colors">Use cases</a><a href="/devitocodes-web/preview/light-minimal/case-studies" class="py-2 text-muted hover:text-ink transition-colors">Case studies</a><a href="/devitocodes-web/preview/light-minimal/blog" class="py-2 text-muted hover:text-ink transition-colors">Blog</a><a href="/devitocodes-web/preview/light-minimal/about" class="py-2 text-muted hover:text-ink transition-colors">About</a> <a href="/devitocodes-web/preview/light-minimal/contact" class="btn btn-primary mt-2 justify-center">Book a technical call</a> </div> </div> </nav> </header> <main class="flex-1"> <article class="container-x py-24 max-w-3xl"> <header class="mb-10"> <h1 class="text-4xl md:text-5xl font-extrabold text-ink text-balance">Seismic Imaging Performance with AWS Graviton4</h1> <p class="mt-4 text-sm text-muted font-mono"> <time datetime="2024-08-19T00:01:00.000Z"> 19 August 2024 </time>  ·  ggorman </p> </header> <div class="prose"> <p>With the general availability of <a href="https://www.aboutamazon.com/news/aws/graviton4-aws-cloud-computing-chip">AWS
+Graviton4</a>,
+we explore its performance advancements over previous Graviton generations using
+DevitoPRO’s standard 3D acoustic wave propagation kernels. These Full Waveform
+Inversion (FWI) and Reverse Time Migration (RTM) propagation kernels, serve as
+benchmarks to develop cost models and assess computational efficiency.</p>
+<p>The <a href="https://aws.amazon.com/ec2/instance-types/r8g/">AWS Graviton4</a> exhibits substantial performance improvements compared to its
+predecessors. For <strong>3D Isotropic acoustic</strong>, the AWS Graviton4 (r8g.24xlarge)
+delivers performance that is approximately 2.7 times faster than Graviton2 and
+81% faster than Graviton3. In the <a href="https://doi.org/10.1190/1.3269902">3D Fletcher Du Fowler
+TTI</a> benchmark, the Graviton4 outperforms
+Graviton2 by over 3.4 times and is 51% faster than Graviton3. Similarly, the <a href="https://library.seg.org/doi/10.1190/segam2016-13878451.1">3D
+Self-adjoint TTI</a>
+benchmark on AWS Graviton4 runs nearly 3.6 times faster than Graviton2 and 80%
+faster than Graviton3.</p>
+<p>These results underscore the significant generational improvements in the
+Graviton4, particularly for memory-bound high-performance computing
+applications.</p>
+<h3 id="graviton4---amazon-ec2-r8g-instances">Graviton4 - Amazon EC2 R8g Instances</h3>
+<p>The Amazon EC2 instance type <em>r8g.24xlarge</em> is a single socket Graviton4. The
+Graviton4 processors offer significant advancements over the Graviton3. The
+Graviton4 has 96 Neoverse V2 cores and a revamped memory subsystem, featuring
+<a href="https://www.nextplatform.com/2023/11/28/aws-adopts-arm-v2-cores-for-expansive-graviton4-server-cpu/">12 DDR5-5600 channels and a peak memory bandwidth of 536.7 GB/s, which is 75%
+higher than the
+Graviton3.</a>
+These improvements are particularly beneficial for memory-bound HPC
+applications, such as finite-difference based FWI/RTM operators​.</p>
+<h3 id="compiling-on-graviton-using-gcc-141">Compiling on Graviton using GCC-14.1</h3>
+<p>To optimize the performance of our benchmarks on the AWS Graviton4 processor, we
+built <a href="https://gcc.gnu.org/gcc-14/">GCC 14.1</a> from source, rather than the
+system default for Amazon Linux 2023 (6.1.94-99.176.amzn2023.aarch64) which is
+GCC 11.4.1. GCC 14.1 has a range of improvements that enhance the compiler’s
+ability to leverage the advanced features of the Neoverse cores, particularly
+the Neoverse V2 architecture used in Graviton4.</p>
+<p>Key enhancements in GCC 14 include improved support for vectorization and new
+optimizations that are tailored for Neoverse V2 cores. These improvements allow
+for better exploitation of the high memory bandwidth and increased core count in
+Graviton4, resulting in more efficient execution of high-performance computing
+workloads. Additionally, the release includes enhancements in
+auto-vectorization, which are particularly beneficial for memory-bound
+applications like seismic imaging and simulation tasks.</p>
+<p>Devito uses the following GCC flags depending on the generation of Graviton to
+maximize performance on a given instance. As there is just one NUMA domain in
+all cases, we parallelizing with pure OpenMP.</p>
+<p>Graviton2 (Neoverse-N1):</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#B392F0">gcc-14</span><span style="color:#79B8FF"> -mcpu=neoverse-n1</span><span style="color:#79B8FF"> -O3</span><span style="color:#79B8FF"> -g</span><span style="color:#79B8FF"> -fPIC</span><span style="color:#79B8FF"> -Wall</span><span style="color:#79B8FF"> -std=c99</span><span style="color:#79B8FF"> -Wno-unused-result</span><span style="color:#79B8FF"> -Wno-unused-variable</span><span style="color:#79B8FF"> -Wno-unused-but-set-variable</span><span style="color:#79B8FF"> -ffast-math</span><span style="color:#79B8FF"> -shared</span><span style="color:#79B8FF"> -fopenmp</span></span></code></pre>
+<p>Graviton3 (Neoverse-V1):</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#B392F0">gcc-14</span><span style="color:#79B8FF"> -mcpu=neoverse-v1</span><span style="color:#79B8FF"> -O3</span><span style="color:#79B8FF"> -g</span><span style="color:#79B8FF"> -fPIC</span><span style="color:#79B8FF"> -Wall</span><span style="color:#79B8FF"> -std=c99</span><span style="color:#79B8FF"> -Wno-unused-result</span><span style="color:#79B8FF"> -Wno-unused-variable</span><span style="color:#79B8FF"> -Wno-unused-but-set-variable</span><span style="color:#79B8FF"> -ffast-math</span><span style="color:#79B8FF"> -shared</span><span style="color:#79B8FF"> -fopenmp</span></span></code></pre>
+<p>Graviton4 (Neoverse-V2):</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#B392F0">gcc-14</span><span style="color:#79B8FF"> -mcpu=neoverse-v2</span><span style="color:#79B8FF"> -O3</span><span style="color:#79B8FF"> -g</span><span style="color:#79B8FF"> -fPIC</span><span style="color:#79B8FF"> -Wall</span><span style="color:#79B8FF"> -std=c99</span><span style="color:#79B8FF"> -Wno-unused-result</span><span style="color:#79B8FF"> -Wno-unused-variable</span><span style="color:#79B8FF"> -Wno-unused-but-set-variable</span><span style="color:#79B8FF"> -ffast-math</span><span style="color:#79B8FF"> -shared</span><span style="color:#79B8FF"> -fopenmp</span></span></code></pre>
+<h3 id="3d-acoustic-benchmarks">3D acoustic benchmarks</h3>
+<p>To evaluate the performance of the Graviton4, we conducted benchmarks using
+three standard 3D acoustic wave propagation kernels. These tests were run in
+single precision with OpenMP thread parallelism. Each benchmark was carefully
+autotuned to optimize parameters such as cache block size, and the best result
+from multiple runs was recorded.</p>
+<p>These benchmarks are categorized based on their operational intensity. The
+isotropic acoustic benchmark is the simplest among them, commonly used in
+seismic imaging, and its performance is primarily influenced by memory
+bandwidth. The Fletcher-Du-Fowler TTI kernel, which is frequently utilized by
+hardware vendors for benchmarking, represents a moderate level of complexity. In
+contrast, the self-adjoint TTI kernel, designed for robustness and accuracy, is
+employed in production workloads, reflecting the most demanding computational
+requirements for acoustic FWI/RTM. This categorization allows for a
+comprehensive evaluation of performance across a spectrum of real-world
+scenarios.</p>
+<p>All three benchmarks were run with a fixed problem size of dimensions
+512x512x512, for a total of 400 time-steps, space-order 8 and time-order 2.</p>
+<p>In the bar-chart below we show how the Graviton3 and Graviton4 performance
+relative to the Graviton2. The <em>r6g.16xlarge</em>, <em>r7g.16xlarge</em>,<em>r8g.16xlarge</em> all
+have 64 cores; this highlights the performance improvement per core. In
+contrast, the <em>r8g.24xlarge</em> (a single socket Graviton4) has a total of 96
+cores. We can see some strong scaling limits running the isotropic acoustic
+benchmark as we go from <em>r8g.16xlarge</em> the <em>r8g.24xlarge</em> (~10% performance
+improvement). However, this does not appear to be an issue when running with
+more complex propagator kernels such as TTI.</p>
+<p><img src="/devitocodes-web/preview/light-minimal/images/performance-relative-G2.png" alt="Relative performance relative to Graviton2"></p>
+<h3 id="price-performance">Price performance</h3>
+<p>The overall picture for price-performance also looks good for AWS users, though
+there are some nuances. In the bar-chart below we use the AWS on-demand pricing
+for each instance and the benchmark performance in units of
+<em>giga-points-per-second</em> to create a <em>tera-points-per-dollar</em> (TP/$) benchmark
+metric. This is a measure of how much work you get done per dollar allowing
+users to get an estimate of the <em>price-to-solution</em>.</p>
+<p>For the isotropic acoustic and the self-adjoint acoustic TTI, we can see that
+the Graviton4 delivers the highest throughput per dollar, followed by Graviton3
+and Graviton2.</p>
+<p>However, the Fletcher Du Fowler TTI benchmark presents an exception. In this
+case, Graviton3 provides the highest throughput per dollar, followed by
+Graviton4 and then Graviton2. Although both the isotropic acoustic and
+self-adjoint TTI benchmarks are 81% faster on Graviton4 than on Graviton3, the
+Fletcher Du Fowler TTI benchmark is only 51% faster on Graviton4 than on
+Graviton3. Given that the theoretical increase in memory bandwidth is 75%, this
+discrepancy warrants a deeper performance profiling analysis to understand why
+this particular benchmark underperforms relative to the other benchmarks.</p>
+<p><img src="/devitocodes-web/preview/light-minimal/images/TP_per_dollar.png" alt="Price performance"></p>
+<h3 id="graviton4-r8g16xlarge-vs-r8g24xlarge">Graviton4 r8g.16xlarge vs r8g.24xlarge</h3>
+<p>When choosing between the <em>r8g.16xlarge</em> and <em>r8g.24xlarge</em> instances, it is
+important to consider the specific characteristics of your workload. For
+workloads where the problem domain is too small to benefit from strong scaling
+across all available cores, allocating the entire node and running multiple
+shots per node can provide better value. This approach not only maximizes
+resource utilization but also helps avoid the potential impact of noisy
+neighbors in multi-tenant environments if <em>r8g.16xlarge</em> was instead used.</p>
+<p>By fully utilizing the <em>r8g.24xlarge</em> instance, which contains all 96 cores of the
+Graviton4 processor, you can achieve more consistent performance, as the risk of
+resource contention from other tenants is minimized. This strategy ensures you
+get the best possible value from the Graviton4 architecture for your HPC tasks.</p>
+<h3 id="conclusion">Conclusion</h3>
+<p>The benchmarking results clearly demonstrate the impressive capabilities of the
+AWS Graviton4 processor. With its increased core count and higher memory
+bandwidth, the Graviton4 significantly enhances the performance of
+high-performance computing (HPC) applications. Our benchmarks show that
+DevitoPRO, utilizing AWS Graviton4, achieves substantial performance gains over
+previous Graviton generations, particularly for memory-bound applications such
+as seismic imaging.</p>
+<p>The Graviton4’s advancements in core architecture and memory subsystem allow
+DevitoPRO to run efficiently without requiring extensive modifications. This
+highlights the ease of integration and the high productivity potential that
+DevitoPRO offers for cutting-edge seismic imaging applications. The performance
+improvements observed across various benchmarks—3D Isotropic Acoustic, Fletcher
+Du Fowler TTI, and Self-adjoint TTI—underscore the generational leap in
+computational efficiency provided by Graviton4.</p>
+<p>Moreover, the Graviton4 processor also offers favorable price-performance
+ratios, making it a cost-effective choice for demanding workloads. While certain
+benchmarks like Fletcher Du Fowler TTI indicate areas for further optimization,
+the overall enhancements in speed and throughput per dollar make Graviton4 an
+attractive option for HPC users.</p>
+<p>Our work with AWS underscores our commitment to delivering top-tier performance
+across diverse hardware platforms, ensuring that our users can achieve the best
+possible outcomes in their seismic imaging and beyond.</p>
+<h3 id="acknowledgements">Acknowledgements</h3>
+<p>Many thanks to the AWS team for their generous provision of credits and
+technical support, which made this benchmarking study possible. Their continued
+collaboration and support are invaluable in our ongoing efforts to optimize
+DevitoPRO for cutting-edge seismic imaging and high-performance computing
+applications.</p> </div> </article> </main> <footer class="bg-surface border-t border-line"> <div class="container-x py-16"> <div class="grid gap-10 md:grid-cols-4"> <div class="md:col-span-1"> <div class="flex items-center gap-2.5 font-extrabold text-ink"> <span class="inline-block w-2.5 h-2.5 rounded-sm bg-accent"></span>
+Devito<span class="text-muted font-semibold">Codes</span> </div> <p class="mt-4 text-sm text-muted leading-relaxed max-w-xs">
+The commercial arm of the open-source Devito project — performance-portable
+          finite-difference HPC for seismic imaging.
+</p> <div class="mt-5 flex gap-4 text-muted"> <a href="https://github.com/devitocodes" target="_blank" rel="noopener noreferrer" class="hover:text-ink">GitHub</a> <a href="https://x.com/devitocodes" target="_blank" rel="noopener noreferrer" class="hover:text-ink">X</a> <a href="https://www.linkedin.com/company/devitocodes" target="_blank" rel="noopener noreferrer" class="hover:text-ink">LinkedIn</a> </div> </div> <div> <h3 class="text-xs font-semibold uppercase tracking-wider text-ink/80">Product</h3> <ul class="mt-4 space-y-2.5 text-sm"> <li><a href="/devitocodes-web/preview/light-minimal/features" class="text-muted hover:text-ink transition-colors">Features</a></li><li><a href="/devitocodes-web/preview/light-minimal/#performance" class="text-muted hover:text-ink transition-colors">Performance</a></li><li><a href="/devitocodes-web/preview/light-minimal/#use-cases" class="text-muted hover:text-ink transition-colors">Use cases</a></li><li><a href="/devitocodes-web/preview/light-minimal/case-studies" class="text-muted hover:text-ink transition-colors">Case studies</a></li> </ul> </div><div> <h3 class="text-xs font-semibold uppercase tracking-wider text-ink/80">Company</h3> <ul class="mt-4 space-y-2.5 text-sm"> <li><a href="/devitocodes-web/preview/light-minimal/about" class="text-muted hover:text-ink transition-colors">About</a></li><li><a href="/devitocodes-web/preview/light-minimal/blog" class="text-muted hover:text-ink transition-colors">Blog</a></li><li><a href="/devitocodes-web/preview/light-minimal/contact" class="text-muted hover:text-ink transition-colors">Contact</a></li><li><a href="https://www.devitoproject.org" class="text-muted hover:text-ink transition-colors">Open-source Devito</a></li> </ul> </div><div> <h3 class="text-xs font-semibold uppercase tracking-wider text-ink/80">Legal</h3> <ul class="mt-4 space-y-2.5 text-sm"> <li><a href="/devitocodes-web/preview/light-minimal/Code_of_Conduct" class="text-muted hover:text-ink transition-colors">Code of Conduct</a></li><li><a href="/devitocodes-web/preview/light-minimal/Data_Protection_Policy" class="text-muted hover:text-ink transition-colors">Data Protection Policy</a></li> </ul> </div> </div> <div class="mt-14 pt-6 border-t border-line/70 flex flex-col sm:flex-row gap-2 justify-between text-xs text-muted"> <p>© 2026 Devito Codes Ltd. All rights reserved.</p> <p>Built with Astro · deployed on GitHub Pages.</p> </div> </div> </footer> </body></html>
