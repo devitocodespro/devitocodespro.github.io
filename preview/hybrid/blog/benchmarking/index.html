@@ -1,0 +1,349 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Cross-platform seismic imaging benchmarking · Devito Codes</title><meta name="description" content="A framework for cross-platform benchmarking of seismic imaging workloads is described. The vision for this platform is that it will be used to support collaboration between Devito Codes, hardware vendors and Cloud providers to continuously optimize  the performance of seismic imaging workloads."><link rel="canonical" href="https://devitocodespro.github.io/devitocodes-web/preview/hybrid/blog/benchmarking/"><link rel="icon" href="/devitocodes-web/preview/hybrid/favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="32x32" href="/devitocodes-web/preview/hybrid/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/devitocodes-web/preview/hybrid/favicon-16x16.png"><meta property="og:type" content="website"><meta property="og:site_name" content="Devito Codes"><meta property="og:title" content="Cross-platform seismic imaging benchmarking · Devito Codes"><meta property="og:description" content="A framework for cross-platform benchmarking of seismic imaging workloads is described. The vision for this platform is that it will be used to support collaboration between Devito Codes, hardware vendors and Cloud providers to continuously optimize  the performance of seismic imaging workloads."><meta property="og:image" content="https://devitocodespro.github.io/devitocodes-web/preview/hybrid/images/robot_devito_pro_banner-opt.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@devitocodes"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"><script async src="https://www.googletagmanager.com/gtag/js?id=G-39F3JRV5HY"></script><script>(function(){const id = "G-39F3JRV5HY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', id);
+    })();</script><link rel="stylesheet" href="/devitocodes-web/preview/hybrid/_astro/Base.DaatG87t.css"></head> <body class="min-h-screen flex flex-col"> <header class="sticky top-0 z-50 backdrop-blur bg-base/80 border-b border-line/70"> <nav class="container-x flex items-center justify-between h-16"> <a href="/devitocodes-web/preview/hybrid/" class="flex items-center gap-2.5 font-extrabold text-ink tracking-tight"> <span class="inline-block w-2.5 h-2.5 rounded-sm bg-accent"></span>
+Devito<span class="text-muted font-semibold">Codes</span> </a> <input type="checkbox" id="navtoggle" class="peer hidden" aria-hidden="true"> <div class="hidden md:flex items-center gap-7 text-sm font-medium text-muted"> <a href="/devitocodes-web/preview/hybrid/features" class="hover:text-ink transition-colors">Product</a><a href="/devitocodes-web/preview/hybrid/#performance" class="hover:text-ink transition-colors">Performance</a><a href="/devitocodes-web/preview/hybrid/#use-cases" class="hover:text-ink transition-colors">Use cases</a><a href="/devitocodes-web/preview/hybrid/case-studies" class="hover:text-ink transition-colors">Case studies</a><a href="/devitocodes-web/preview/hybrid/blog" class="hover:text-ink transition-colors">Blog</a><a href="/devitocodes-web/preview/hybrid/about" class="hover:text-ink transition-colors">About</a> <a href="/devitocodes-web/preview/hybrid/contact" class="btn btn-primary text-sm">Book a technical call</a> </div> <label for="navtoggle" class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg border border-line text-ink cursor-pointer select-none" aria-label="Toggle menu"> <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"></path></svg> </label> <div class="absolute top-16 inset-x-0 hidden peer-checked:block md:hidden bg-surface border-b border-line"> <div class="container-x py-4 flex flex-col gap-1"> <a href="/devitocodes-web/preview/hybrid/features" class="py-2 text-muted hover:text-ink transition-colors">Product</a><a href="/devitocodes-web/preview/hybrid/#performance" class="py-2 text-muted hover:text-ink transition-colors">Performance</a><a href="/devitocodes-web/preview/hybrid/#use-cases" class="py-2 text-muted hover:text-ink transition-colors">Use cases</a><a href="/devitocodes-web/preview/hybrid/case-studies" class="py-2 text-muted hover:text-ink transition-colors">Case studies</a><a href="/devitocodes-web/preview/hybrid/blog" class="py-2 text-muted hover:text-ink transition-colors">Blog</a><a href="/devitocodes-web/preview/hybrid/about" class="py-2 text-muted hover:text-ink transition-colors">About</a> <a href="/devitocodes-web/preview/hybrid/contact" class="btn btn-primary mt-2 justify-center">Book a technical call</a> </div> </div> </nav> </header> <main class="flex-1"> <article class="container-x py-24 max-w-3xl"> <header class="mb-10"> <h1 class="text-4xl md:text-5xl font-extrabold text-ink text-balance">Cross-platform seismic imaging benchmarking</h1> <p class="mt-4 text-sm text-muted font-mono"> <time datetime="2023-02-26T00:00:00.000Z"> 26 February 2023 </time>  ·  Gerard Gorman, Fabio Luporini </p> </header> <div class="prose"> <p>We have launched a groundbreaking framework to benchmark seismic imaging
+workloads across different platforms. This initiative brings together key
+stakeholders from Devito, hardware vendors, cloud providers, and the broader
+industry, setting a stage for standardization, reproducibility, and elevated
+performance in seismic imaging workloads.</p>
+<p>Key Highlights:</p>
+<ol>
+<li>
+<p><strong>Standardization and Reproducibility</strong>:</p>
+<ul>
+<li>Advocates for standardized comparisons and robust performance data, aiding organizations in insightful hardware or cloud system acquisitions.</li>
+</ul>
+</li>
+<li>
+<p><strong>Efficient Resource Utilization</strong>:</p>
+<ul>
+<li>Promotes code/data reuse and minimizes redundant efforts, leading to efficient resource and human capital utilization.</li>
+</ul>
+</li>
+<li>
+<p><strong>Extendable and Automated Workflow</strong>:</p>
+<ul>
+<li>The flexible architecture allows for extensibility and employs automation for a streamlined benchmarking process, catering to evolving needs.</li>
+</ul>
+</li>
+<li>
+<p><strong>Community Engagement</strong>:</p>
+<ul>
+<li>The initiative welcomes community engagement and dialogue, laying the groundwork for future collaborations, workshops, and benchmarking expansions.</li>
+</ul>
+</li>
+<li>
+<p><strong>Transparency and Validation</strong>:</p>
+<ul>
+<li>Even in its alpha phase, the emphasis on transparency and validation of benchmark data ensures responsible use of preliminary data. However, because of the commercial sensitivity of the data, the benchmarking data is only available under NDA.</li>
+</ul>
+</li>
+</ol>
+<p>This framework signifies a substantial stride towards nurturing a collaborative
+ecosystem aimed at advancing standardization and optimization of seismic imaging
+workloads across diverse computing architectures. The collaborative ethos
+facilitated by this platform is geared towards driving notable advancements in
+seismic imaging performance, contributing to the overarching goal of efficient
+resource utilization and heightened computational capabilities.</p>
+<h3 id="overview">Overview</h3>
+<p>The framework is build on <a href="https://github.com/">GitHub</a>-based having being
+heavily influenced by our existing CI/CD framework. The platform includes a
+development cluster of servers with various computer architectures, configured
+as <a href="https://docs.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners">GitHub self-hosted
+runners</a>,
+and utilizes <a href="https://docs.github.com/en/actions">GitHub Actions</a> to automate
+workflows.</p>
+<p>One of the advantages of this approach is that it naturally supports automation,
+standardized and reproducible comparisons of different methods, hardware, and
+skills. It also enables collaboration and code/data reuse, ultimately leading to
+better performance of the software and efficient use of human capital. The
+platform is also easily extendable by configuring self-hosted runners, adding
+different benchmarks to the GitHub Actions workflow, and more servers (either
+on-prem or Cloud-based).</p>
+<h3 id="benchmarking-as-a-platform">Benchmarking as a platform</h3>
+<p>The key idea behind the seismic imaging benchmarking platform is to bring
+together stakeholders in the industry, such as energy companies, service
+companies, processor manufacturers, and academic researchers, to standardize
+benchmarking of seismic imaging kernels.</p>
+<p>The objective is to enable accurate and reproducible benchmark experiments,
+facilitate collaboration and code/data reuse, reduce the duplication of effort
+and improve the overall performance of seismic imaging software. Additionally,
+robust performance data will help organizations make informed purchasing
+decisions for on-premise or cloud computing systems.</p>
+<p>Overall, the proposed platform aims to address the common issues in benchmarking
+seismic imaging kernels, such as differences in the PDEs, discretization,
+algorithmic optimizations, and runtime choices, and provide a more standardized
+and reproducible approach for comparing different methods, hardware, and skill.</p>
+<h4 id="anatomy-of-a-standard-benchmark">Anatomy of a standard benchmark</h4>
+<div class="mermaid">
+  graph TB
+    subgraph Standard: Benchmark setup/input
+    A(Problem specification: PDEs, BCs, grid size/shape, ...) 
+    end
+    subgraph Concrete implementation 
+    A-->B1(OSS Devito)
+    A-->B2(DevitoPRO)
+    A-->B3(Hardware vendor implementation)
+    A-->B4(Other ISV, research, proprietary implementations)
+    end
+    subgraph Execution environment
+    B2-->C1(Singularity)
+    B2-->C2(Docker)
+    B2-->C3(Conda)
+    end
+    subgraph Target platform
+    C1-->D1(On-Prem dev-cluster)
+    C1-->D2(Vendor/slurm dev-cluster)
+    C1-->D3(Public Cloud)
+    D1-->E1(Vendor CPUs)
+    D1-->E2(Vendor GPUs)
+    end
+    subgraph Standard: benchmark output
+    F(JSON: performance metrics, solution norms, status, implementation specific metadata)
+    E1-->F
+    E2-->F
+    end;
+</div>
+<h3 id="the-software-infrastructure">The software infrastructure</h3>
+<p>We have created a GitHub-based extensible framework for benchmarking seismic
+imaging kernels. The Seismic Benchmark Platform e-infrastructure comprises
+GitHub Actions for automating workflows and a development cluster of servers
+with various computer architectures, each configured as a GitHub self-hosted
+runner.</p>
+<p>GitHub Actions is a feature that allows users to automate software development
+workflows. It allows users to create custom workflows, called actions, triggered
+by specific events such as a code push, pull request, or the creation of an
+issue. These workflows include building and testing code, deploying software,
+and integrating with other tools. With GitHub Actions, users can automate
+repetitive tasks, reduce manual errors, and improve the overall efficiency of
+their development process. In our case, GitHub Actions are used to</p>
+<ul>
+<li>Execute one or more benchmarks.</li>
+<li>Upload benchmark data to a results repository.</li>
+<li>Post-process benchmark data.</li>
+</ul>
+<h4 id="workflow-of-benchmark-automation-with-github-actions">Workflow of benchmark automation with GitHub Actions</h4>
+<div class="mermaid">
+  graph TB
+    subgraph GitHub Action: manual event trigger
+      A(Benchmark matrix of jobs: benchmarks x architectures)
+      B(GitHub actions schedules individual jobs to self-hosted runners)
+      A-->B
+    end
+    subgraph Foreach benchmark job
+      C(Job allocated to self-hosted runner)
+      D(Setup execution environment)
+      E(Run benchmark)
+      F(Push benchmark output to data repo)
+      B-->C
+      C-->D
+      D-->E
+      E-->F
+    end
+    subgraph GitHub Action: triggered by data push
+      G(Process data)
+      H(Publish results to gh-pages)
+      F-->G
+      G-->H
+    end;
+</div>
+<p>GitHub Actions can run on either GitHub-hosted runners or self-hosted runners.
+Self-hosted runners are used to execute a workflow on machines the users have
+direct access to, rather than on GitHub-managed infrastructure. Self-hosted
+runners allow users more control over the environment in which their workflows
+run, including access to specific software, libraries, or hardware resources.
+Users can also use self-hosted runners to run workflows on-premises, in a
+virtual private cloud, or in a hybrid environment. Self-hosted runners are a
+flexible solution for organizations with specific requirements for their
+development environments and need more control over their workflow execution.</p>
+<p>For the work described here, we have configured the following self-hosted runners:</p>
+<ul>
+<li>NVIDIA A100-PCIE-40GB (on-prem)</li>
+<li>NVIDIA Tesla PG503-216 (on-prem)</li>
+<li>AMD Instinct™ MI210 (on-prem)</li>
+<li>Intel(R) Xeon(R) Gold 5218R CPU (on-prem)</li>
+<li>AMD EPYC 7413 24-Core Processor (on-prem)</li>
+</ul>
+<p>The advantages of this design based on GitHub Actions are</p>
+<ul>
+<li>Fully automated workflow.</li>
+<li>Fully reproducible:</li>
+<li>All software is maintained in GitHub repositories.</li>
+<li>Reuses existing CI/CD infrastructure and know-how.</li>
+<li>Readily extendable:
+<ul>
+<li>Add benchmarks by adding extra jobs to the GitHub actions workflow.</li>
+<li>Add more servers by configuring GitHub self-hosted runners.</li>
+<li>Self-hosted runners can be bare-metal servers or running on the Cloud.</li>
+</ul>
+</li>
+</ul>
+<p>While the vision is to advance standardization in our industry and grow a
+community around this platform, it is also straightforward to fork our codebase
+and create a private instance with proprietary benchmarks.</p>
+<p>Another fundamental aspect of our software infrastructure is the use of virtual
+containers, in particular Docker. This makes it straightforward to configure new
+machines and reproduce performance results. In our experience, virtual
+containers are the only realistic way of maintaining and extending a software
+and hardware infrastructure like the one we envision in this project.</p>
+<p>Currently, three benchmarks are configured:</p>
+<h4 id="isotropic-acoustic">Isotropic acoustic</h4>
+<ul>
+<li>Shortcut: iso</li>
+<li>Dimensions: 512x512x512</li>
+<li>Number of time steps: 400</li>
+<li>Space order: 8</li>
+<li>Time order: 2</li>
+</ul>
+<h4 id="fletcher-and-fowler-tti">Fletcher and Fowler TTI</h4>
+<ul>
+<li>Shortcut: tti_fl</li>
+<li>Dimensions: 512x512x512</li>
+<li>Number of time steps: 400</li>
+<li>Space order: 8</li>
+<li>Time order: 2</li>
+</ul>
+<h4 id="skew-adjoint-tti">Skew-adjoint TTI</h4>
+<ul>
+<li>Shortcut: tti_sa</li>
+<li>Dimensions: 512x512x512</li>
+<li>Number of time steps: 400</li>
+<li>Space order of operator: 8</li>
+<li>Time order: 2</li>
+</ul>
+<h3 id="results-preview">Results preview</h3>
+<p>We have included a snapshot of results below. FLOPS (Floating Point Operations
+Per Second) is a well-recognized measure in High-Performance Computing (HPC),
+but it may not always be the most revealing. Its value can be inflated by
+employing inefficient numerical methods. In seismic imaging, GPts/s (Giga-Points
+Per Second) — also termed giga-cells-per-second — is often favored. This metric
+directly measures work throughput, offering a clearer gauge of performance. In
+essence, GPts/s helps in accurately estimating the time or cost required to
+solve a specific problem.</p>
+<p><strong>Disclaimer:</strong> *Although we have exerted maximum effort to guarantee precise,
+*equitable, and replicable results, it is crucial to understand that the
+*benchmarking framework is still in the alpha development phase. Consequently,
+*the benchmarks provided here are preliminary and subject to change. The
+*benchmark data should not be considered comprehensive or final, and are not
+<em>suited for making any financial decisions.</em></p>
+<p>*No warranty, express or implied, is provided with the data. The information is
+*supplied on an “as is” basis. We expressly disclaim, to the maximum extent
+*permitted by law, any liability for any damages or losses, direct or
+*consequential, resulting from the use of these benchmarks. Please utilize this
+<em>information responsibly, keeping in mind its tentative nature.</em></p>
+<h3 id="3d-isotropic-acoustic">3D Isotropic acoustic</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Processor</th><th>GPts/s</th></tr></thead><tbody><tr><td>NVIDIA A100-80GB</td><td>62.7</td></tr><tr><td>NVIDIA A100-PCIE-40GB</td><td>54.2</td></tr><tr><td>AMD Instinct™ MI250</td><td>54</td></tr><tr><td>NVIDIA Tesla PG503-216 (V100)</td><td>31</td></tr><tr><td>AMD Instinct™ MI210</td><td>29.2</td></tr><tr><td>Intel(R) Xeon(R) Gold 5218R CPU</td><td>7.97</td></tr><tr><td>AMD EPYC 7413 24-Core Processor</td><td>1.49</td></tr></tbody></table>
+<h3 id="3d-fletcher-du-fowler-tti">3D Fletcher Du Fowler TTI</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Processor</th><th>GPts/s</th></tr></thead><tbody><tr><td>AMD Instinct™ MI250</td><td>16.1</td></tr><tr><td>NVIDIA A100-80GB</td><td>12.4</td></tr><tr><td>NVIDIA A100-PCIE-40GB</td><td>12.2</td></tr><tr><td>AMD Instinct™ MI210</td><td>9.83</td></tr><tr><td>NVIDIA Tesla PG503-216 (V100)</td><td>9.34</td></tr><tr><td>Intel(R) Xeon(R) Gold 5218R CPU</td><td>1.72</td></tr><tr><td>AMD EPYC 7413 24-Core Processor</td><td>0.797</td></tr></tbody></table>
+<h3 id="future-work">Future work</h3>
+<ul>
+<li>Add a link to the page capturing the benchmark characteristics</li>
+<li>Add more metrics such as FLOPS.</li>
+<li>Add more benchmarks:
+<ul>
+<li>Laplacian operator (trivial case helps when working with vendors).</li>
+<li>Gradient operators to stress backward propagation.</li>
+<li>Elastic formulation, as these are of growing importance.</li>
+</ul>
+</li>
+<li>Add support for 3rd parties to provide their implementation of the benchmarks.</li>
+<li>Add more benchmark configurations:</li>
+<li>MPI for NUMA CPUs.</li>
+<li>MPI for multiple GPUs per server.</li>
+<li>Add more bare metal nodes to the development cluster.</li>
+<li>Engage with hardware vendors to get test nodes.</li>
+<li>Add Cloud-based self-hosted runners:
+<ul>
+<li>Ideally, this would be configured as an on-demand runner.</li>
+</ul>
+</li>
+<li>Community engagement.</li>
+<li>Organize benchmarking workshops.</li>
+<li>Engage with hardware and Cloud vendors to review and optimize benchmarks.</li>
+</ul>
+<h3 id="acknowledgements">Acknowledgements</h3>
+<p>Many thanks to Chevron for the funding and feedback to kickstart this
+initiative.  We would also like to thank AMD, AWS, Dell, Nvidia and
+Supermicro for providing hardware and cloud resources.</p> </div> </article> </main> <footer class="bg-surface border-t border-line"> <div class="container-x py-16"> <div class="grid gap-10 md:grid-cols-4"> <div class="md:col-span-1"> <div class="flex items-center gap-2.5 font-extrabold text-ink"> <span class="inline-block w-2.5 h-2.5 rounded-sm bg-accent"></span>
+Devito<span class="text-muted font-semibold">Codes</span> </div> <p class="mt-4 text-sm text-muted leading-relaxed max-w-xs">
+The commercial arm of the open-source Devito project — performance-portable
+          finite-difference HPC for seismic imaging.
+</p> <div class="mt-5 flex gap-4 text-muted"> <a href="https://github.com/devitocodes" target="_blank" rel="noopener noreferrer" class="hover:text-ink">GitHub</a> <a href="https://x.com/devitocodes" target="_blank" rel="noopener noreferrer" class="hover:text-ink">X</a> <a href="https://www.linkedin.com/company/devitocodes" target="_blank" rel="noopener noreferrer" class="hover:text-ink">LinkedIn</a> </div> </div> <div> <h3 class="text-xs font-semibold uppercase tracking-wider text-ink/80">Product</h3> <ul class="mt-4 space-y-2.5 text-sm"> <li><a href="/devitocodes-web/preview/hybrid/features" class="text-muted hover:text-ink transition-colors">Features</a></li><li><a href="/devitocodes-web/preview/hybrid/#performance" class="text-muted hover:text-ink transition-colors">Performance</a></li><li><a href="/devitocodes-web/preview/hybrid/#use-cases" class="text-muted hover:text-ink transition-colors">Use cases</a></li><li><a href="/devitocodes-web/preview/hybrid/case-studies" class="text-muted hover:text-ink transition-colors">Case studies</a></li> </ul> </div><div> <h3 class="text-xs font-semibold uppercase tracking-wider text-ink/80">Company</h3> <ul class="mt-4 space-y-2.5 text-sm"> <li><a href="/devitocodes-web/preview/hybrid/about" class="text-muted hover:text-ink transition-colors">About</a></li><li><a href="/devitocodes-web/preview/hybrid/blog" class="text-muted hover:text-ink transition-colors">Blog</a></li><li><a href="/devitocodes-web/preview/hybrid/contact" class="text-muted hover:text-ink transition-colors">Contact</a></li><li><a href="https://www.devitoproject.org" class="text-muted hover:text-ink transition-colors">Open-source Devito</a></li> </ul> </div><div> <h3 class="text-xs font-semibold uppercase tracking-wider text-ink/80">Legal</h3> <ul class="mt-4 space-y-2.5 text-sm"> <li><a href="/devitocodes-web/preview/hybrid/Code_of_Conduct" class="text-muted hover:text-ink transition-colors">Code of Conduct</a></li><li><a href="/devitocodes-web/preview/hybrid/Data_Protection_Policy" class="text-muted hover:text-ink transition-colors">Data Protection Policy</a></li> </ul> </div> </div> <div class="mt-14 pt-6 border-t border-line/70 flex flex-col sm:flex-row gap-2 justify-between text-xs text-muted"> <p>© 2026 Devito Codes Ltd. All rights reserved.</p> <p>Built with Astro · deployed on GitHub Pages.</p> </div> </div> </footer> </body></html>
