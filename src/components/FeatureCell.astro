@@ -1,0 +1,12 @@
+---
+import type { Cell } from '../data/features';
+interface Props { value: Cell; }
+const { value } = Astro.props;
+---
+{typeof value === 'string' ? (
+  <span class="inline-block font-mono text-[11px] px-2 py-0.5 rounded border border-line text-muted">{value}</span>
+) : value ? (
+  <span class="text-accent font-bold" role="img" aria-label="included">✓</span>
+) : (
+  <span class="text-muted/40" role="img" aria-label="not included">—</span>
+)}

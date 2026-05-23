@@ -1,0 +1,19 @@
+---
+import Section from './Section.astro';
+import { trilemma } from '../data/content';
+interface Props { tone?: 'base' | 'surface'; }
+const { tone = 'surface' } = Astro.props;
+---
+<Section id="trilemma" tone={tone} eyebrow={trilemma.eyebrow} title={trilemma.title} intro={trilemma.intro}>
+  <div class="mt-14 grid gap-6 md:grid-cols-3">
+    {trilemma.pillars.map((p, i) => (
+      <div class="card p-7">
+        <div class="flex items-center gap-3">
+          <span class="font-mono text-accent text-sm">{String(i + 1).padStart(2, '0')}</span>
+          <h3 class="text-xl font-bold text-ink">{p.name}</h3>
+        </div>
+        <p class="mt-3 text-muted leading-relaxed">{p.body}</p>
+      </div>
+    ))}
+  </div>
+</Section>

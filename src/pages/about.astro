@@ -1,0 +1,31 @@
+---
+import Base from '../layouts/Base.astro';
+import Section from '../components/Section.astro';
+import CTA from '../components/CTA.astro';
+import { team, aboutIntro, offerings } from '../data/team';
+import { withBase } from '../lib/url';
+---
+<Base title="About" description="About Devito Codes — the commercial arm of the open-source Devito project.">
+  <Section eyebrow="About" title="The commercial arm of Devito." intro={aboutIntro} class="pt-28">
+    <ul class="mt-8 grid gap-3 sm:grid-cols-2 max-w-3xl">
+      {offerings.map((o) => (
+        <li class="flex gap-3 text-muted"><span class="text-accent shrink-0">▹</span>{o}</li>
+      ))}
+    </ul>
+  </Section>
+  <Section tone="surface" title="Team">
+    <div class="mt-10 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+      {team.map((m) => (
+        <div class="flex gap-5">
+          <img src={withBase(m.photo)} alt={m.name} loading="lazy" class="w-20 h-20 rounded-full object-cover border border-line shrink-0" />
+          <div>
+            <h3 class="font-bold text-ink">{m.name}</h3>
+            <p class="text-sm text-accent">{m.role}</p>
+            <p class="mt-2 text-sm text-muted leading-relaxed">{m.bio}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </Section>
+  <CTA />
+</Base>

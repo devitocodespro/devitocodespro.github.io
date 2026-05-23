@@ -1,0 +1,16 @@
+---
+import Section from './Section.astro';
+import { useCases } from '../data/content';
+interface Props { tone?: 'base' | 'surface'; }
+const { tone = 'base' } = Astro.props;
+---
+<Section id="use-cases" tone={tone} eyebrow={useCases.eyebrow} title={useCases.title}>
+  <div class="mt-12 grid gap-px bg-line/60 rounded-2xl overflow-hidden border border-line sm:grid-cols-2 lg:grid-cols-3">
+    {useCases.items.map((u) => (
+      <div class="bg-surface p-7">
+        <h3 class="font-bold text-ink">{u.title}</h3>
+        <p class="mt-2 text-sm text-muted leading-relaxed">{u.body}</p>
+      </div>
+    ))}
+  </div>
+</Section>

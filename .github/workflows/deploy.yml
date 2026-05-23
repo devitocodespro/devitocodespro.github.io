@@ -1,0 +1,41 @@
+name: Deploy production-candidate
+
+# Builds the site from `main` and publishes it to the ROOT of the gh-pages branch
+# (served at https://devitocodespro.github.io/devitocodes-web/). Branch previews
+# under preview/ are preserved via clean-exclude.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pages-production
+  cancel-in-progress: true
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Build
+        env:
+          BASE_PATH: /devitocodes-web/
+          SITE_URL: https://devitocodespro.github.io
+        run: npm run build
+      - name: Deploy to gh-pages (root)
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist
+          branch: gh-pages
+          clean: true
+          clean-exclude: |
+            preview

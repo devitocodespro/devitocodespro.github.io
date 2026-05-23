@@ -1,0 +1,96 @@
+---
+title: Devito DevOps Cluster v2
+date: '2022-11-09T00:00:00+00:00'
+subtitle: Now with Instinct™
+description: Core to the Devito mission is performance portability. Of course, if
+  it is not tested then it is assumed to be broken. We maintain a dedicated cluster
+  for all our DevOps needs.
+image: /images/amd/211085700_AMD_INSTINCT_MI200_Server_2.png
+optimized_image: /images/amd/211085700_AMD_INSTINCT_MI200_Server_2-opt.png
+category: DevOps
+author: Gerard Gorman (Director)
+tags:
+- benchmarking
+- HPC
+- Cloud
+- AMD
+- ARM
+- Intel
+- Nvidia
+slug: cluster-v2
+---
+
+### TLDR
+Thanks to support from AMD we are happy to announce:
+
+* DevitoPRO now has HIP support for AMD Instinct™ GPU's
+* [AMAX AceleMax DGS-428 4U Server](https://www.amax.com/ai-optimized-solutions/acelemax-dgs-428as/) has been added to the Devito DevOps cluster.
+
+### Nitty Gritty
+
+One of Devito's core missions is performance portability. Our current roadmap
+targets the matrix of architectures and parallel programming models below.
+
+| Architecture  | CUDA     | HIP                                  | MPI        | OpenACC    | OpenMP     |
+|---------------|----------|--------------------------------------|------------|------------|------------|
+| AMD/CPU       |          |                                      | <i class="fas fa-check text-xl"></i> |            | <i class="fas fa-check text-xl"></i> |
+| AMD/GPU       |          | <i class="fas fa-check text-xl"></i> | <i class="fas fa-check text-xl"></i> | | <i class="fas fa-check text-xl"></i> |
+| ARM           |          |                                      | <i class="fas fa-check text-xl"></i> | | <i class="fas fa-check text-xl"></i> |
+| Intel/CPU     |          |                                      | <i class="fas fa-check text-xl"></i> | | <i class="fas fa-check text-xl"></i> |
+| Intel/KNC,KNL |          |                                      | <i class="fas fa-check text-xl"></i> | | <i class="fas fa-check text-xl"></i> |
+| Intel/GPU     |          |                                      | TBA        |            | TBA        |
+| NVidia        | <i class="fas fa-check text-xl"></i> | | <i class="fas fa-check text-xl"></i> | <i class="fas fa-check text-xl"></i> | <i class="fas fa-check text-xl"></i> |
+
+To support the delivery of this vision, since January 2020 Devito Codes has
+maintained a distributed cluster as part of our DevOps infrastructure for both
+open-source Devito and DevitoPRO. This provides services such as:
+
+* Testing (i.e. CI) [^1].
+* Performance optimization on 'bare metal' target platforms.
+* Performance benchmarking [^2].
+* Deployment (i.e. CD via Docker and release mirrors).
+
+While Devito Codes invested directly in hardware at the outset, long term loans
+and donations now make up the majority of the cluster [^3]. At the time of
+writing the cluster is comprised of:
+
+| Model            | units | CPU               | GPU                  | Sponsor                            |
+|---------------------|---------------------------|----------------------|------------------------------------|
+| [AMAX AceleMax DGS-428 4U Server](https://www.amax.com/ai-optimized-solutions/acelemax-dgs-428as/) | 1 | AMD EPYC 7643 48-Core Processor | 4x AMD Radeon Instinct MI210 | [AMAX](https://www.amax.com/) |
+| Dell                | 1     | AMD               | 4 X A100 (80G)       | NVidia & Dell                      |
+| HP                  | 1     | Intel Xeon        |                      | Devito Codes                       |
+| Fujitsu A64FX       | 1     | ARM64             |                      | Fujitsu                            |
+| self (custom build) | 1     | AMD               | 2 x MI50             | Devito Codes (server) & AMD (GPUs) |
+| self (custom build) | 4     | Intel/AMD PC CPUs | 3 x RTX3090, RTX3080 | Devito Codes                       |
+| Supermicro          | 4     | Intel Xeon Gold   | 4 x V100             | NVidia & Supermicro                |
+
+
+While we were optimizing for the Intel KNC and KNL, [DUG]{https://dug.com/}
+provided us with access to nodes for DevOps. Today they are running their own
+DevOps on KNC and KNL for [DUG
+Wave](https://dug.com/geoscience-services/full-waveform-inversion-fwi/) which
+depends upon Devito. So far no problems have been experienced so long as we
+monitor for performance regression on Intel Xeon's running with OpenMP.
+
+We do all our deployment on the cluster using Docker containers. We do this to
+ensure that the same environment is used for testing and deployment. This has
+also been useful for performance debugging on Cloud platforms, such as AWS and
+Azure, because we can differentiated between Docker related issues and the
+underlying platform.
+
+Early on we relied on Cloud computing nodes rather than our own hardware. However, we ran into a number of issues:
+
+* Sponsored Cloud credit severely limited what architectures we were able to test on - in particular we would not use any modern GPU.
+* It was difficult to control costs. We make heavy use of _GitHub Actions_ for automation. Self hosted runners require you to run a client on your _self-hosted runner_. This _always on_ model meant we would rack up an eye-watering bill at the end of each month - in fact, this is what provided the initial motivation to build our own cluster.
+
+There is no doubt that we will revisit the Cloud in the future with a smarter
+strategy to control costs. However, we are committed to continuing with our
+strategy of maintaining our own hardware so we can always drill down to bare
+metal when we are looking for maximum performance.
+
+[^1]: If it is not tested, then it is broken. 
+
+[^2]: Performance benchmark specification includes code verification for correctness.
+
+[^3]: Many thanks to all the vendors that helped make the Devito Cluster happen: AMD, Dell, DUG, NVidia, Supermicro
+

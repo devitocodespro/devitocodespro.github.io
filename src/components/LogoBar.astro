@@ -1,0 +1,13 @@
+---
+import { trustBar } from '../data/content';
+---
+<section class="bg-base border-t border-line/60">
+  <div class="container-x py-10">
+    <p class="text-center text-xs uppercase tracking-wider text-muted">{trustBar.title}</p>
+    <div class="mt-6 flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
+      {trustBar.partners.map((p) => (
+        <span class="font-mono text-sm md:text-base font-medium text-ink/60">{p}</span>
+      ))}
+    </div>
+  </div>
+</section>

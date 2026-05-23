@@ -1,0 +1,22 @@
+---
+import Section from './Section.astro';
+import { benchmarks } from '../data/content';
+import { withBase } from '../lib/url';
+interface Props { tone?: 'base' | 'surface'; }
+const { tone = 'surface' } = Astro.props;
+---
+<Section id="performance" tone={tone} eyebrow={benchmarks.eyebrow} title={benchmarks.title} intro={benchmarks.intro}>
+  <div class="mt-12 grid gap-6 sm:grid-cols-2">
+    {benchmarks.cards.map((c) => (
+      <figure class="card overflow-hidden flex flex-col">
+        <div class="bg-base/40 p-3 border-b border-line">
+          <img src={withBase(c.image)} alt={c.title} loading="lazy" class="w-full h-56 object-contain" />
+        </div>
+        <figcaption class="p-6">
+          <h3 class="font-bold text-ink">{c.title}</h3>
+          <p class="mt-2 text-sm text-muted leading-relaxed">{c.body}</p>
+        </figcaption>
+      </figure>
+    ))}
+  </div>
+</Section>

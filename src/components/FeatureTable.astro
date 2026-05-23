@@ -1,0 +1,39 @@
+---
+import { featureCategories } from '../data/features';
+import FeatureCell from './FeatureCell.astro';
+interface Props { condensed?: boolean; }
+const { condensed = false } = Astro.props;
+
+const categories = condensed
+  ? featureCategories
+      .map((c) => ({ ...c, rows: c.rows.filter((r) => r.pro !== r.oss) }))
+      .filter((c) => c.rows.length)
+  : featureCategories;
+---
+<div class="mt-10 overflow-x-auto">
+  <table class="w-full border-collapse text-sm min-w-[34rem]">
+    <thead>
+      <tr class="text-left">
+        <th class="py-3 pr-4 font-semibold text-ink w-1/2">Capability</th>
+        <th class="py-3 px-4 font-semibold text-muted text-center whitespace-nowrap">Open-source Devito</th>
+        <th class="py-3 px-4 font-semibold text-accent text-center">DevitoPRO</th>
+      </tr>
+    </thead>
+    <tbody>
+      {categories.map((cat) => (
+        <Fragment>
+          <tr>
+            <td colspan="3" class="pt-8 pb-1"><span class="eyebrow">{cat.name}</span></td>
+          </tr>
+          {cat.rows.map((row) => (
+            <tr class="border-t border-line/60">
+              <td class="py-3 pr-4 text-ink/90">{row.label}</td>
+              <td class="py-3 px-4 text-center"><FeatureCell value={row.oss} /></td>
+              <td class="py-3 px-4 text-center bg-accent/[0.04]"><FeatureCell value={row.pro} /></td>
+            </tr>
+          ))}
+        </Fragment>
+      ))}
+    </tbody>
+  </table>
+</div>

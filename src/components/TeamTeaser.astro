@@ -1,0 +1,27 @@
+---
+import Section from './Section.astro';
+import { team } from '../data/team';
+import { withBase } from '../lib/url';
+import Button from './Button.astro';
+interface Props { tone?: 'base' | 'surface'; }
+const { tone = 'base' } = Astro.props;
+const featured = team.slice(0, 4);
+---
+<Section
+  id="team"
+  tone={tone}
+  eyebrow="Team"
+  title="Built by the people who built Devito."
+  intro="Devito Codes pairs the original Devito architects with HPC and geophysics specialists from Imperial College, Georgia Tech and industry."
+>
+  <div class="mt-12 grid gap-8 grid-cols-2 lg:grid-cols-4">
+    {featured.map((m) => (
+      <div class="text-center">
+        <img src={withBase(m.photo)} alt={m.name} loading="lazy" class="mx-auto w-24 h-24 rounded-full object-cover border border-line" />
+        <h3 class="mt-4 font-bold text-ink">{m.name}</h3>
+        <p class="text-sm text-accent">{m.role}</p>
+      </div>
+    ))}
+  </div>
+  <div class="mt-10"><Button href="/about" variant="ghost">Meet the team</Button></div>
+</Section>

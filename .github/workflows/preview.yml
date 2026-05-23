@@ -1,0 +1,48 @@
+name: Deploy branch preview
+
+# Builds any variant/** (or init/**) branch with the correct subpath base and
+# publishes it to gh-pages/preview/<name>/, giving a stable, shareable URL:
+#   https://devitocodespro.github.io/devitocodes-web/preview/<name>/
+# Each preview is isolated in its own subfolder; the production root is untouched.
+
+on:
+  push:
+    branches:
+      - 'variant/**'
+      - 'init/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-deploy-preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compute preview name
+        id: name
+        run: |
+          name="$(echo "${GITHUB_REF_NAME}" | sed 's#^[^/]*/##; s#[^a-zA-Z0-9_-]#-#g')"
+          echo "name=$name" >> "$GITHUB_OUTPUT"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Build (subpath)
+        env:
+          BASE_PATH: /devitocodes-web/preview/${{ steps.name.outputs.name }}/
+          SITE_URL: https://devitocodespro.github.io
+        run: npm run build
+      - name: Deploy preview
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist
+          branch: gh-pages
+          target-folder: preview/${{ steps.name.outputs.name }}
+          clean: true
+      - name: Preview URL
+        run: |
+          echo "### Preview deployed :rocket:" >> "$GITHUB_STEP_SUMMARY"
+          echo "https://devitocodespro.github.io/devitocodes-web/preview/${{ steps.name.outputs.name }}/" >> "$GITHUB_STEP_SUMMARY"

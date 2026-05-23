@@ -1,0 +1,13 @@
+---
+import Base from '../layouts/Base.astro';
+import Section from '../components/Section.astro';
+import FeatureTable from '../components/FeatureTable.astro';
+import CTA from '../components/CTA.astro';
+import { featureIntro } from '../data/features';
+---
+<Base title="Features" description="DevitoPRO vs open-source Devito — the full feature comparison.">
+  <Section eyebrow="Product" title="DevitoPRO features" intro={featureIntro} class="pt-28">
+    <FeatureTable />
+  </Section>
+  <CTA />
+</Base>
