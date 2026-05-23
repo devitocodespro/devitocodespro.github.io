@@ -6,7 +6,7 @@ import Button from './Button.astro';
 ---
 <section class="relative overflow-hidden bg-base">
   <div class="absolute inset-0 -z-10">
-    <img src={withBase(hero.image)} alt="" aria-hidden="true" class="w-full h-full object-cover opacity-25" />
+    <img src={withBase(hero.image)} alt="" aria-hidden="true" class="w-full h-full object-cover" style="opacity: var(--hero-img-opacity, 0.25)" />
     <div class="absolute inset-0 bg-gradient-to-b from-base/70 via-base/85 to-base"></div>
   </div>
   <div class="container-x pt-24 pb-20 md:pt-32 md:pb-28">
