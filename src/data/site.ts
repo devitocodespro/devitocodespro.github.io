@@ -6,8 +6,6 @@ export const site = {
   product: 'DevitoPRO',
   domain: 'www.devitocodes.com',
   email: 'gerard@devitocodes.com',
-  // Formspree endpoint id (carried over from the Jekyll site's _config.yml).
-  formspreeId: 'gerard@devitocodes.com',
   ga4: 'G-39F3JRV5HY',
 
   description:
