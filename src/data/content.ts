@@ -1,6 +1,7 @@
 // Homepage section content. Copy is drawn from the company's real positioning
-// (about.md / features.md). Quantitative claims are intentionally left to the
-// real benchmark images rather than invented numbers.
+// (about.md / features.md) and sanitised voice-of-customer from the Slack market
+// research (no client names, quotes, or specific benchmark numbers). Quantitative
+// claims are intentionally left to the real benchmark images rather than invented numbers.
 
 export const hero = {
   eyebrow: 'DevitoPRO · Enterprise Devito',
@@ -8,7 +9,8 @@ export const hero = {
   subtitle:
     'DevitoPRO turns symbolic finite-difference definitions into optimized CPU and ' +
     'GPU kernels for production seismic imaging — RTM, FWI and beyond — across Intel, ' +
-    'AMD, NVIDIA and Arm, on-prem and in the cloud.',
+    'AMD, NVIDIA and Arm, on-prem and in the cloud. A faster, supported alternative to ' +
+    'building and maintaining your own finite-difference compiler.',
   image: '/images/making-waves-opt.png',
   imageAlt: 'Seismic wavefield simulated with Devito',
 };
@@ -17,8 +19,9 @@ export const trilemma = {
   eyebrow: 'The HPC trilemma',
   title: 'Stop trading performance for portability for productivity.',
   intro:
-    'Hand-tuned HPC code usually wins on one axis and quietly loses the other two. ' +
-    'DevitoPRO is built to refuse that trade-off.',
+    'Your in-house finite-difference code usually wins on one axis — performance, ' +
+    'portability, or productivity — and quietly loses the other two. DevitoPRO is built ' +
+    'to refuse that trade-off.',
   pillars: [
     {
       name: 'Performance',
@@ -66,8 +69,9 @@ export const benchmarks = {
   eyebrow: 'Performance',
   title: 'Benchmarked across platforms, independently autotuned.',
   intro:
-    'Iso-acoustic and acoustic-TTI propagators, autotuned per target for a fair comparison. ' +
-    'DevitoPRO customers get the full reports and raw logs for reproducibility.',
+    'Iso-acoustic and acoustic-TTI propagators, autotuned per target for a fair comparison — ' +
+    'including against in-house baselines. DevitoPRO customers get the full reports and raw ' +
+    'logs: reproducible, and backed by expert support.',
   cards: [
     {
       title: 'Cross-platform throughput',
@@ -97,11 +101,12 @@ export const useCases = {
   title: 'Built for production exploration geophysics.',
   items: [
     { title: 'Reverse Time Migration (RTM)', body: 'Forward/adjoint propagators with checkpointing, compression-based back-propagation and data streaming.' },
-    { title: 'Full-Waveform Inversion (FWI)', body: 'Express adjoint-method optimization symbolically; scale gradients across multi-node multi-GPU.' },
+    { title: 'Full-Waveform Inversion (FWI)', body: 'Express adjoint-method optimization symbolically; scale gradients across multi-node, multi-GPU with GPU-aware MPI.' },
     { title: 'Elastic, VTI & TTI anisotropy', body: 'Acoustic and elastic VTI/TTI, viscoacoustic and viscoelastic propagators from the Devito cookbook.' },
+    { title: 'Embed in your stack', body: 'Call DevitoPRO from your own application in any language via the decoupler — with full MPI — to drop high-performance propagators into an existing inversion engine.' },
+    { title: 'Very large models', body: 'Run models beyond the limits of in-house codes using compression, data streaming, expanding-box and mixed precision to keep memory and transfer costs in check.' },
     { title: 'Cloud-native seismic imaging', body: 'Tuned, benchmarked deployments on AWS, Azure and GCP — portable across available instances.' },
     { title: 'Immersed-boundary topography', body: 'Accurate land topography on finite-difference grids via immersed boundary support.' },
-    { title: 'Mixed precision & compression', body: 'Reduce memory pressure and disk-host-GPU transfer cost without compromising accuracy.' },
   ],
 };
 
@@ -122,5 +127,7 @@ export const caseStudies = [
 
 export const finalCta = {
   title: 'Discuss your wave-propagation workload.',
-  body: 'Tell us about your target hardware, cloud and imaging pipeline. We will benchmark it and show you what DevitoPRO can do.',
+  body: 'Whether you run an in-house geophysics team, build seismic software, or design the ' +
+    'hardware underneath — tell us about your target architecture and imaging pipeline, and ' +
+    'we will benchmark it and show you what DevitoPRO can do.',
 };
