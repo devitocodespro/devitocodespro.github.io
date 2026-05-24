@@ -12,9 +12,14 @@ on:
 permissions:
   contents: write
 
+# Serialize ALL writes to the gh-pages branch (production + previews share this group)
+# so concurrent JamesIves pushes don't race. cancel-in-progress: false = queue, don't
+# cancel. Caveat: GitHub keeps only one running + one pending per group, so a burst of
+# 3+ truly-simultaneous deploys can still drop the middle one — space pushes out, or
+# re-run a dropped deploy.
 concurrency:
-  group: pages-production
-  cancel-in-progress: true
+  group: gh-pages-deploy
+  cancel-in-progress: false
 
 jobs:
   build-deploy:
