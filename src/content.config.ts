@@ -18,6 +18,10 @@ const blog = defineCollection({
     tags: z.array(z.string()).default([]),
     author: z.string().optional(),
     slug: z.string().optional(),
+    // `draft: true` hides a post from listings (/blog index + homepage CaseStudies),
+    // but the [...slug] route still serves the URL — so existing backlinks keep
+    // working (e.g. /about links the 2020 launch post as the origin story).
+    draft: z.boolean().default(false),
   }),
 });
 

@@ -1,13 +1,33 @@
 ---
 import Base from '../layouts/Base.astro';
 import Section from '../components/Section.astro';
+import FeatureHighlights from '../components/FeatureHighlights.astro';
 import FeatureTable from '../components/FeatureTable.astro';
 import CTA from '../components/CTA.astro';
 import { featureIntro } from '../data/features';
 ---
-<Base title="Features" description="DevitoPRO vs open-source Devito — the full feature comparison.">
+<Base title="Features" description="DevitoPRO features — the highlights, with the full open-source comparison one click away.">
   <Section eyebrow="Product" title="DevitoPRO features" intro={featureIntro} class="pt-28">
-    <FeatureTable />
+    <div class="mt-12">
+      <FeatureHighlights />
+    </div>
+
+    {/* Secondary: full vs-OSS comparison, collapsed by default. Anchor: /features#compare */}
+    <details id="compare" class="mt-16 group rounded-2xl border border-line bg-surface/40 overflow-hidden">
+      <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+        <div>
+          <p class="eyebrow">Compare</p>
+          <h2 class="mt-1 text-xl font-bold text-ink">Compare with open-source Devito</h2>
+          <p class="mt-1 text-sm text-muted">Full row-by-row breakdown of what's in DevitoPRO and what's in the OSS release.</p>
+        </div>
+        <svg class="w-5 h-5 text-muted shrink-0 transition-transform group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
+      </summary>
+      <div class="px-6 pb-8 pt-2 border-t border-line">
+        <FeatureTable />
+      </div>
+    </details>
   </Section>
   <CTA />
 </Base>

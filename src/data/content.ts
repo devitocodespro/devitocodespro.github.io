@@ -50,55 +50,54 @@ export const trilemma = {
 
 export const solution = {
   eyebrow: 'How it works',
-  title: 'Symbolic Python in. Optimized native kernels out.',
+  title: 'Symbolic physics in. Optimized native kernels out.',
   steps: [
     { n: '01', title: 'Define the physics', body: 'Write the PDE, boundaries and sources symbolically with SymPy.' },
     { n: '02', title: 'Generate & optimize', body: 'The Devito compiler lowers it to fused, vectorized, parallel native code.' },
     { n: '03', title: 'Run anywhere', body: 'Deploy the same model across CPUs, GPUs and clusters — on-prem or cloud.' },
   ],
   targets: ['OpenMP', 'OpenACC', 'CUDA', 'HIP', 'SYCL', 'MPI'],
-  code: `from devito import Grid, TimeFunction, Eq, Operator, solve
-
-grid = Grid(shape=(512, 512, 512))
-u = TimeFunction(name="u", grid=grid, space_order=8, time_order=2)
-
-# Isotropic acoustic wave equation — written once, symbolically
-pde = u.dt2 - u.laplace
-op = Operator(Eq(u.forward, solve(pde, u.forward)))
-
-op.apply(time=2000)   # -> fused, vectorized, GPU-offloaded native code`,
 };
 
 export const benchmarks = {
   eyebrow: 'Performance',
-  title: 'Benchmarked across platforms, independently autotuned.',
+  title: 'Speed-of-light performance, every architecture.',
   intro:
-    'Iso-acoustic and acoustic-TTI propagators, autotuned per target for a fair comparison — ' +
-    'including against hand-coded in-house kernels. As new processors arrive, DevitoPRO ' +
-    'regenerates and re-tunes for them, so the comparison stays current. Customers get full ' +
-    'reports and raw logs: reproducible, and backed by expert support.',
+    'Iso-acoustic and acoustic-TTI propagators, autotuned per target — including against ' +
+    'hand-coded in-house kernels. As new processors arrive, DevitoPRO regenerates and ' +
+    're-tunes for them, so the comparison stays current. For specific benchmark numbers ' +
+    'on your workload, get in touch — we share full reports and raw logs with customers.',
   cards: [
     {
-      title: 'Cross-platform throughput',
-      body: 'Relative performance across CPU and GPU architectures, each autotuned to its best configuration.',
-      image: '/images/performance-relative-G2.png',
+      title: 'GPU portability',
+      body:
+        'CUDA, HIP and SYCL backends generated from one symbolic spec — production-grade ' +
+        'kernels for NVIDIA, AMD and Intel GPUs, autotuned per target.',
     },
     {
-      title: 'AWS Graviton4',
-      body: 'Arm in the cloud: price/performance for production seismic workloads on Graviton4.',
-      image: '/images/handout_aws_graviton4-opt.jpg',
+      title: 'CPU portability',
+      body:
+        'OpenMP + NUMA-aware MPI on every modern x86 and Arm CPU — from Graviton and ' +
+        'Sapphire Rapids to EPYC and Apple silicon.',
     },
     {
-      title: 'Intel Data Center GPU Max',
-      body: 'SYCL code generation targeting Intel Data Center GPU Max series.',
-      image: '/images/intel_data_center_gpu_max_series-opt.png',
+      title: 'Cloud price-performance',
+      body:
+        'Tuned and benchmarked across AWS, Azure and GCP instance families. Availability ' +
+        'now matters as much as price-performance — DevitoPRO keeps both portable.',
     },
     {
-      title: 'Throughput per dollar',
-      body: 'Availability now matters as much as price/performance — DevitoPRO keeps both portable across instances.',
-      image: '/images/TP_per_dollar.png',
+      title: 'Large-model scale',
+      body:
+        'Compression-based back-propagation, intelligent data streaming, expanding-box ' +
+        'and mixed precision keep memory and disk-host-GPU transfer in check for the ' +
+        'biggest models.',
     },
   ],
+  cta: {
+    label: 'Request a benchmark report on your workload',
+    href: '/contact',
+  },
 };
 
 export const useCases = {

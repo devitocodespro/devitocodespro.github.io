@@ -1,4 +1,5 @@
 ---
+draft: true
 title: Announcing Devito Pro - enterprise edition of the open-source platform Devito
 date: '2020-09-04T23:48:05+00:00'
 subtitle: An open core business model for Devito

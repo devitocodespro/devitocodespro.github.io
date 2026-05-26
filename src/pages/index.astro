@@ -7,7 +7,7 @@ import Solution from '../components/Solution.astro';
 import Benchmarks from '../components/Benchmarks.astro';
 import UseCases from '../components/UseCases.astro';
 import Section from '../components/Section.astro';
-import FeatureTable from '../components/FeatureTable.astro';
+import FeatureHighlights from '../components/FeatureHighlights.astro';
 import CaseStudies from '../components/CaseStudies.astro';
 import TeamTeaser from '../components/TeamTeaser.astro';
 import CTA from '../components/CTA.astro';
@@ -15,9 +15,10 @@ import Button from '../components/Button.astro';
 import { featureIntro } from '../data/features';
 import { getCollection } from 'astro:content';
 
-const posts = (await getCollection('blog')).sort(
-  (a, b) => +new Date(b.data.date) - +new Date(a.data.date),
-);
+// Drafts hidden from listings; URLs still resolve via the [...slug] route.
+const posts = (await getCollection('blog'))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => +new Date(b.data.date) - +new Date(a.data.date));
 ---
 <Base>
   <Hero />
@@ -29,12 +30,15 @@ const posts = (await getCollection('blog')).sort(
   <Section
     id="compare"
     tone="surface"
-    eyebrow="DevitoPRO vs open-source"
+    eyebrow="What's in DevitoPRO"
     title="Everything in Devito, plus what production needs."
     intro={featureIntro}
   >
-    <FeatureTable condensed={true} />
-    <div class="mt-8"><Button href="/features" variant="ghost">See the full comparison</Button></div>
+    <div class="mt-10"><FeatureHighlights condensed={true} /></div>
+    <div class="mt-8 flex flex-wrap gap-3">
+      <Button href="/features" variant="primary">All features</Button>
+      <Button href="/features#compare" variant="ghost">Compare with open-source Devito</Button>
+    </div>
   </Section>
   <CaseStudies tone="base" posts={posts} />
   <TeamTeaser tone="surface" />

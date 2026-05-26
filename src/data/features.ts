@@ -12,6 +12,62 @@ export const featureIntro =
   'kernels symbolically; DevitoPRO adds the performance, portability and enterprise features ' +
   'demanding production workflows require.';
 
+// Curated headline capabilities — the primary view on /features.
+// The full DevitoPRO-vs-OSS comparison stays available in `featureCategories` below,
+// surfaced as a collapsible secondary section.
+export interface HighlightGroup { name: string; items: string[]; }
+
+export const featureHighlights: HighlightGroup[] = [
+  {
+    name: 'Performance & autotuning',
+    items: [
+      'Compiler-level optimizations: expanding-box, mixed precision, cache-blocking, memory alignment',
+      'Advanced autotuning (Devitotuner) with cloud-instance tuning',
+      'Comprehensive FLOP reduction — factorization, hoisting, CSE',
+    ],
+  },
+  {
+    name: 'Multi-GPU & MPI',
+    items: [
+      'Optimized GPU-aware MPI; single-node and multi-node multi-GPU',
+      'NUMA-aware MPI + OpenMP on every modern CPU',
+      'Decoupler: call DevitoPRO from any language with full MPI support',
+    ],
+  },
+  {
+    name: 'Large-model memory',
+    items: [
+      'Compression-based back-propagation',
+      'Intelligent data streaming disk → host → GPU',
+      'Lossy compression for floating-point data',
+    ],
+  },
+  {
+    name: 'Backends & cloud',
+    items: [
+      'CUDA, HIP and SYCL code generation from one symbolic spec',
+      'CPUs: AMD, Arm, Intel · GPUs: AMD, Intel, NVIDIA',
+      'AWS, Azure, GCP — tuned and benchmarked',
+    ],
+  },
+  {
+    name: 'Physics coverage',
+    items: [
+      'Acoustic VTI/TTI · viscoacoustic VTI/TTI',
+      'Elastic VTI/TTI · viscoelastic',
+      'Immersed boundaries for accurate land topography',
+    ],
+  },
+  {
+    name: 'Support, SOWs & training',
+    items: [
+      'Private/NDA Slack support channels',
+      'Bespoke projects, training and consultancy',
+      'Benchmark reports and raw logs for reproducibility',
+    ],
+  },
+];
+
 export const featureCategories: FeatureCategory[] = [
   {
     name: 'Finite-differences and mathematical abstractions',
