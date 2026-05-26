@@ -9,8 +9,9 @@ export const hero = {
   subtitle:
     'DevitoPRO turns symbolic finite-difference definitions into optimized CPU and ' +
     'GPU kernels for production seismic imaging — RTM, FWI and beyond — across Intel, ' +
-    'AMD, NVIDIA and Arm, on-prem and in the cloud. A faster, supported alternative to ' +
-    'building and maintaining your own finite-difference compiler.',
+    'AMD, NVIDIA and Arm, on-prem and in the cloud. Write the physics once; DevitoPRO ' +
+    'regenerates the optimized kernel for every architecture and every processor ' +
+    'generation — so your geophysics team focuses on the science, not on porting code.',
   image: '/images/making-waves-opt.png',
   imageAlt: 'Seismic wavefield simulated with Devito',
 };
@@ -19,9 +20,11 @@ export const trilemma = {
   eyebrow: 'The HPC trilemma',
   title: 'Stop trading performance for portability for productivity.',
   intro:
-    'Your in-house finite-difference code usually wins on one axis — performance, ' +
-    'portability, or productivity — and quietly loses the other two. DevitoPRO is built ' +
-    'to refuse that trade-off.',
+    "Across seismic imaging the status quo isn't a competing compiler — there isn't one. " +
+    "It's hand-coded RTM/FWI kernels, locked to one physics, one discretization and one " +
+    'programming model, and rewritten with every new processor generation. Like painting ' +
+    'the Golden Gate Bridge — except your team is building several at once. DevitoPRO ' +
+    'refuses that trade-off.',
   pillars: [
     {
       name: 'Performance',
@@ -70,8 +73,9 @@ export const benchmarks = {
   title: 'Benchmarked across platforms, independently autotuned.',
   intro:
     'Iso-acoustic and acoustic-TTI propagators, autotuned per target for a fair comparison — ' +
-    'including against in-house baselines. DevitoPRO customers get the full reports and raw ' +
-    'logs: reproducible, and backed by expert support.',
+    'including against hand-coded in-house kernels. As new processors arrive, DevitoPRO ' +
+    'regenerates and re-tunes for them, so the comparison stays current. Customers get full ' +
+    'reports and raw logs: reproducible, and backed by expert support.',
   cards: [
     {
       title: 'Cross-platform throughput',
@@ -127,7 +131,7 @@ export const caseStudies = [
 
 export const finalCta = {
   title: 'Discuss your wave-propagation workload.',
-  body: 'Whether you run an in-house geophysics team, build seismic software, or design the ' +
-    'hardware underneath — tell us about your target architecture and imaging pipeline, and ' +
-    'we will benchmark it and show you what DevitoPRO can do.',
+  body: 'Whether you run a geophysics team writing your own RTM/FWI kernels, build seismic ' +
+    'software, or design the hardware underneath — tell us about your target architecture ' +
+    'and imaging pipeline, and we will benchmark it and show you what DevitoPRO can do.',
 };
