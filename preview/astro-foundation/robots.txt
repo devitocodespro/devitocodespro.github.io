@@ -1,3 +1,7 @@
 User-agent: *
 Disallow: /private/
 
+# Aquawax Pro fonts: licensed for @font-face rendering only,
+# per Zetafonts EULA 1wp3-855llosp / 94575. Do not crawl/index.
+Disallow: /fonts/
+Disallow: /_astro/
