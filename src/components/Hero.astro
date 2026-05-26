@@ -5,9 +5,9 @@ import { withBase } from '../lib/url';
 import Button from './Button.astro';
 ---
 <!-- `isolate` is critical: forms a stacking context so the absolutely-positioned
-     -z-10 image stays BEHIND content but ABOVE the section's bg-base. Without it
+     -z-10 image stays BEHIND content but ABOVE the section's bg-page. Without it
      the wavefield image is hidden by the opaque section background. -->
-<section class="relative overflow-hidden bg-base isolate">
+<section class="relative overflow-hidden bg-page isolate">
   <div class="absolute inset-0 -z-10">
     <img src={withBase(hero.image)} alt="" aria-hidden="true" class="w-full h-full object-cover" style="opacity: var(--hero-img-opacity, 0.25)" />
     <div class="absolute inset-0 bg-gradient-to-b from-base/70 via-base/85 to-base"></div>

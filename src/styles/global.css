@@ -14,10 +14,18 @@
 @font-face { font-family: 'Aquawax Pro'; src: url('../assets/fonts/Aquawax-Pro-Heavy.woff2') format('woff2'); font-weight: 800; font-style: normal; font-display: swap; }
 
 /* Map semantic design tokens onto Tailwind color/space utilities.
-   Utilities generated: bg-base, bg-surface, bg-elevated, text-ink, text-muted,
-   border-line, bg-accent, text-accent, bg-accent2, text-onaccent, ... */
+   Utilities generated: bg-page, bg-surface, bg-elevated, text-ink, text-muted,
+   border-line, bg-accent, text-accent, bg-accent2, text-onaccent, ...
+   NOTE: the page-background colour is registered as `--color-page` (utility
+   `bg-page`), NOT `--color-base`. Tailwind v4 generates a `text-{name}` colour
+   utility for every `--color-*` in @theme; if we used `--color-base` it would
+   collide with Tailwind's built-in `text-base` font-size utility — any element
+   with both a responsive `md:text-base` and a `text-{colour}` class would have
+   its colour silently overridden by `var(--color-base)` (the page background),
+   producing invisible same-on-same text. Verified bug in spec strip + Hero
+   supporting line + LogoBar at md+ before this rename. */
 @theme {
-  --color-base: var(--c-base);
+  --color-page: var(--c-base);
   --color-surface: var(--c-surface);
   --color-elevated: var(--c-elevated);
   --color-ink: var(--c-ink);
@@ -36,7 +44,7 @@
 @layer base {
   html { scroll-behavior: smooth; }
   body {
-    background-color: var(--color-base);
+    background-color: var(--color-page);
     color: var(--color-ink);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
@@ -74,7 +82,7 @@
     border-radius: var(--radius-card); }
 
   /* A self-contained dark region. Locally overrides the --c-* tokens, so any
-     descendant utility (bg-base, text-ink, ...) renders dark regardless of the
+     descendant utility (bg-page, text-ink, ...) renders dark regardless of the
      active variant's base palette. The hybrid variant uses this for proof bands
      in LIGHT mode. In DARK mode the bands "collapse" (same as surrounding) —
      intentional; mirrored-band treatment is a post-vote polish item. */
