@@ -1,5 +1,5 @@
 ---
-title: Accurate and Robust Propogators and Gradients for Land Seismic Imaging
+title: Accurate and Robust Propagators and Gradients for Land Seismic Imaging
 date: '2024-08-21T00:01:00+00:00'
 subtitle: Immersed Boundary Method in Finite-Differences for Accurate Land-Air Boundary
   Conditions

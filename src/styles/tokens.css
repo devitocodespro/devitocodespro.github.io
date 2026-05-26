@@ -5,7 +5,7 @@
  * of the site reads only the semantic --c-* properties below, so swapping the
  * palette here re-skins the whole site without touching components.
  *
- * Default = "Dark Enterprise / Wavefield" (the lead direction).
+ * Default = "Dark Enterprise" with locked brand teal (#55c6a3).
  */
 :root {
   color-scheme: dark;
@@ -16,9 +16,9 @@
   --c-ink:       #E7ECF5; /* primary text           */
   --c-muted:     #97A5BC; /* secondary text         */
   --c-line:      #243049; /* borders / hairlines    */
-  --c-accent:    #22D3EE; /* primary accent (cyan)  */
-  --c-accent2:   #34D399; /* secondary accent (green)*/
-  --c-onaccent:  #04121A; /* text on accent fills   */
+  --c-accent:    #55c6a3; /* primary accent — BRAND TEAL (locked) */
+  --c-accent2:   #34D399; /* secondary accent (seismic green)     */
+  --c-onaccent:  #04121A; /* text on accent fills                 */
 
   --tone-band:   var(--c-surface); /* alternating band tone (used by hybrid) */
 }

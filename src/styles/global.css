@@ -1,6 +1,18 @@
 @import "tailwindcss";
 @import "./tokens.css";
 
+/*
+ * Aquawax Pro — Zetafonts webfont licence 1wp3-855llosp / 94575
+ * Licensed to Devito Codes Ltd for a single web domain (devitocodes.com),
+ * @font-face rendering only, WOFF/WOFF2 only, self-hosted, ≤ 25k pageviews/month.
+ * Do not move these files to a CDN or expose them for download beyond rendering.
+ */
+@font-face { font-family: 'Aquawax Pro'; src: url('../assets/fonts/Aquawax-Pro-Regular.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Aquawax Pro'; src: url('../assets/fonts/Aquawax-Pro-Medium.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Aquawax Pro'; src: url('../assets/fonts/Aquawax-Pro-Demibold.woff2') format('woff2'); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Aquawax Pro'; src: url('../assets/fonts/Aquawax-Pro-Bold.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Aquawax Pro'; src: url('../assets/fonts/Aquawax-Pro-Heavy.woff2') format('woff2'); font-weight: 800; font-style: normal; font-display: swap; }
+
 /* Map semantic design tokens onto Tailwind color/space utilities.
    Utilities generated: bg-base, bg-surface, bg-elevated, text-ink, text-muted,
    border-line, bg-accent, text-accent, bg-accent2, text-onaccent, ... */
@@ -15,7 +27,7 @@
   --color-accent2: var(--c-accent2);
   --color-onaccent: var(--c-onaccent);
 
-  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-sans: "Aquawax Pro", ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
 
   --radius-card: 1rem;

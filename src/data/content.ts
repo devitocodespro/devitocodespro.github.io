@@ -1,17 +1,17 @@
-// Homepage section content. Copy is drawn from the company's real positioning
-// (about.md / features.md) and sanitised voice-of-customer from the Slack market
-// research (no client names, quotes, or specific benchmark numbers). Quantitative
-// claims are intentionally left to the real benchmark images rather than invented numbers.
+// Homepage section content. Marketing copy is sanitised — no client names,
+// quotes, or specific benchmark numbers. Quantitative claims are left to the
+// real benchmark images rather than invented numbers.
 
 export const hero = {
   eyebrow: 'DevitoPRO · Enterprise Devito',
   title: 'Performance-portable wave propagation, generated from Python.',
   subtitle:
-    'DevitoPRO turns symbolic finite-difference definitions into optimized CPU and ' +
-    'GPU kernels for production seismic imaging — RTM, FWI and beyond — across Intel, ' +
-    'AMD, NVIDIA and Arm, on-prem and in the cloud. Write the physics once; DevitoPRO ' +
-    'regenerates the optimized kernel for every architecture and every processor ' +
-    'generation — so your geophysics team focuses on the science, not on porting code.',
+    'Write the physics once; DevitoPRO regenerates the optimized kernel for every ' +
+    'architecture and every processor generation.',
+  supporting:
+    'Production seismic imaging — RTM, FWI, elastic/TTI — on Intel, AMD, NVIDIA and ' +
+    'Arm, on-prem and in the cloud. Your geophysics team focuses on the science, ' +
+    'not on porting code.',
   differentiator: 'The only DSL + compiler in seismic imaging built for production',
   image: '/images/making-waves-opt.png',
   imageAlt: 'Seismic wavefield simulated with Devito',
