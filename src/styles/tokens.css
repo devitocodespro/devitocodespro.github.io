@@ -1,31 +1,27 @@
 /*
- * Design tokens — dual-mode (light + dark) with brand teal #55c6a3 accent locked.
+ * Consolidated baseline tokens (Round 2, 2026-05-26).
+ * Promoted from the former dark-enterprise variant after the team review
+ * concluded that the three palette-only variants had collapsed once the
+ * light/dark toggle was added. Round 2 explores STRUCTURAL variation instead
+ * (see variant/dev-tool, variant/enterprise, variant/narrative, variant/two-tier).
  *
- * Selector pattern (per-variant tokens.css follows the same shape):
- *   :root, :root[data-theme="light"]           → light mode (default)
- *   :root[data-theme="dark"]                   → explicit dark
- *   @media (prefers-color-scheme: dark)        → system-pref dark when no explicit choice
- *
- * Toggle UX:
- *   - <html data-theme> is set by an inline FOUT-prevention script in Base.astro
- *     (reads localStorage.theme, falls back to matchMedia('(prefers-color-scheme: dark)')).
- *   - The Nav.astro toggle button flips data-theme + persists to localStorage.
- *
- * Default = "Dark Enterprise" canonical when system pref says dark; else clean light.
+ * Dual-mode, brand teal #55c6a3 locked across modes.
+ * Dark primary character (deeper navy + heavier wavefield hero);
+ * light mode is cleanly enterprise with a slight cool tint.
  */
 
 :root, :root[data-theme="light"] {
   color-scheme: light;
 
-  --c-base:      #FFFFFF;
-  --c-surface:   #F6F8FB;
+  --c-base:      #FAFBFD;
+  --c-surface:   #F2F4F8;
   --c-elevated:  #FFFFFF;
   --c-ink:       #0B1220;
   --c-muted:     #566174;
-  --c-line:      #E4E8EF;
-  --c-accent:    #55c6a3; /* BRAND TEAL (locked) */
+  --c-line:      #E2E6ED;
+  --c-accent:    #55c6a3;
   --c-accent2:   #34D399;
-  --c-onaccent:  #04121A; /* dark text on brand teal: WCAG AAA */
+  --c-onaccent:  #04121A;
 
   --tone-band:   #0B1220;
   --hero-img-opacity: 0.18;
@@ -34,35 +30,33 @@
 :root[data-theme="dark"] {
   color-scheme: dark;
 
-  --c-base:      #0A0E1A;
-  --c-surface:   #121829;
+  --c-base:      #090D17;
+  --c-surface:   #111728;
   --c-elevated:  #18213b;
-  --c-ink:       #E7ECF5;
-  --c-muted:     #97A5BC;
-  --c-line:      #243049;
+  --c-ink:       #EAF0FA;
+  --c-muted:     #98A6BD;
+  --c-line:      #222C45;
   --c-accent:    #55c6a3;
   --c-accent2:   #34D399;
   --c-onaccent:  #04121A;
 
   --tone-band:   #F6F8FB;
-  --hero-img-opacity: 0.25;
+  --hero-img-opacity: 0.30;
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     color-scheme: dark;
 
-    --c-base:      #0A0E1A;
-    --c-surface:   #121829;
+    --c-base:      #090D17;
+    --c-surface:   #111728;
     --c-elevated:  #18213b;
-    --c-ink:       #E7ECF5;
-    --c-muted:     #97A5BC;
-    --c-line:      #243049;
-    --c-accent:    #55c6a3;
-    --c-accent2:   #34D399;
+    --c-ink:       #EAF0FA;
+    --c-muted:     #98A6BD;
+    --c-line:      #222C45;
     --c-onaccent:  #04121A;
 
     --tone-band:   #F6F8FB;
-    --hero-img-opacity: 0.25;
+    --hero-img-opacity: 0.30;
   }
 }
