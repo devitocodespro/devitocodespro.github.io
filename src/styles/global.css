@@ -75,7 +75,9 @@
 
   /* A self-contained dark region. Locally overrides the --c-* tokens, so any
      descendant utility (bg-base, text-ink, ...) renders dark regardless of the
-     active variant's base palette. The hybrid variant uses this for proof bands. */
+     active variant's base palette. The hybrid variant uses this for proof bands
+     in LIGHT mode. In DARK mode the bands "collapse" (same as surrounding) —
+     intentional; mirrored-band treatment is a post-vote polish item. */
   .tone-dark {
     --c-base: #0A0E1A;
     --c-surface: #121829;
@@ -85,6 +87,12 @@
     --c-line: #243049;
     color: var(--color-ink);
   }
+
+  /* Theme-toggle icon swap (moon shown in light mode, sun in dark mode). */
+  .theme-icon-sun  { display: none; }
+  .theme-icon-moon { display: inline-block; }
+  [data-theme="dark"] .theme-icon-sun  { display: inline-block; }
+  [data-theme="dark"] .theme-icon-moon { display: none; }
 }
 
 /* Long-form content: blog posts and policy pages */
