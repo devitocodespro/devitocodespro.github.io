@@ -12,6 +12,7 @@ export const hero = {
     'AMD, NVIDIA and Arm, on-prem and in the cloud. Write the physics once; DevitoPRO ' +
     'regenerates the optimized kernel for every architecture and every processor ' +
     'generation — so your geophysics team focuses on the science, not on porting code.',
+  differentiator: 'The only DSL + compiler in seismic imaging built for production',
   image: '/images/making-waves-opt.png',
   imageAlt: 'Seismic wavefield simulated with Devito',
 };
