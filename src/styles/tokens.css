@@ -1,17 +1,7 @@
 /*
- * Design tokens — dual-mode (light + dark) with brand teal #55c6a3 accent locked.
- *
- * Selector pattern (per-variant tokens.css follows the same shape):
- *   :root, :root[data-theme="light"]           → light mode (default)
- *   :root[data-theme="dark"]                   → explicit dark
- *   @media (prefers-color-scheme: dark)        → system-pref dark when no explicit choice
- *
- * Toggle UX:
- *   - <html data-theme> is set by an inline FOUT-prevention script in Base.astro
- *     (reads localStorage.theme, falls back to matchMedia('(prefers-color-scheme: dark)')).
- *   - The Nav.astro toggle button flips data-theme + persists to localStorage.
- *
- * Default = "Dark Enterprise" canonical when system pref says dark; else clean light.
+ * Variant B — Light Minimal / Scientific (dual-mode, brand teal #55c6a3 locked)
+ * Primary character expressed in LIGHT mode: clean white, generous whitespace.
+ * Dark mode: neutral dark, low-contrast hero overlay.
  */
 
 :root, :root[data-theme="light"] {
@@ -23,46 +13,44 @@
   --c-ink:       #0B1220;
   --c-muted:     #566174;
   --c-line:      #E4E8EF;
-  --c-accent:    #55c6a3; /* BRAND TEAL (locked) */
-  --c-accent2:   #34D399;
-  --c-onaccent:  #04121A; /* dark text on brand teal: WCAG AAA */
+  --c-accent:    #55c6a3;
+  --c-accent2:   #2563EB;
+  --c-onaccent:  #04121A;
 
   --tone-band:   #0B1220;
-  --hero-img-opacity: 0.18;
+  --hero-img-opacity: 0.14;
 }
 
 :root[data-theme="dark"] {
   color-scheme: dark;
 
-  --c-base:      #0A0E1A;
-  --c-surface:   #121829;
-  --c-elevated:  #18213b;
-  --c-ink:       #E7ECF5;
-  --c-muted:     #97A5BC;
-  --c-line:      #243049;
+  --c-base:      #0E1218;
+  --c-surface:   #161A22;
+  --c-elevated:  #1D232D;
+  --c-ink:       #E9ECF1;
+  --c-muted:     #93A0B0;
+  --c-line:      #232A35;
   --c-accent:    #55c6a3;
-  --c-accent2:   #34D399;
+  --c-accent2:   #2563EB;
   --c-onaccent:  #04121A;
 
-  --tone-band:   #F6F8FB;
-  --hero-img-opacity: 0.25;
+  --tone-band:   #FFFFFF;
+  --hero-img-opacity: 0.20;
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     color-scheme: dark;
 
-    --c-base:      #0A0E1A;
-    --c-surface:   #121829;
-    --c-elevated:  #18213b;
-    --c-ink:       #E7ECF5;
-    --c-muted:     #97A5BC;
-    --c-line:      #243049;
-    --c-accent:    #55c6a3;
-    --c-accent2:   #34D399;
+    --c-base:      #0E1218;
+    --c-surface:   #161A22;
+    --c-elevated:  #1D232D;
+    --c-ink:       #E9ECF1;
+    --c-muted:     #93A0B0;
+    --c-line:      #232A35;
     --c-onaccent:  #04121A;
 
-    --tone-band:   #F6F8FB;
-    --hero-img-opacity: 0.25;
+    --tone-band:   #FFFFFF;
+    --hero-img-opacity: 0.20;
   }
 }
