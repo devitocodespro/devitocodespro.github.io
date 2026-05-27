@@ -1,44 +1,58 @@
 ---
+/*
+ * Consolidated homepage (Round 3, 2026-05-27).
+ * Promoted from the former variant/enterprise after team review
+ * (Mathias + Ed ranked it #1: "Better to the point, no clutter").
+ *
+ * Section order: Hero → Trust → Capabilities → UseCases → Benchmarks →
+ *                Specification → CaseStudies → Team → CTA
+ * Reads as: what → where to apply → proof → deep-dive spec → social proof.
+ * (Ed's IA note on the previous order — Capabilities → Spec → Benchmarks →
+ *  UseCases — was that proof and use-cases were too far apart and the spec
+ *  table interrupted the story too early.)
+ *
+ * Anchors preserved: `#capabilities` and `#compare` — keep hash links stable.
+ */
 import Base from '../layouts/Base.astro';
-import Hero from '../components/Hero.astro';
+import HeroEnterprise from '../components/HeroEnterprise.astro';
 import LogoBar from '../components/LogoBar.astro';
-import Trilemma from '../components/Trilemma.astro';
-import Solution from '../components/Solution.astro';
-import Benchmarks from '../components/Benchmarks.astro';
-import UseCases from '../components/UseCases.astro';
 import Section from '../components/Section.astro';
 import FeatureHighlights from '../components/FeatureHighlights.astro';
+import FeatureTable from '../components/FeatureTable.astro';
+import Benchmarks from '../components/Benchmarks.astro';
+import UseCases from '../components/UseCases.astro';
 import CaseStudies from '../components/CaseStudies.astro';
 import TeamTeaser from '../components/TeamTeaser.astro';
 import CTA from '../components/CTA.astro';
-import Button from '../components/Button.astro';
 import { featureIntro } from '../data/features';
 import { getCollection } from 'astro:content';
 
-// Drafts hidden from listings; URLs still resolve via the [...slug] route.
 const posts = (await getCollection('blog'))
   .filter((p) => !p.data.draft)
   .sort((a, b) => +new Date(b.data.date) - +new Date(a.data.date));
 ---
 <Base>
-  <Hero />
+  <HeroEnterprise />
   <LogoBar />
-  <Trilemma tone="surface" />
-  <Solution tone="base" />
-  <Benchmarks tone="surface" />
-  <UseCases tone="base" />
   <Section
-    id="compare"
-    tone="surface"
-    eyebrow="What's in DevitoPRO"
+    id="capabilities"
+    tone="base"
+    eyebrow="Capabilities"
     title="Everything in Devito, plus what production needs."
     intro={featureIntro}
   >
-    <div class="mt-10"><FeatureHighlights condensed={true} /></div>
-    <div class="mt-8 flex flex-wrap gap-3">
-      <Button href="/features" variant="primary">All features</Button>
-      <Button href="/features#compare" variant="ghost">Compare with open-source Devito</Button>
-    </div>
+    <div class="mt-12"><FeatureHighlights /></div>
+  </Section>
+  <UseCases tone="surface" />
+  <Benchmarks tone="base" />
+  <Section
+    id="compare"
+    tone="surface"
+    eyebrow="Specification"
+    title="DevitoPRO vs open-source Devito — full comparison."
+    intro="Row-by-row, the full evaluator's table. No collapse, no abridgement."
+  >
+    <div class="mt-10"><FeatureTable /></div>
   </Section>
   <CaseStudies tone="base" posts={posts} />
   <TeamTeaser tone="surface" />

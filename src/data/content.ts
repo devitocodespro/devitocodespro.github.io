@@ -116,7 +116,8 @@ export const useCases = {
 
 export const trustBar = {
   title: 'Built for the hardware and clouds you run on',
-  partners: ['Intel', 'NVIDIA', 'AMD', 'Arm', 'AWS', 'Azure', 'Google Cloud'],
+  // Alphabetical, deliberately — no signal of bias toward any partner.
+  partners: ['AMD', 'Arm', 'AWS', 'Azure', 'Google Cloud', 'Intel', 'NVIDIA'],
 };
 
 export const caseStudies = [

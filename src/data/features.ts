@@ -18,6 +18,17 @@ export const featureIntro =
 export interface HighlightGroup { name: string; items: string[]; }
 
 export const featureHighlights: HighlightGroup[] = [
+  // Build-your-own story leads. DevitoPRO ships production-grade RTM/FWI
+  // propagators AND lets teams author their own physics; the second half is
+  // the one most enterprise readers miss, so it's the first capability they see.
+  {
+    name: 'Symbolic DSL · custom physics',
+    items: [
+      'Write PDE solvers symbolically in Python — your physics, your discretization',
+      'Customize stencils, boundary conditions, sources, adjoints',
+      'Inspect and tune the generated kernel; integrate via the Decoupler API in any language',
+    ],
+  },
   {
     name: 'Performance & autotuning',
     items: [
