@@ -99,11 +99,12 @@ export const featureCategories: FeatureCategory[] = [
     ],
   },
   {
-    name: 'Support for all major CPUs and GPUs',
+    name: 'Support for all major CPUs, GPUs and accelerators',
     rows: [
-      { label: 'CPUs: AMD, Arm, and Intel', oss: true, pro: true },
-      { label: 'GPUs: AMD, Intel, NVIDIA', oss: true, pro: true },
-      { label: 'Accelerators: Intel KNC, KNL', oss: true, pro: true },
+      { label: 'CPUs: AMD, Arm and Intel', oss: true, pro: true },
+      { label: 'GPUs: AMD, Intel and NVIDIA', oss: true, pro: true },
+      { label: 'Accelerators: NextSilicon', oss: false, pro: true },
+      { label: 'Accelerators (legacy): Intel KNC, KNL', oss: true, pro: true },
     ],
   },
   {

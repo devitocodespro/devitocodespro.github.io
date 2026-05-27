@@ -9,8 +9,8 @@ export const hero = {
     'Write the physics once; DevitoPRO regenerates the optimized kernel for every ' +
     'architecture and every processor generation.',
   supporting:
-    'Production seismic imaging — RTM, FWI, elastic/TTI — on Intel, AMD, NVIDIA and ' +
-    'Arm, on-prem and in the cloud. Your geophysics team focuses on the science, ' +
+    'Production seismic imaging — RTM, FWI, elastic/TTI — on AMD, Arm, Intel, NextSilicon ' +
+    'and NVIDIA, on-prem and in the cloud. Your geophysics team focuses on the science, ' +
     'not on porting code.',
   differentiator: 'The only DSL + compiler in seismic imaging built for production',
   image: '/images/making-waves-opt.png',
@@ -36,7 +36,8 @@ export const trilemma = {
       name: 'Portability',
       body:
         'One symbolic definition generates OpenMP, OpenACC, CUDA, HIP and SYCL — so the ' +
-        'same model runs on Intel, AMD, NVIDIA and Arm, on-prem or on AWS, Azure and GCP.',
+        'same model runs on AMD, Arm, Intel, NextSilicon and NVIDIA, on-prem or on ' +
+        'AWS, Azure and GCP.',
     },
     {
       name: 'Productivity',
@@ -117,7 +118,7 @@ export const useCases = {
 export const trustBar = {
   title: 'Built for the hardware and clouds you run on',
   // Alphabetical, deliberately — no signal of bias toward any partner.
-  partners: ['AMD', 'Arm', 'AWS', 'Azure', 'Google Cloud', 'Intel', 'NVIDIA'],
+  partners: ['AMD', 'Arm', 'AWS', 'Azure', 'Google Cloud', 'Intel', 'NextSilicon', 'NVIDIA'],
 };
 
 export const caseStudies = [
