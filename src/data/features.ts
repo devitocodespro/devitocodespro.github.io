@@ -122,7 +122,7 @@ export const featureCategories: FeatureCategory[] = [
       { label: 'Express adjoint-method optimization problems symbolically', oss: true, pro: true },
       { label: 'Checkpoint(/Revolve)-based back-propagation', oss: true, pro: true },
       { label: 'Compression-based back-propagation', oss: false, pro: true },
-      { label: 'Intelligent data-streaming disk-host-GPU', oss: false, pro: true },
+      { label: 'Intelligent data streaming (disk → host → GPU)', oss: false, pro: true },
       { label: 'Lossy data compression for floating-point data', oss: false, pro: true },
     ],
   },
