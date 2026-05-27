@@ -19,13 +19,12 @@ export const hero = {
 
 export const trilemma = {
   eyebrow: 'The HPC trilemma',
-  title: 'Stop trading performance for portability for productivity.',
+  title: 'Stop choosing between performance, portability and productivity.',
   intro:
-    "Across seismic imaging the status quo isn't a competing compiler — there isn't one. " +
-    "It's hand-coded RTM/FWI kernels, locked to one physics, one discretization and one " +
-    'programming model, and rewritten with every new processor generation. Like painting ' +
-    'the Golden Gate Bridge — except your team is building several at once. DevitoPRO ' +
-    'refuses that trade-off.',
+    'Most production seismic imaging still depends on hand-coded RTM/FWI kernels tied to a ' +
+    'specific physics, discretisation, programming model and processor. DevitoPRO keeps those ' +
+    'concerns in one symbolic workflow, so teams can retarget kernels as hardware and cloud ' +
+    'instances change.',
   pillars: [
     {
       name: 'Performance',
@@ -63,10 +62,10 @@ export const benchmarks = {
   eyebrow: 'Performance',
   title: 'Speed-of-light performance, every architecture.',
   intro:
-    'Iso-acoustic and acoustic-TTI propagators, autotuned per target — including against ' +
-    'hand-coded in-house kernels. As new processors arrive, DevitoPRO regenerates and ' +
-    're-tunes for them, so the comparison stays current. For specific benchmark numbers ' +
-    'on your workload, get in touch — we share full reports and raw logs with customers.',
+    'Isotropic acoustic and acoustic TTI propagators are autotuned per target and benchmarked ' +
+    'against comparable hand-coded kernels where available. As new processors arrive, DevitoPRO ' +
+    'regenerates and re-tunes for them, so the comparison stays current. For specific benchmark ' +
+    'numbers on your workload, get in touch — we share full reports and raw logs with customers.',
   cards: [
     {
       title: 'GPU portability',
@@ -83,15 +82,16 @@ export const benchmarks = {
     {
       title: 'Cloud price-performance',
       body:
-        'Tuned and benchmarked across AWS, Azure and GCP instance families. Availability ' +
-        'now matters as much as price-performance — DevitoPRO keeps both portable.',
+        'Tuned and benchmarked across AWS, Azure and GCP. Availability matters as much as ' +
+        'price-performance — DevitoPRO helps teams move workloads across whichever instance ' +
+        'families are available.',
     },
     {
       title: 'Large-model scale',
       body:
         'Compression-based back-propagation, intelligent data streaming, expanding-box ' +
-        'and mixed precision keep memory and disk-host-GPU transfer in check for the ' +
-        'biggest models.',
+        'and mixed precision keep memory use and disk-to-host-to-GPU transfers in check for ' +
+        'large production models.',
     },
   ],
   cta: {
@@ -107,7 +107,7 @@ export const useCases = {
     { title: 'Reverse Time Migration (RTM)', body: 'Forward/adjoint propagators with checkpointing, compression-based back-propagation and data streaming.' },
     { title: 'Full-Waveform Inversion (FWI)', body: 'Express adjoint-method optimization symbolically; scale gradients across multi-node, multi-GPU with GPU-aware MPI.' },
     { title: 'Elastic, VTI & TTI anisotropy', body: 'Acoustic and elastic VTI/TTI, viscoacoustic and viscoelastic propagators from the Devito cookbook.' },
-    { title: 'Embed in your stack', body: 'Call DevitoPRO from your own application in any language via the decoupler — with full MPI — to drop high-performance propagators into an existing inversion engine.' },
+    { title: 'Embed in your stack', body: 'Call DevitoPRO from applications in other languages through the Decoupler API, with full MPI support, and integrate generated propagators into existing inversion engines.' },
     { title: 'Very large models', body: 'Run models beyond the limits of in-house codes using compression, data streaming, expanding-box and mixed precision to keep memory and transfer costs in check.' },
     { title: 'Cloud-native seismic imaging', body: 'Tuned, benchmarked deployments on AWS, Azure and GCP — portable across available instances.' },
     { title: 'Immersed-boundary topography', body: 'Accurate land topography on finite-difference grids via immersed boundary support.' },

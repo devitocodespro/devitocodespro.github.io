@@ -7,10 +7,9 @@ export interface FeatureRow { label: string; oss: Cell; pro: Cell; }
 export interface FeatureCategory { name: string; rows: FeatureRow[]; }
 
 export const featureIntro =
-  'DevitoPRO is an advanced extension of the open-source Devito platform, built for ' +
-  'production HPC in seismic imaging and inversion. Both let you express finite-difference ' +
-  'kernels symbolically; DevitoPRO adds the performance, portability and enterprise features ' +
-  'demanding production workflows require.';
+  'DevitoPRO extends open-source Devito for production seismic imaging and inversion. ' +
+  'Both express finite-difference kernels symbolically; DevitoPRO adds the tuning, ' +
+  'portability and enterprise support needed for production HPC workflows.';
 
 // Curated headline capabilities — the primary view on /features.
 // The full DevitoPRO-vs-OSS comparison stays available in `featureCategories` below,
@@ -90,7 +89,7 @@ export const featureCategories: FeatureCategory[] = [
       { label: 'Immersed boundary support (e.g. accurate land topography)', oss: false, pro: true },
       { label: 'Explicit methods', oss: true, pro: true },
       { label: 'Implicit methods (via PETSc)', oss: 'Alpha', pro: 'Alpha' },
-      { label: 'Source/receivers (fully customizable)', oss: true, pro: true },
+      { label: 'Sources and receivers (fully customizable)', oss: true, pro: true },
       { label: 'Boundary conditions (fully customizable)', oss: true, pro: true },
       { label: 'Staggered and rotated grids', oss: true, pro: true },
       { label: 'Subsampling (e.g. space/time decimation)', oss: true, pro: true },
@@ -136,7 +135,7 @@ export const featureCategories: FeatureCategory[] = [
       { label: 'Mixed-precision computation', oss: false, pro: true },
       { label: 'Data-locality optimization (e.g. cache-blocking)', oss: true, pro: true },
       { label: 'Autotuning / Devitotuner', oss: 'Basic', pro: 'Advanced' },
-      { label: 'FLOP reduction (e.g. factorization, hoisting, CSE)', oss: 'Comprehensive', pro: 'Advanced' },
+      { label: 'FLOP reduction (e.g. factorization, hoisting, CSE)', oss: 'Standard', pro: 'Comprehensive' },
       { label: 'Advanced low-level optimization (e.g. memory alignment)', oss: false, pro: true },
     ],
   },
