@@ -22,11 +22,10 @@ export const site = {
   openSource: 'https://www.devitoproject.org',
 
   nav: [
-    { label: 'Product', href: '/features' },
-    { label: 'Performance', href: '/#performance' },
+    { label: 'Product', href: '/#capabilities' },
     { label: 'Use cases', href: '/#use-cases' },
-    { label: 'Case studies', href: '/case-studies' },
-    { label: 'Blog', href: '/blog' },
+    { label: 'Performance', href: '/#performance' },
+    { label: 'Case studies', href: '/#case-studies' },
     { label: 'About', href: '/about' },
   ],
 

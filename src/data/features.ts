@@ -31,9 +31,10 @@ export const featureHighlights: HighlightGroup[] = [
   {
     name: 'Performance & autotuning',
     items: [
-      'Compiler-level optimizations: expanding-box, mixed precision, cache-blocking, memory alignment',
-      'Advanced autotuning (Devitotuner) with cloud-instance tuning',
-      'Comprehensive FLOP reduction — factorization, hoisting, CSE',
+      'High-level optimizations such as expanding-box and mixed precision',
+      'Extremely optimized code for both GPUs and CPUs',
+      'Advanced autotuning via DevitoTuner for any architecture',
+      'Altogether, speed-of-light performance',
     ],
   },
   {

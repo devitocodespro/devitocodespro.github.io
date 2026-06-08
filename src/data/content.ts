@@ -63,22 +63,20 @@ export const benchmarks = {
   eyebrow: 'Performance',
   title: 'Speed-of-light performance, every architecture.',
   intro:
-    'Isotropic acoustic and acoustic TTI propagators are autotuned per target and benchmarked ' +
-    'against comparable hand-coded kernels where available. As new processors arrive, DevitoPRO ' +
-    'regenerates and re-tunes for them, so the comparison stays current. For specific benchmark ' +
+    'From isotropic acoustic to anisotropic visco-elastic, DevitoPRO kernels are autotuned per target ' +
+    'and benchmarked against comparable hand-coded kernels where available. As new processors arrive, ' +
+    'DevitoPRO regenerates and re-tunes for them, so the comparison stays current. For specific benchmark ' +
     'numbers on your workload, get in touch.',
   cards: [
     {
       title: 'GPU portability',
       body:
         'CUDA, HIP and SYCL backends generated from one symbolic spec — production-grade ' +
-        'kernels for NVIDIA, AMD and Intel GPUs, autotuned per target.',
+        'kernels for NVIDIA, AMD and Intel GPUs, autotuned per target for speed-of-light performance.',
     },
     {
       title: 'CPU portability',
-      body:
-        'OpenMP + NUMA-aware MPI on every modern x86 and Arm CPU — from Graviton and ' +
-        'Sapphire Rapids to EPYC and Apple silicon.',
+      body: 'OpenMP + NUMA-aware MPI on every modern x86 and Arm CPU.',
     },
     {
       title: 'Cloud price-performance',
@@ -112,6 +110,8 @@ export const useCases = {
     { title: 'Very large models', body: 'Run models beyond the limits of in-house codes using compression, data streaming, expanding-box and mixed precision to keep memory and transfer costs in check.' },
     { title: 'Cloud-native seismic imaging', body: 'Tuned, benchmarked deployments on AWS, Azure and GCP — portable across available instances.' },
     { title: 'Immersed-boundary topography', body: 'Accurate land topography on finite-difference grids via immersed boundary support.' },
+    { title: 'Time-lapse (4D) monitoring', body: 'Production workflows for repeat surveys — scale imaging and inversion consistently across vintages.' },
+    { title: 'Least-squares imaging (LS-RTM) & variants', body: 'Iterative imaging and imaging-condition variants built from the same symbolic building blocks.' },
   ],
 };
 
