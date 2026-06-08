@@ -1,0 +1,30 @@
+---
+import { products, comparison } from '../data/products';
+import { withBase } from '../lib/url';
+// "Which is right for you?" matrix. Horizontally scrollable on narrow screens.
+---
+<div class="mt-10 overflow-x-auto">
+  <table class="w-full min-w-[640px] border-collapse text-sm">
+    <thead>
+      <tr class="border-b border-line">
+        <th class="text-left font-mono text-[11px] uppercase tracking-wider text-muted py-4 pr-4 align-bottom w-44"></th>
+        {products.map((p) => (
+          <th class="text-left py-4 px-4 align-bottom">
+            <a href={withBase(p.href)} class="font-bold text-ink hover:text-accent transition-colors">{p.name}</a>
+            <span class="block font-mono text-[11px] font-normal text-muted mt-1">{p.language}</span>
+          </th>
+        ))}
+      </tr>
+    </thead>
+    <tbody>
+      {comparison.map((row) => (
+        <tr class="border-b border-line/60 align-top">
+          <th class="text-left font-semibold text-ink py-4 pr-4">{row.dimension}</th>
+          {products.map((p) => (
+            <td class="py-4 px-4 text-muted leading-relaxed">{row.cells[p.id]}</td>
+          ))}
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>

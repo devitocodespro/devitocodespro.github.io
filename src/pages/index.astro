@@ -1,41 +1,56 @@
 ---
 /*
- * Consolidated homepage (Round 3, 2026-05-27).
- * Promoted from the former variant/enterprise after team review
- * (Mathias + Ed ranked it #1: "Better to the point, no clutter").
+ * Homepage — product umbrella (2026-06).
+ * Presents the three commercial products (DevitoPRO · DevitoHorizon · JUDIPRO) on
+ * the open-source Devito core, co-equally, and makes the differences + target
+ * audience explicit via the stack diagram, product cards and comparison matrix.
+ * DevitoPRO's deep capabilities now live on /devitopro.
  *
- * Section order: Hero → Trust → Capabilities → UseCases → Benchmarks →
- *                CaseStudies → Team → CTA
- * Reads as: what → where to apply → proof → social proof.
- *
- * Anchors preserved: `#capabilities` — keep hash links stable.
+ * Section order: Hero → Trust → Stack → Products → Compare → Benchmarks →
+ *                CaseStudies → Team → CTA.
  */
 import Base from '../layouts/Base.astro';
-import HeroEnterprise from '../components/HeroEnterprise.astro';
+import HeroProducts from '../components/HeroProducts.astro';
 import LogoBar from '../components/LogoBar.astro';
 import Section from '../components/Section.astro';
-import FeatureHighlights from '../components/FeatureHighlights.astro';
+import ProductStack from '../components/ProductStack.astro';
+import ProductCards from '../components/ProductCards.astro';
+import ProductComparison from '../components/ProductComparison.astro';
 import Benchmarks from '../components/Benchmarks.astro';
-import UseCases from '../components/UseCases.astro';
 import CaseStudies from '../components/CaseStudies.astro';
 import TeamTeaser from '../components/TeamTeaser.astro';
 import CTA from '../components/CTA.astro';
-import { featureIntro } from '../data/features';
 ---
 <Base>
-  <HeroEnterprise />
+  <HeroProducts />
   <LogoBar />
   <Section
-    id="capabilities"
+    id="stack"
     tone="base"
-    eyebrow="Capabilities"
-    title="DevitoPRO for production"
-    intro={featureIntro}
+    eyebrow="How it fits together"
+    title="One stack, from kernels to complete inversion"
+    intro="Open-source Devito generates the code. DevitoPRO makes the wave-equation solves fast and portable. DevitoHorizon and JUDIPRO add complete FWI and imaging inversion on top — in Python or Julia."
   >
-    <div class="mt-12"><FeatureHighlights /></div>
+    <ProductStack />
   </Section>
-  <UseCases tone="surface" />
-  <Benchmarks tone="base" />
+  <Section
+    id="products"
+    tone="surface"
+    eyebrow="Products"
+    title="Three products. Pick the layer you need."
+  >
+    <ProductCards />
+  </Section>
+  <Section
+    id="compare"
+    tone="base"
+    eyebrow="Which is right for you?"
+    title="DevitoPRO vs DevitoHorizon vs JUDIPRO"
+    intro="They share one performance-portable core; they differ in how much of the inversion workflow you bring versus configure."
+  >
+    <ProductComparison />
+  </Section>
+  <Benchmarks tone="surface" />
   <CaseStudies tone="base" />
   <TeamTeaser tone="surface" />
   <CTA />

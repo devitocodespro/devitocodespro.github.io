@@ -1,0 +1,33 @@
+---
+/*
+ * DevitoPRO product page — the performance-portable propagator engine.
+ * Rehomes the deep DevitoPRO content that previously lived on the homepage.
+ */
+import Base from '../layouts/Base.astro';
+import HeroEnterprise from '../components/HeroEnterprise.astro';
+import LogoBar from '../components/LogoBar.astro';
+import Section from '../components/Section.astro';
+import FeatureHighlights from '../components/FeatureHighlights.astro';
+import Solution from '../components/Solution.astro';
+import UseCases from '../components/UseCases.astro';
+import Benchmarks from '../components/Benchmarks.astro';
+import CTA from '../components/CTA.astro';
+import { featureIntro } from '../data/features';
+---
+<Base title="DevitoPRO" description="DevitoPRO — performance-portable propagator engine. Optimized CPU/GPU kernels generated from symbolic Python, for production seismic imaging and inversion.">
+  <HeroEnterprise />
+  <LogoBar />
+  <Section
+    id="capabilities"
+    tone="base"
+    eyebrow="Capabilities"
+    title="DevitoPRO for production"
+    intro={featureIntro}
+  >
+    <div class="mt-12"><FeatureHighlights /></div>
+  </Section>
+  <Solution tone="surface" />
+  <UseCases tone="base" />
+  <Benchmarks tone="surface" />
+  <CTA />
+</Base>

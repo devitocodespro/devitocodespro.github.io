@@ -4,13 +4,14 @@
 export const site = {
   name: 'Devito Codes',
   product: 'DevitoPRO',
+  tagline: 'Seismic imaging & inversion',
   domain: 'www.devitocodes.com',
   email: 'sales@devitocodes.com',
   ga4: 'G-39F3JRV5HY',
 
   description:
-    'DevitoPRO — production-grade code generation for seismic imaging and ' +
-    'high-performance computing. Symbolic Python in, optimized native CPU/GPU kernels out.',
+    'Performance-portable software for seismic imaging and inversion — DevitoPRO, ' +
+    'DevitoHorizon and JUDIPRO, built on the open-source Devito core.',
 
   social: {
     github: 'https://github.com/devitocodes',
@@ -22,10 +23,10 @@ export const site = {
   openSource: 'https://www.devitoproject.org',
 
   nav: [
-    { label: 'Product', href: '/#capabilities' },
-    { label: 'Use cases', href: '/#use-cases' },
-    { label: 'Performance', href: '/#performance' },
-    { label: 'Case studies', href: '/#case-studies' },
+    { label: 'DevitoPRO', href: '/devitopro' },
+    { label: 'DevitoHorizon', href: '/devitohorizon' },
+    { label: 'JUDIPRO', href: '/judipro' },
+    { label: 'Case studies', href: '/case-studies' },
     { label: 'About', href: '/about' },
   ],
 

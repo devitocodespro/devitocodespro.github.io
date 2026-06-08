@@ -1,0 +1,97 @@
+---
+/*
+ * JUDIPRO product page — the Julia JUDI inversion framework, powered by DevitoPRO.
+ * Content distilled from the "JUDI's support for DevitoPRO" announcement.
+ */
+import Base from '../layouts/Base.astro';
+import Section from '../components/Section.astro';
+import Button from '../components/Button.astro';
+import CTA from '../components/CTA.astro';
+import { withBase } from '../lib/url';
+
+const backend = [
+  { name: 'GPU code generation', body: 'CUDA, HIP and SYCL backends for JUDI’s solvers — the same Julia code runs across AMD, Intel and NVIDIA GPUs.' },
+  { name: 'Large-model memory', body: 'Automatic source/receiver expanding box for forward and adjoint solves, plus asynchronous wavefield serialization with lossy/lossless compression.' },
+  { name: 'Multi-device solves', body: 'The DevitoPRO Decoupler does single-shot domain decomposition over multiple devices or NUMA domains while keeping a serial Julia process.' },
+  { name: 'Performance portability', body: 'State-of-the-art performance and scalability for long-offset FWI, high-frequency RTM and full-wavefield imaging — an easy path from prototype to production.' },
+];
+
+const useCases = [
+  { name: 'Probabilistic FWI', body: 'Variational inference with conditional normalizing flows (WISE) for uncertainty quantification in velocity models.' },
+  { name: 'Carbon storage monitoring', body: 'Compressive time-lapse seismic monitoring of CO₂ plumes for carbon capture and storage (CCS).' },
+  { name: 'Learned inversion', body: 'Fourier Neural Operators and coupled inversion for permeability estimation and CO₂ plume forecasting.' },
+  { name: 'Serverless cloud imaging', body: 'Event-driven seismic imaging on cloud infrastructure — scalable, cost-effective, no server management.' },
+];
+---
+<Base title="JUDIPRO" description="JUDIPRO — the Julia JUDI inversion framework powered by DevitoPRO. Production-grade performance portability for modeling, FWI, LS-RTM and ML-augmented seismic inversion.">
+  {/* Hero */}
+  <section class="bg-surface border-b border-line">
+    <div class="container-x pt-28 pb-16 md:pt-32 md:pb-20">
+      <p class="font-mono text-xs uppercase tracking-[0.18em] text-accent">JUDIPRO · Julia inversion framework</p>
+      <h1 class="mt-5 max-w-4xl text-4xl md:text-6xl font-extrabold text-ink text-balance leading-[1.05]">
+        Wave-physics inversion in Julia, production-grade.
+      </h1>
+      <p class="mt-6 max-w-3xl text-lg md:text-xl text-muted leading-relaxed">
+        JUDIPRO pairs <strong class="text-ink font-semibold">JUDI</strong> — the open-source Julia Devito
+        Inversion framework from Georgia Tech’s
+        <a href="https://slim.gatech.edu" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline"> SLIM</a> group —
+        with <a href={withBase('/devitopro')} class="text-accent hover:underline">DevitoPRO</a> as a
+        bring-your-own-license backend, bringing performance portability and scalability to JUDI’s
+        operator-algebra modeling, inversion and machine-learning workflows.
+      </p>
+      <div class="mt-10 flex flex-wrap gap-3">
+        <Button href="/contact" variant="primary">Book a technical call</Button>
+        <Button href="https://slimgroup.github.io/JUDI.jl/dev/" variant="ghost">JUDI.jl documentation</Button>
+      </div>
+    </div>
+  </section>
+
+  {/* What PRO adds */}
+  <Section
+    id="capabilities"
+    tone="base"
+    eyebrow="What the DevitoPRO backend adds"
+    title="From research prototype to industry-scale 3D"
+    intro="JUDI translates wave-based algorithms into fast, scalable Julia code; DevitoPRO supplies the production-grade propagators underneath."
+  >
+    <div class="mt-12 grid gap-6 md:grid-cols-2">
+      {backend.map((b) => (
+        <article class="card p-6">
+          <h3 class="font-bold text-ink text-lg">{b.name}</h3>
+          <p class="mt-3 text-muted leading-relaxed text-sm">{b.body}</p>
+        </article>
+      ))}
+    </div>
+  </Section>
+
+  {/* Use cases */}
+  <Section tone="surface" eyebrow="Built for research-to-production" title="Where JUDIPRO shines">
+    <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      {useCases.map((u) => (
+        <article class="card p-6">
+          <h3 class="font-bold text-ink">{u.name}</h3>
+          <p class="mt-3 text-muted leading-relaxed text-sm">{u.body}</p>
+        </article>
+      ))}
+    </div>
+    <p class="mt-8 text-sm text-muted max-w-3xl leading-relaxed">
+      JUDI’s modeling operators integrate directly into neural networks for physics-augmented deep
+      learning and differentiable programming — combining Devito’s computational power with Julia’s
+      flexibility for PDE-constrained optimization like FWI and LS-RTM.
+    </p>
+  </Section>
+
+  {/* Figure */}
+  <Section tone="base" eyebrow="Julia Devito Inversion" title="One framework, modeling to machine learning">
+    <figure class="mt-10 card p-4 md:p-6">
+      <img
+        src={withBase('/images/judi-opt.png')}
+        alt="JUDI — the Julia Devito Inversion framework — for seismic modeling, inversion and machine learning."
+        loading="lazy"
+        class="w-full h-auto rounded-md"
+      />
+    </figure>
+  </Section>
+
+  <CTA />
+</Base>

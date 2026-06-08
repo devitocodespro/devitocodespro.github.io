@@ -13,7 +13,7 @@ const {
   image = '/images/robot_devito_pro_banner-opt.png',
 } = Astro.props;
 
-const fullTitle = title ? `${title} · ${site.name}` : `${site.name} — ${site.product}`;
+const fullTitle = title ? `${title} · ${site.name}` : `${site.name} — ${site.tagline}`;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const ogImage = new URL(withBase(image), Astro.site).href;
 ---

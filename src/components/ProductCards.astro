@@ -1,0 +1,26 @@
+---
+import { products } from '../data/products';
+import { withBase } from '../lib/url';
+// Three co-equal product cards. Each links to its dedicated page.
+---
+<div class="mt-12 grid gap-6 lg:grid-cols-3">
+  {products.map((p) => (
+    <article class="card p-7 flex flex-col">
+      <div class="flex items-baseline justify-between gap-3">
+        <h3 class="text-xl font-bold text-ink">{p.name}</h3>
+        <span class="font-mono text-[11px] px-2 py-0.5 rounded border border-line text-muted whitespace-nowrap">{p.language}</span>
+      </div>
+      <p class="mt-3 font-semibold text-ink">{p.tagline}</p>
+      <p class="mt-2 text-sm text-muted leading-relaxed"><span class="text-accent font-semibold">For:</span> {p.audience}</p>
+      <ul class="mt-4 space-y-2.5 text-sm text-muted flex-1">
+        {p.bullets.map((b) => (
+          <li class="flex gap-2.5 leading-relaxed">
+            <span class="text-accent shrink-0" aria-hidden="true">▸</span>
+            <span>{b}</span>
+          </li>
+        ))}
+      </ul>
+      <a href={withBase(p.href)} class="mt-6 inline-block text-accent text-sm font-semibold hover:underline">Explore {p.name} →</a>
+    </article>
+  ))}
+</div>

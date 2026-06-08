@@ -1,0 +1,46 @@
+---
+import { devitoCore, products } from '../data/products';
+import { withBase } from '../lib/url';
+
+// Layered "stack" diagram: two inversion frameworks on the DevitoPRO engine on the
+// open-source Devito core. Pure HTML/CSS (theme tokens) so it tracks light/dark and
+// stays responsive. Each tier links to its destination.
+const pro = products.find((p) => p.id === 'devitopro')!;
+const horizon = products.find((p) => p.id === 'devitohorizon')!;
+const judi = products.find((p) => p.id === 'judipro')!;
+const tier = 'block rounded-xl border text-center transition-colors';
+---
+<div class="mt-12 max-w-3xl mx-auto flex flex-col gap-3">
+  {/* Top tier: two inversion frameworks */}
+  <p class="eyebrow text-center">Inversion frameworks</p>
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+    <a href={withBase(horizon.href)} class={`${tier} border-accent/50 bg-accent/5 p-5 hover:border-accent`}>
+      <span class="block font-bold text-ink">DevitoHorizon</span>
+      <span class="block mt-1 text-xs text-muted">Python FWI / imaging SDK</span>
+    </a>
+    <a href={withBase(judi.href)} class={`${tier} border-accent/50 bg-accent/5 p-5 hover:border-accent`}>
+      <span class="block font-bold text-ink">JUDIPRO</span>
+      <span class="block mt-1 text-xs text-muted">Julia inversion framework</span>
+    </a>
+  </div>
+
+  <div class="text-center text-muted/60 text-xl leading-none" aria-hidden="true">▲</div>
+
+  {/* Middle tier: the engine (highlighted) */}
+  <a href={withBase(pro.href)} class={`${tier} border-accent bg-accent/10 p-6 hover:brightness-105`}>
+    <span class="block font-bold text-ink text-lg">DevitoPRO</span>
+    <span class="block mt-1 text-sm text-muted">Performance-portable propagator engine — optimized CPU/GPU kernels</span>
+  </a>
+
+  <div class="text-center text-muted/60 text-xl leading-none" aria-hidden="true">▲</div>
+
+  {/* Base tier: open-source core */}
+  <a href={devitoCore.href} target="_blank" rel="noopener noreferrer" class={`${tier} border-line bg-surface p-6 hover:border-accent`}>
+    <span class="block font-bold text-ink text-lg">{devitoCore.name}</span>
+    <span class="block mt-1 text-sm text-muted">{devitoCore.role}</span>
+  </a>
+
+  <p class="mt-2 text-center text-sm text-muted">
+    One symbolic core. DevitoPRO accelerates the solves; DevitoHorizon and JUDIPRO build the inversion on top.
+  </p>
+</div>
