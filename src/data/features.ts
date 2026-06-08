@@ -8,7 +8,7 @@ export interface FeatureCategory { name: string; rows: FeatureRow[]; }
 
 export const featureIntro =
   'DevitoPRO extends open-source Devito for production seismic imaging and inversion. ' +
-  'Both express finite-difference kernels symbolically; DevitoPRO adds the tuning, ' +
+  'Both let you express PDE solvers symbolically; DevitoPRO adds the tuning, ' +
   'portability and enterprise support needed for production HPC workflows.';
 
 // Curated headline capabilities — the primary view on /features.
