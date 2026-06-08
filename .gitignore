@@ -20,3 +20,7 @@ yarn-error.log*
 
 # Claude local guidance — never commit (per machine policy)
 **/CLAUDE.md
+
+# lychee link checker (CI cache + report output)
+.lycheecache
+/lychee/

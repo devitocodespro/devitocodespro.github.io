@@ -31,7 +31,7 @@ configurations.
 TheMatrix is the most comprehensive apples-to-apples comparison of the
 performance of seismic imaging workloads yet to be published. You can dive
 straight into one of the TheMatrix [auto-generated
-plots](https://www.devitoproject.org/thematrix/#acoustic_iso.IsotropicAcousticForward.track_gpointss)!
+plots](https://www.devitoproject.org/)!
 This plot shows the performance of the 3D isotropic acoustic equation, a basic
 benchmark used by the seismic imaging community. **Gigapoints per second** is
 used as the performance metric as it is widely used in the O&G sector to

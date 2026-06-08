@@ -1,0 +1,61 @@
+name: Link check
+
+# Builds the site and checks every link (internal + external) in the output with
+# lychee. Runs on PRs to main (catch breakage before deploy), weekly (catch external
+# link rot), and on demand. Config — including bot-walled hosts to skip — is in
+# lychee.toml at the repo root.
+
+on:
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: '0 7 * * 1' # Mondays 07:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write # so the scheduled run can open/update a tracking issue on failure
+
+jobs:
+  linkcheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Build (production URLs)
+        env:
+          BASE_PATH: /
+          SITE_URL: https://www.devitocodes.com
+        run: npm run build
+      - name: Restore lychee cache
+        uses: actions/cache@v4
+        with:
+          path: .lycheecache
+          key: lychee-${{ github.sha }}
+          restore-keys: lychee-
+      - name: Link Checker
+        id: lychee
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >-
+            --config lychee.toml
+            --cache --max-cache-age 1d
+            --root-dir "${{ github.workspace }}/dist"
+            "dist/**/*.html"
+          # Don't auto-fail; let the issue step run on scheduled failures. The job
+          # is failed explicitly below so PRs still show a red check.
+          fail: false
+      - name: Open an issue on scheduled failure
+        if: ${{ github.event_name == 'schedule' && steps.lychee.outputs.exit_code != 0 }}
+        uses: peter-evans/create-issue-from-file@v5
+        with:
+          title: Dead links detected on the website
+          content-filepath: ./lychee/out.md
+          labels: link-check, automated
+      - name: Fail the job if links are broken
+        if: ${{ steps.lychee.outputs.exit_code != 0 }}
+        run: exit 1
