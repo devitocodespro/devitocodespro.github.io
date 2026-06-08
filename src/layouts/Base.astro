@@ -39,6 +39,7 @@ const ogImage = new URL(withBase(image), Astro.site).href;
     <link rel="icon" href={withBase('/favicon.ico')} sizes="any" />
     <link rel="icon" type="image/png" sizes="32x32" href={withBase('/favicon-32x32.png')} />
     <link rel="icon" type="image/png" sizes="16x16" href={withBase('/favicon-16x16.png')} />
+    <link rel="alternate" type="application/rss+xml" title={`${site.name} blog`} href={withBase('/feed.xml')} />
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={site.name} />
