@@ -1,7 +1,7 @@
 ---
 import { productHero, products } from '../data/products';
 import Button from './Button.astro';
-// Umbrella hero for the homepage — frames the stack and the three products.
+// Umbrella hero for the homepage — frames the stack and the product family.
 ---
 <section class="bg-surface border-b border-line">
   <div class="container-x pt-28 pb-16 md:pt-32 md:pb-20">
@@ -11,8 +11,8 @@ import Button from './Button.astro';
     </h1>
     <p class="mt-6 max-w-3xl text-lg md:text-xl text-muted leading-relaxed">{productHero.subtitle}</p>
 
-    {/* Three-product strip — names + one-liners, above the fold */}
-    <dl class="mt-10 grid gap-4 sm:grid-cols-3 max-w-5xl">
+    {/* Product strip — names + one-liners, above the fold (wraps as the lineup grows) */}
+    <dl class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl">
       {products.map((p) => (
         <div class="border-l-2 border-accent/60 pl-4">
           <dt class="font-bold text-ink">{p.name}</dt>

@@ -1,15 +1,16 @@
-// The three commercial products on top of the open-source Devito core.
+// The commercial product family on top of the open-source Devito core.
 // Single source of truth for the homepage umbrella (stack diagram, product cards,
-// comparison matrix) and the per-product page headers. Copy is sanitised house
-// style — no client names/quotes/invented numbers.
+// comparison matrix) and the per-product page headers. Adding a product is one entry
+// here — every section is data-driven. Copy is sanitised house style — no client
+// names/quotes/invented numbers.
 
 export const productHero = {
   eyebrow: 'The Devito stack · seismic imaging & inversion',
-  title: 'One performance-portable core. Three ways to put it to work.',
+  title: 'One performance-portable core. Put it to work your way.',
   subtitle:
-    'Open-source Devito turns symbolic physics into optimized code. DevitoPRO makes the ' +
-    'wave-equation solves fast and portable across every CPU and GPU; DevitoHorizon and ' +
-    'JUDIPRO build complete FWI and imaging inversion on top — in Python or Julia.',
+    'Open-source Devito turns symbolic physics into optimized code. The Devito product ' +
+    'family makes wave-equation solves fast and portable on any CPU or GPU, and builds ' +
+    'complete FWI and imaging inversion on top — in Python, Julia and beyond.',
 };
 
 export const devitoCore = {
@@ -27,47 +28,55 @@ export interface Product {
   audience: string; // who it's for
   bullets: string[];
   href: string; // product page
+  tier: 'engine' | 'framework'; // place in the stack diagram
+  stackNote: string; // short descriptor shown in the stack diagram
 }
 
 export const products: Product[] = [
   {
     id: 'devitopro',
     name: 'DevitoPRO',
-    tagline: 'Performance-portable propagator engine.',
+    tagline: 'Performance-portable wave-propagation engine.',
     language: 'Python · symbolic DSL',
-    audience: 'Teams who own their inversion or imaging code and need fast, portable forward/adjoint solves.',
+    audience: 'Teams with their own inversion or imaging code who need fast, portable forward and adjoint solves.',
     bullets: [
       'Optimized CPU/GPU kernels from one symbolic spec — AMD, Arm, Intel, NVIDIA',
       'Expanding-box, mixed precision, compression, GPU-aware MPI, autotuning',
       'Embed in any stack via the Decoupler API',
     ],
     href: '/devitopro',
+    tier: 'engine',
+    stackNote: 'Performance-portable propagator engine — optimized CPU/GPU kernels',
   },
   {
     id: 'devitohorizon',
     name: 'DevitoHorizon',
-    tagline: 'A complete FWI & imaging SDK to configure, not build.',
+    tagline: 'A complete FWI & imaging SDK, ready to configure.',
     language: 'Python · SDK + CLI',
-    audience: 'Python teams who want a ready-to-run inversion workflow from tested, composable parts.',
+    audience: 'Python teams who want a ready-to-run inversion workflow from tested, composable components.',
     bullets: [
       'Misfits, optimizers, preprocessing and gradient conditioning out of the box',
       'Frequency continuation, shot mini-batching, multi-parameter inversion',
       'Composable Python API + a CLI driver; solves run on DevitoPRO',
     ],
     href: '/devitohorizon',
+    tier: 'framework',
+    stackNote: 'Python FWI / imaging SDK',
   },
   {
     id: 'judipro',
     name: 'JUDIPRO',
-    tagline: 'Wave-physics inversion in Julia, production-grade.',
+    tagline: 'Production-grade wave-physics inversion in Julia.',
     language: 'Julia · JUDI.jl',
-    audience: 'Julia teams and researchers — ML/AI-augmented, probabilistic and large-scale inversion.',
+    audience: 'Julia teams and researchers tackling ML/AI-augmented, probabilistic and large-scale inversion.',
     bullets: [
       "JUDI's linear-operator algebra for modeling, FWI and LS-RTM",
       'DevitoPRO backend (bring-your-own-license): CUDA/HIP/SYCL, compression, the Decoupler',
       'Differentiable programming for physics-augmented machine learning',
     ],
     href: '/judipro',
+    tier: 'framework',
+    stackNote: 'Julia inversion framework',
   },
 ];
 

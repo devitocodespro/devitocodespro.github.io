@@ -1,10 +1,11 @@
 ---
 /*
  * Homepage — product umbrella (2026-06).
- * Presents the three commercial products (DevitoPRO · DevitoHorizon · JUDIPRO) on
- * the open-source Devito core, co-equally, and makes the differences + target
- * audience explicit via the stack diagram, product cards and comparison matrix.
- * DevitoPRO's deep capabilities now live on /devitopro.
+ * Presents the commercial product family on the open-source Devito core, co-equally,
+ * and makes the differences + target audience explicit via the stack diagram, product
+ * cards and comparison matrix. All sections are data-driven from src/data/products.ts,
+ * so adding a product needs no template changes. DevitoPRO's deep capabilities now
+ * live on /devitopro.
  *
  * Section order: Hero → Trust → Stack → Products → Compare → Benchmarks →
  *                CaseStudies → Team → CTA.
@@ -29,7 +30,7 @@ import CTA from '../components/CTA.astro';
     tone="base"
     eyebrow="How it fits together"
     title="One stack, from kernels to complete inversion"
-    intro="Open-source Devito generates the code. DevitoPRO makes the wave-equation solves fast and portable. DevitoHorizon and JUDIPRO add complete FWI and imaging inversion on top — in Python or Julia."
+    intro="Open-source Devito generates the code. DevitoPRO makes wave-equation solves fast and portable. Higher-level SDKs and frameworks add complete FWI and imaging inversion on top — in Python, Julia and beyond."
   >
     <ProductStack />
   </Section>
@@ -37,7 +38,7 @@ import CTA from '../components/CTA.astro';
     id="products"
     tone="surface"
     eyebrow="Products"
-    title="Three products. Pick the layer you need."
+    title="Pick the layer you need."
   >
     <ProductCards />
   </Section>
@@ -45,7 +46,7 @@ import CTA from '../components/CTA.astro';
     id="compare"
     tone="base"
     eyebrow="Which is right for you?"
-    title="DevitoPRO vs DevitoHorizon vs JUDIPRO"
+    title="Compare the products"
     intro="They share one performance-portable core; they differ in how much of the inversion workflow you bring versus configure."
   >
     <ProductComparison />

@@ -10,8 +10,8 @@ export const site = {
   ga4: 'G-39F3JRV5HY',
 
   description:
-    'Performance-portable software for seismic imaging and inversion — DevitoPRO, ' +
-    'DevitoHorizon and JUDIPRO, built on the open-source Devito core.',
+    'Performance-portable software for seismic imaging and inversion — a family of ' +
+    'products built on the open-source Devito core.',
 
   social: {
     github: 'https://github.com/devitocodes',
