@@ -15,7 +15,7 @@ export const site = {
   social: {
     github: 'https://github.com/devitocodes',
     linkedin: 'https://www.linkedin.com/company/devitocodes',
-    slack: 'https://devitocodes.slack.com',
+    slack: 'https://join.slack.com/t/devitocodes/shared_invite/zt-2hgp6891e-jQDcepOWPQwxL5JJegYKSA',
   },
 
   // Sister open-source project site.
