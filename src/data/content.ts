@@ -109,7 +109,7 @@ export const useCases = {
     { title: 'Embed in your stack', body: 'Call DevitoPRO from applications in other languages through the Decoupler API, with full MPI support, and integrate generated propagators into existing inversion engines.' },
     { title: 'Very large models', body: 'Run models beyond the limits of in-house codes using compression, data streaming, expanding-box and mixed precision to keep memory and transfer costs in check.' },
     { title: 'Cloud-native seismic imaging', body: 'Tuned, benchmarked deployments on AWS, Azure and GCP — portable across available instances.' },
-    { title: 'Immersed-boundary topography', body: 'Accurate land topography on finite-difference grids via immersed boundary support.' },
+    { title: 'Immersed-boundary topography', body: 'Accurate land topography via immersed-boundary support on the simulation grid.' },
     { title: 'Time-lapse (4D) monitoring', body: 'Production workflows for repeat surveys — scale imaging and inversion consistently across vintages.' },
     { title: 'Least-squares imaging (LS-RTM) & variants', body: 'Iterative imaging and imaging-condition variants built from the same symbolic building blocks.' },
   ],
@@ -137,7 +137,7 @@ export const caseStudies = [
     outlet: 'Intel Customer Spotlight',
     date: '2024-11-04',
     href: 'https://www.intel.com/content/www/us/en/customer-spotlight/stories/devito-codes-customer-story.html',
-    body: 'How Devito Codes helps customers resolve the HPC trilemma — performance, portability and productivity — generating optimized finite-difference code from a Python DSL.',
+    body: 'How Devito Codes helps customers resolve the HPC trilemma — performance, portability and productivity — generating optimized native code from a Python DSL.',
     external: true,
   },
   {
@@ -161,7 +161,7 @@ export const caseStudies = [
     outlet: 'Microsoft Research',
     date: '2022-03-03',
     href: 'https://www.microsoft.com/en-us/research/video/devito-workshop-at-2022-rice-energy-high-performance-computing-conference/',
-    body: 'A workshop and hackathon introducing Devito — the DSL and code-generation framework for highly optimized finite-difference kernels such as FWI and RTM — run on Azure CPU and GPU instances, with lightning talks illustrating Devito from end-user, cloud-provider, hardware and academic perspectives.',
+    body: 'A workshop and hackathon introducing Devito — the DSL and code-generation framework for highly optimized FWI and RTM kernels — run on Azure CPU and GPU instances, with lightning talks illustrating Devito from end-user, cloud-provider, hardware and academic perspectives.',
     external: true,
   },
 ];

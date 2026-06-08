@@ -10,7 +10,7 @@ export const site = {
 
   description:
     'DevitoPRO — production-grade code generation for seismic imaging and ' +
-    'finite-difference HPC. Symbolic Python in, optimized native CPU/GPU kernels out.',
+    'high-performance computing. Symbolic Python in, optimized native CPU/GPU kernels out.',
 
   social: {
     github: 'https://github.com/devitocodes',
