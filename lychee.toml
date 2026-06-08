@@ -1,0 +1,32 @@
+# Configuration for the lychee link checker (https://lychee.cli.rs),
+# run by .github/workflows/linkcheck.yml against the built site in dist/.
+
+# Hosts that reject automated/bot requests (403/999) or trip lychee's HTTP/2
+# client — all verified reachable in a real browser, so excluding them avoids
+# false failures. Revisit if any stop being linked from the site.
+exclude = [
+  # Social / login-walled
+  "linkedin\\.com",
+  "twitter\\.com",
+  "x\\.com",
+  "join\\.slack\\.com",
+  # Vendor sites with bot deterrents / HTTP-2 quirks (open fine in a browser)
+  "intel\\.com",
+  "amd\\.com",
+  "opencompute\\.org",
+  # Academic publishers (301 -> 403 to bots)
+  "library\\.seg\\.org",
+  "pubs\\.geoscienceworld\\.org",
+  # The 404 page's own canonical URL inherently 404s — not a real link
+  "www\\.devitocodes\\.com/404",
+]
+
+# Tolerate rate-limiting from hosts we do check (keeps CI from flaking); real
+# dead links (404/410/5xx/DNS) still fail the run.
+accept = [200, 206, 429]
+
+max_retries = 2
+retry_wait_time = 2
+timeout = 30
+
+user_agent = "Mozilla/5.0 (compatible; lychee; +https://www.devitocodes.com)"
