@@ -121,12 +121,47 @@ export const trustBar = {
   partners: ['AMD', 'Arm', 'AWS', 'Azure', 'Google Cloud', 'Intel', 'NextSilicon', 'NVIDIA'],
 };
 
+// Case studies and press features, ordered newest-first by online publication
+// date (the `date` field). Keep this array sorted descending when adding entries.
 export const caseStudies = [
+  {
+    title: 'Land FWI in structurally complex terrain',
+    outlet: 'Thrust Belt Imaging',
+    date: '2026-02-25',
+    href: 'https://www.linkedin.com/feed/update/urn:li:activity:7432221524411191296',
+    body: 'Thrust Belt Imaging teamed up with Devito Codes to make Full-Waveform Inversion work in rugged land settings with real topography — combining structural velocity models with their Depth Weathering Solution into a workflow that delivers stable, meaningful updates where traditional approaches struggle. First real-world results presented at the Energy HPC & AI Conference at Rice University.',
+    external: true,
+  },
   {
     title: 'Devito Codes automates HPC code generation',
     outlet: 'Intel Customer Spotlight',
+    date: '2024-11-04',
     href: 'https://www.intel.com/content/www/us/en/customer-spotlight/stories/devito-codes-customer-story.html',
     body: 'How Devito Codes helps customers resolve the HPC trilemma — performance, portability and productivity — generating optimized finite-difference code from a Python DSL.',
+    external: true,
+  },
+  {
+    title: 'Performance gains with AWS Graviton4',
+    outlet: 'AWS HPC Blog',
+    date: '2024-10-10',
+    href: 'https://aws.amazon.com/blogs/hpc/performance-gains-with-aws-graviton4-a-devitopro-case-study/',
+    body: 'A DevitoPRO case study benchmarking 3D acoustic wave-propagation kernels — including FWI and RTM propagators — on AWS Graviton4. Its Neoverse V2 cores and higher-bandwidth memory subsystem deliver substantial gains for memory-bound seismic-imaging workloads over previous Graviton generations.',
+    external: true,
+  },
+  {
+    title: 'Devito revolutionizes HPC for oil & gas with AMD',
+    outlet: 'AMD',
+    date: '2023-08-17',
+    href: 'https://www.amd.com/en/blogs/2023/devito-revolutionizes-high-performance-computing-f.html',
+    body: 'AMD profiles how DevitoPRO brings performance portability to seismic imaging — letting geophysics teams define wave-propagation kernels symbolically and generate optimized code across CPUs, GPUs and clusters, lowering the HPC barrier for domain specialists in oil and gas exploration.',
+    external: true,
+  },
+  {
+    title: 'Devito Workshop at the 2022 Rice Energy HPC Conference',
+    outlet: 'Microsoft Research',
+    date: '2022-03-03',
+    href: 'https://www.microsoft.com/en-us/research/video/devito-workshop-at-2022-rice-energy-high-performance-computing-conference/',
+    body: 'A workshop and hackathon introducing Devito — the DSL and code-generation framework for highly optimized finite-difference kernels such as FWI and RTM — run on Azure CPU and GPU instances, with lightning talks illustrating Devito from end-user, cloud-provider, hardware and academic perspectives.',
     external: true,
   },
 ];
