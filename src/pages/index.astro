@@ -5,20 +5,16 @@
  * (Mathias + Ed ranked it #1: "Better to the point, no clutter").
  *
  * Section order: Hero → Trust → Capabilities → UseCases → Benchmarks →
- *                Specification → CaseStudies → Team → CTA
- * Reads as: what → where to apply → proof → deep-dive spec → social proof.
- * (Ed's IA note on the previous order — Capabilities → Spec → Benchmarks →
- *  UseCases — was that proof and use-cases were too far apart and the spec
- *  table interrupted the story too early.)
+ *                CaseStudies → Team → CTA
+ * Reads as: what → where to apply → proof → social proof.
  *
- * Anchors preserved: `#capabilities` and `#compare` — keep hash links stable.
+ * Anchors preserved: `#capabilities` — keep hash links stable.
  */
 import Base from '../layouts/Base.astro';
 import HeroEnterprise from '../components/HeroEnterprise.astro';
 import LogoBar from '../components/LogoBar.astro';
 import Section from '../components/Section.astro';
 import FeatureHighlights from '../components/FeatureHighlights.astro';
-import FeatureTable from '../components/FeatureTable.astro';
 import Benchmarks from '../components/Benchmarks.astro';
 import UseCases from '../components/UseCases.astro';
 import CaseStudies from '../components/CaseStudies.astro';
@@ -45,15 +41,6 @@ const posts = (await getCollection('blog'))
   </Section>
   <UseCases tone="surface" />
   <Benchmarks tone="base" />
-  <Section
-    id="compare"
-    tone="surface"
-    eyebrow="Specification"
-    title="DevitoPRO vs open-source Devito — full comparison."
-    intro="Row-by-row, the full evaluator's table. No collapse, no abridgement."
-  >
-    <div class="mt-10"><FeatureTable /></div>
-  </Section>
   <CaseStudies tone="base" posts={posts} />
   <TeamTeaser tone="surface" />
   <CTA />
