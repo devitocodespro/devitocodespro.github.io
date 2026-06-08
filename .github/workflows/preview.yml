@@ -2,7 +2,7 @@ name: Deploy branch preview
 
 # Builds any variant/** (or init/**) branch with the correct subpath base and
 # publishes it to gh-pages/preview/<name>/, giving a stable, shareable URL:
-#   https://devitocodespro.github.io/devitocodes-web/preview/<name>/
+#   https://www.devitocodes.com/preview/<name>/
 # Each preview is isolated in its own subfolder; the production root is untouched.
 
 on:
@@ -41,8 +41,8 @@ jobs:
       - run: npm ci
       - name: Build (subpath)
         env:
-          BASE_PATH: /devitocodes-web/preview/${{ steps.name.outputs.name }}/
-          SITE_URL: https://devitocodespro.github.io
+          BASE_PATH: /preview/${{ steps.name.outputs.name }}/
+          SITE_URL: https://www.devitocodes.com
         run: npm run build
       - name: Deploy preview
         uses: JamesIves/github-pages-deploy-action@v4
@@ -54,4 +54,4 @@ jobs:
       - name: Preview URL
         run: |
           echo "### Preview deployed :rocket:" >> "$GITHUB_STEP_SUMMARY"
-          echo "https://devitocodespro.github.io/devitocodes-web/preview/${{ steps.name.outputs.name }}/" >> "$GITHUB_STEP_SUMMARY"
+          echo "https://www.devitocodes.com/preview/${{ steps.name.outputs.name }}/" >> "$GITHUB_STEP_SUMMARY"
