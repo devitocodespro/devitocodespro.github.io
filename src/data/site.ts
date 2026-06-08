@@ -5,7 +5,7 @@ export const site = {
   name: 'Devito Codes',
   product: 'DevitoPRO',
   domain: 'www.devitocodes.com',
-  email: 'gerard@devitocodes.com',
+  email: 'sales@devitocodes.com',
   ga4: 'G-39F3JRV5HY',
 
   description:
