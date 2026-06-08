@@ -5,3 +5,5 @@ Disallow: /private/
 # per Zetafonts EULA 1wp3-855llosp / 94575. Do not crawl/index.
 Disallow: /fonts/
 Disallow: /_astro/
+
+Sitemap: https://www.devitocodes.com/sitemap-index.xml
