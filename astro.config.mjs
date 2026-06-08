@@ -52,11 +52,20 @@ const blogRedirects = {
   '/benchmarking-devitopro-on-intel-xeon-6-processors': '/blog/granite',
 };
 
+// Legacy author profile pages (Jekyll `_authors/` collection, served at
+// `/authors/<name>`) have no equivalent on the new site — point them at /about.
+const authorRedirects = {
+  '/authors/ecaunt': '/about',
+  '/authors/fluporini': '/about',
+  '/authors/ggorman': '/about',
+  '/authors/mlouboutin': '/about',
+};
+
 export default defineConfig({
   site: SITE,
   base: BASE,
   trailingSlash: 'ignore',
-  redirects: blogRedirects,
+  redirects: { ...blogRedirects, ...authorRedirects },
   integrations: [sitemap()],
   markdown: { rehypePlugins: [rehypeBasePrefix] },
   vite: { plugins: [tailwindcss()] },
