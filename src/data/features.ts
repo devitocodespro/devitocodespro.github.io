@@ -73,7 +73,7 @@ export const featureHighlights: HighlightGroup[] = [
     items: [
       'Private/NDA Slack support channels',
       'Bespoke projects, training and consultancy',
-      'Benchmark reports and raw logs for reproducibility',
+      'Benchmark reports for reproducibility',
     ],
   },
 ];
@@ -165,7 +165,7 @@ export const featureCategories: FeatureCategory[] = [
   {
     name: 'Cross-platform industry benchmarking',
     rows: [
-      { label: 'Benchmark reports and raw logs for reproducibility', oss: false, pro: true },
+      { label: 'Benchmark reports for reproducibility', oss: false, pro: true },
       { label: 'Cloud instance tuning and benchmarking', oss: false, pro: true },
     ],
   },

@@ -66,7 +66,7 @@ export const benchmarks = {
     'Isotropic acoustic and acoustic TTI propagators are autotuned per target and benchmarked ' +
     'against comparable hand-coded kernels where available. As new processors arrive, DevitoPRO ' +
     'regenerates and re-tunes for them, so the comparison stays current. For specific benchmark ' +
-    'numbers on your workload, get in touch — we share full reports and raw logs with customers.',
+    'numbers on your workload, get in touch.',
   cards: [
     {
       title: 'GPU portability',
