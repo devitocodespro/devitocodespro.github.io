@@ -14,7 +14,6 @@ export const site = {
 
   social: {
     github: 'https://github.com/devitocodes',
-    x: 'https://x.com/devitocodes',
     linkedin: 'https://www.linkedin.com/company/devitocodes',
     slack: 'https://devitocodes.slack.com',
   },
