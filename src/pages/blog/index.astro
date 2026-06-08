@@ -1,0 +1,31 @@
+---
+import Base from '../../layouts/Base.astro';
+import Section from '../../components/Section.astro';
+import { getCollection } from 'astro:content';
+import { withBase } from '../../lib/url';
+
+// Drafts hidden from the listing; URLs still resolve via the [...slug] route
+// so existing backlinks (e.g. /about → /blog/launch) keep working.
+const posts = (await getCollection('blog'))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => +new Date(b.data.date) - +new Date(a.data.date));
+---
+<Base title="Blog" description="News, benchmarks and technical articles from Devito Codes.">
+  <Section eyebrow="Blog" title="News & technical articles" class="pt-28">
+    <div class="mt-12 divide-y divide-line/60">
+      {posts.map((post) => (
+        <article class="py-8">
+          <h2 class="text-xl font-bold text-ink">
+            <a href={withBase(`/blog/${post.id}`)} class="hover:text-accent transition-colors">{post.data.title}</a>
+          </h2>
+          {post.data.description && <p class="mt-2 text-muted leading-relaxed">{post.data.description}</p>}
+          <div class="mt-3 flex flex-wrap gap-2">
+            {post.data.tags.slice(0, 4).map((t) => (
+              <span class="font-mono text-[11px] px-2 py-0.5 rounded border border-line text-muted">{t}</span>
+            ))}
+          </div>
+        </article>
+      ))}
+    </div>
+  </Section>
+</Base>

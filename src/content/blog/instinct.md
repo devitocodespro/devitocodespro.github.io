@@ -1,0 +1,58 @@
+---
+title: DevitoPRO getting HIP with AMD Instinct™
+date: '2022-11-07T23:48:05+00:00'
+subtitle: Devito Codes announces new collaboration with AMD
+description: Devito is a popular open-source DSL for coding performance portable code
+  in Python using symbolic computation for evolving. While previously Devito only
+  supported AMD GPUs using OpenMP offloading, thanks to a recent collaboration with
+  AMD, DevitoPRO now also generates optimized HIP directly.
+image: /images/amd/211085700_AMD_INSTINCT_MI200_Server_1.png
+optimized_image: /images/amd/211085700_AMD_INSTINCT_MI200_Server_1-opt.png
+category: AMD
+author: Gerard Gorman (Director)
+tags:
+- AMD
+- GPU
+- INSTINCT™
+slug: instinct
+---
+
+[Devito](https://www.devitoproject.org) is a domain-specific Language (DSL) and
+code generation framework for the design of highly optimized finite-difference
+kernels for use in simulation, inversion, and optimization. Devito utilizes a
+combination of symbolic computation and compiler technologies to automatically
+generate highly optimized software for a wide range of computer architectures.
+
+Previously Devito only supported AMD GPUs using OpenMP offloading. Thanks to
+Devito Codes' new collaboration with AMD, we quickly extended the Devito compiler
+support HIP for AMD GPUs. This resulted in a substantial uplift in
+performance, achieving competitive levels of performance with comparable
+architectures. 
+
+This is exciting news for our users who use Devito in high-performance computing
+and data-intensive applications, including seismic imaging (Fig 1) and medical
+imaging (Fig 2).
+
+|![Generalised Algorithm and Implementation of Topography Within Finite Difference Wave Solvers](/images/geo/staggered_acoustic_immersed_boundary_topography_transparent.jpg)|
+|:--:|
+|**Fig 1: Seismic waves propagating in the subsurface and interacting with complex topography**[^1]|
+
+|![FWI applied to brain imaging](/images/medical/image.png)|
+|:--:|
+|**Fig 2: Using FWI techniques to image through the skull using ultrasound**[^2]|
+
+Devito is easy to use and reduces the development time of high-performance code from months to days. While performance is invariably critical once the software goes into production, the overwhelming feedback from the academic and industrial user communities is that reducing cycle time has the greatest material impact on business.
+
+
+
+### Helpful Resources:
+
+* [AMD ROCm™ Information Portal](https://docs.amd.com/)
+* [AMD Instinct™ accelerators](https://www.amd.com/en/graphics/instinct-server-accelerators)
+
+[![AMD ROCm logo](/images/amd/20467978-A_AMD_ROCm_Lockup_Black_RGB.png)](https://www.amd.com/en/graphics/servers-solutions-rocm)
+
+[^1]: Caunt, E., Nelson, R., Luporini, F. and Gorman, G., 2021, October. Generalised Algorithm and Implementation of Topography Within Finite Difference Wave Solvers. In 82nd EAGE Annual Conference & Exhibition (Vol. 2021, No. 1, pp. 1-5). European Association of Geoscientists & Engineers.
+
+[^2]: Cueto, C., Guasch, L., Luporini, F., Bates, O., Strong, G., Agudo, O.C., Cudeiro, J., Kelly, P., Gorman, G. and Tang, M.X., 2022, April. Tomographic ultrasound modelling and imaging with Stride and Devito. In Medical Imaging 2022: Ultrasonic Imaging and Tomography (p. PC1203805). SPIE.
+

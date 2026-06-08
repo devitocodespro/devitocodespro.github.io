@@ -1,0 +1,42 @@
+---
+/*
+ * Consolidated homepage (Round 3, 2026-05-27).
+ * Promoted from the former variant/enterprise after team review
+ * (Mathias + Ed ranked it #1: "Better to the point, no clutter").
+ *
+ * Section order: Hero → Trust → Capabilities → UseCases → Benchmarks →
+ *                CaseStudies → Team → CTA
+ * Reads as: what → where to apply → proof → social proof.
+ *
+ * Anchors preserved: `#capabilities` — keep hash links stable.
+ */
+import Base from '../layouts/Base.astro';
+import HeroEnterprise from '../components/HeroEnterprise.astro';
+import LogoBar from '../components/LogoBar.astro';
+import Section from '../components/Section.astro';
+import FeatureHighlights from '../components/FeatureHighlights.astro';
+import Benchmarks from '../components/Benchmarks.astro';
+import UseCases from '../components/UseCases.astro';
+import CaseStudies from '../components/CaseStudies.astro';
+import TeamTeaser from '../components/TeamTeaser.astro';
+import CTA from '../components/CTA.astro';
+import { featureIntro } from '../data/features';
+---
+<Base>
+  <HeroEnterprise />
+  <LogoBar />
+  <Section
+    id="capabilities"
+    tone="base"
+    eyebrow="Capabilities"
+    title="DevitoPRO for production"
+    intro={featureIntro}
+  >
+    <div class="mt-12"><FeatureHighlights /></div>
+  </Section>
+  <UseCases tone="surface" />
+  <Benchmarks tone="base" />
+  <CaseStudies tone="base" />
+  <TeamTeaser tone="surface" />
+  <CTA />
+</Base>

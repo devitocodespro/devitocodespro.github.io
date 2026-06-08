@@ -1,0 +1,68 @@
+---
+import { site } from '../data/site';
+import { withBase } from '../lib/url';
+
+const year = new Date().getFullYear();
+const cols = [
+  {
+    heading: 'Product',
+    links: [
+      { label: 'Product', href: '/#capabilities' },
+      { label: 'Use cases', href: '/#use-cases' },
+      { label: 'Performance', href: '/#performance' },
+      { label: 'Case studies', href: '/#case-studies' },
+    ],
+  },
+  {
+    heading: 'Company',
+    links: [
+      { label: 'About', href: '/about' },
+      { label: 'Contact', href: '/contact' },
+      { label: 'Open-source Devito', href: site.openSource },
+    ],
+  },
+  {
+    heading: 'Legal',
+    links: [
+      { label: 'Code of Conduct', href: '/Code_of_Conduct' },
+      { label: 'Data Protection Policy', href: '/Data_Protection_Policy' },
+      { label: 'Privacy Policy', href: '/privacy-policy' },
+      { label: 'Terms of Service', href: '/terms' },
+    ],
+  },
+];
+---
+<footer class="bg-surface border-t border-line">
+  <div class="container-x py-16">
+    <div class="grid gap-10 md:grid-cols-4">
+      <div class="md:col-span-1">
+        <div class="flex items-center gap-2.5 font-medium text-ink">
+          <img src={withBase('/assets/img/devito-logo.svg')} alt="Devito Codes" class="h-8 w-auto" />
+          Devito Codes
+        </div>
+        <p class="mt-4 text-sm text-muted leading-relaxed max-w-xs">
+          The commercial arm of the open-source Devito project — performance-portable
+          finite-difference HPC for seismic imaging.
+        </p>
+        <div class="mt-5 flex gap-4 text-muted">
+          <a href={site.social.github} target="_blank" rel="noopener noreferrer" class="hover:text-ink">GitHub</a>
+          <a href={site.social.linkedin} target="_blank" rel="noopener noreferrer" class="hover:text-ink">LinkedIn</a>
+        </div>
+      </div>
+      {cols.map((col) => (
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wider text-ink/80">{col.heading}</h3>
+          <ul class="mt-4 space-y-2.5 text-sm">
+            {col.links.map((l) => (
+              <li><a href={withBase(l.href)} class="text-muted hover:text-ink transition-colors">{l.label}</a></li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+    <div class="mt-14 pt-6 border-t border-line/70 flex flex-col sm:flex-row gap-2 justify-between text-xs text-muted">
+      <p>© {year} Devito Codes Ltd. All rights reserved.</p>
+      <p>Devito Codes Ltd · Company no. 12437078 · Registered in England &amp; Wales</p>
+    </div>
+  </div>
+</footer>

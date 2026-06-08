@@ -1,0 +1,27 @@
+---
+interface Props {
+  id?: string;
+  eyebrow?: string;
+  title?: string;
+  intro?: string;
+  tone?: 'base' | 'surface' | 'dark';
+  class?: string;
+}
+const { id, eyebrow, title, intro, tone = 'base', class: cls = '' } = Astro.props;
+const toneClass = tone === 'dark' ? 'tone-dark bg-page' : tone === 'surface' ? 'bg-surface' : 'bg-page';
+---
+<section
+  id={id}
+  class:list={[toneClass, 'py-20 md:py-28 border-t border-line/60 scroll-mt-20', cls]}
+>
+  <div class="container-x">
+    {(eyebrow || title || intro) && (
+      <header class="max-w-3xl">
+        {eyebrow && <p class="eyebrow mb-3">{eyebrow}</p>}
+        {title && <h2 class="text-3xl md:text-5xl font-extrabold text-ink text-balance">{title}</h2>}
+        {intro && <p class="mt-5 text-lg text-muted leading-relaxed">{intro}</p>}
+      </header>
+    )}
+    <slot />
+  </div>
+</section>

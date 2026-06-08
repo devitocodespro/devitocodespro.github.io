@@ -1,0 +1,47 @@
+name: Deploy production
+
+# Builds the site from `main` and publishes it to the ROOT of the gh-pages branch.
+# After the cutover this repo is the org user-pages repo, so it serves at the root
+# of the custom domain (https://www.devitocodes.com/). Branch previews under
+# preview/ are preserved via clean-exclude.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# Serialize ALL writes to the gh-pages branch (production + previews share this group)
+# so concurrent JamesIves pushes don't race. cancel-in-progress: false = queue, don't
+# cancel. Caveat: GitHub keeps only one running + one pending per group, so a burst of
+# 3+ truly-simultaneous deploys can still drop the middle one — space pushes out, or
+# re-run a dropped deploy.
+concurrency:
+  group: gh-pages-deploy
+  cancel-in-progress: false
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Build
+        env:
+          BASE_PATH: /
+          SITE_URL: https://www.devitocodes.com
+        run: npm run build
+      - name: Deploy to gh-pages (root)
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist
+          branch: gh-pages
+          clean: true
+          clean-exclude: |
+            preview

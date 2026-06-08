@@ -1,0 +1,27 @@
+---
+import Section from './Section.astro';
+import { team } from '../data/team';
+import { withBase } from '../lib/url';
+import Button from './Button.astro';
+interface Props { tone?: 'base' | 'surface'; }
+const { tone = 'base' } = Astro.props;
+// Small team — show everyone on the homepage rather than truncating.
+// grid-cols layout scales: 2 (mobile) → 3 (tablet) → 6 (desktop, one row).
+---
+<Section
+  id="team"
+  tone={tone}
+  eyebrow="Team"
+  title="Bringing together geophysics, HPC, computer science and mathematics"
+>
+  <div class="mt-12 grid gap-8 grid-cols-2 sm:grid-cols-3 lg:grid-cols-6">
+    {team.map((m) => (
+      <div class="text-center">
+        <img src={withBase(m.photo)} alt={m.name} loading="lazy" class="mx-auto w-24 h-24 rounded-full object-cover border border-line" />
+        <h3 class="mt-4 font-bold text-ink text-sm">{m.name}</h3>
+        <p class="text-xs text-accent">{m.role}</p>
+      </div>
+    ))}
+  </div>
+  <div class="mt-10"><Button href="/about" variant="ghost">Meet the team</Button></div>
+</Section>

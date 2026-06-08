@@ -1,0 +1,22 @@
+---
+import { featureHighlights } from '../data/features';
+interface Props { condensed?: boolean; }
+const { condensed = false } = Astro.props;
+// In condensed mode (homepage), show only the first 4 groups for visual balance.
+const groups = condensed ? featureHighlights.slice(0, 4) : featureHighlights;
+---
+<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+  {groups.map((group) => (
+    <article class="card p-6">
+      <h3 class="font-bold text-ink text-lg">{group.name}</h3>
+      <ul class="mt-4 space-y-2.5 text-muted">
+        {group.items.map((item) => (
+          <li class="flex gap-2.5 leading-relaxed">
+            <span class="text-accent shrink-0" aria-hidden="true">▸</span>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </article>
+  ))}
+</div>

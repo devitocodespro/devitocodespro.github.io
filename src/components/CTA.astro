@@ -1,0 +1,18 @@
+---
+import { finalCta } from '../data/content';
+import { site } from '../data/site';
+import Button from './Button.astro';
+---
+<section class="bg-page border-t border-line/60">
+  <div class="container-x py-20 md:py-28">
+    <div class="card relative overflow-hidden p-10 md:p-16 text-center">
+      <div class="absolute inset-0 -z-10 opacity-[0.14]" style="background: radial-gradient(60% 120% at 50% 0%, var(--c-accent), transparent);"></div>
+      <h2 class="text-3xl md:text-5xl font-extrabold text-ink text-balance max-w-3xl mx-auto">{finalCta.title}</h2>
+      <p class="mt-5 text-lg text-muted max-w-2xl mx-auto">{finalCta.body}</p>
+      <div class="mt-8 flex flex-wrap gap-3 justify-center">
+        <Button href={site.primaryCta.href} variant="primary">{site.primaryCta.label}</Button>
+        <Button href="/features" variant="ghost">Explore features</Button>
+      </div>
+    </div>
+  </div>
+</section>

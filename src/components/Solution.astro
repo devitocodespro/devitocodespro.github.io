@@ -1,0 +1,101 @@
+---
+import Section from './Section.astro';
+import { solution } from '../data/content';
+interface Props { tone?: 'base' | 'surface'; }
+const { tone = 'base' } = Astro.props;
+---
+<Section id="how" tone={tone} eyebrow={solution.eyebrow} title={solution.title}>
+  <div class="mt-12 grid gap-10 lg:grid-cols-2 lg:items-center">
+    <div>
+      <ol class="space-y-6">
+        {solution.steps.map((s) => (
+          <li class="flex gap-4">
+            <span class="font-mono text-accent text-sm pt-1">{s.n}</span>
+            <div>
+              <h3 class="font-bold text-ink">{s.title}</h3>
+              <p class="text-muted">{s.body}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+      <div class="mt-8 flex flex-wrap gap-2">
+        {solution.targets.map((t) => (
+          <span class="font-mono text-xs px-2.5 py-1 rounded-md border border-line text-muted">{t}</span>
+        ))}
+      </div>
+    </div>
+
+    {/* Architecture diagram: Physics → Devito compiler → Optimized kernels per architecture.
+        currentColor + var(--color-accent) so it tracks the theme tokens automatically. */}
+    <figure class="card p-6 md:p-8">
+      <svg
+        viewBox="0 0 600 260"
+        xmlns="http://www.w3.org/2000/svg"
+        role="img"
+        aria-label="Devito architecture: symbolic physics in, compiler in the middle, optimized native kernels for NVIDIA, AMD, Intel, Arm and cloud out."
+        class="w-full h-auto text-ink"
+      >
+        <defs>
+          <marker id="arrow-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="currentColor" />
+          </marker>
+          <marker id="arrow-muted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="currentColor" opacity="0.45" />
+          </marker>
+        </defs>
+
+        {/* Box 1: Physics (input) */}
+        <g>
+          <rect x="6" y="90" width="160" height="90" rx="10" fill="none" stroke="currentColor" stroke-width="1.5" />
+          <text x="86" y="120" text-anchor="middle" font-weight="700" font-size="15" fill="currentColor">Physics</text>
+          <text x="86" y="142" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.65">PDE · boundaries</text>
+          <text x="86" y="158" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.65">sources · adjoints</text>
+        </g>
+
+        {/* Arrow 1 */}
+        <line x1="170" y1="135" x2="216" y2="135" stroke="currentColor" stroke-width="1.6" marker-end="url(#arrow-ink)" />
+
+        {/* Box 2: Devito compiler — accent-highlighted */}
+        <g>
+          <rect x="220" y="90" width="160" height="90" rx="10" fill="var(--color-accent)" fill-opacity="0.08" stroke="var(--color-accent)" stroke-width="1.5" />
+          <text x="300" y="120" text-anchor="middle" font-weight="700" font-size="15" fill="var(--color-accent)">Devito compiler</text>
+          <text x="300" y="142" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.65">lower · fuse · vectorize</text>
+          <text x="300" y="158" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.65">autotune</text>
+        </g>
+
+        {/* Arrow 2 */}
+        <line x1="384" y1="135" x2="430" y2="135" stroke="currentColor" stroke-width="1.6" marker-end="url(#arrow-ink)" />
+
+        {/* Box 3: Optimized kernels per architecture */}
+        <g>
+          <rect x="434" y="60" width="160" height="150" rx="10" fill="none" stroke="currentColor" stroke-width="1.5" />
+          <text x="514" y="88" text-anchor="middle" font-weight="700" font-size="15" fill="currentColor">Optimized kernels</text>
+          <text x="514" y="106" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.65">per architecture</text>
+          <line x1="448" y1="118" x2="580" y2="118" stroke="currentColor" stroke-width="1" opacity="0.25" />
+          <text x="514" y="138" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--color-accent)">NVIDIA · AMD · Intel</text>
+          <text x="514" y="158" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--color-accent)">Arm · Apple silicon</text>
+          <text x="514" y="178" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--color-accent)">AWS · Azure · GCP</text>
+        </g>
+
+        {/* Regenerate loop — dashed arrow from kernels back over the compiler */}
+        <path
+          d="M 514 50 Q 300 0 86 78"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.2"
+          stroke-dasharray="4 4"
+          opacity="0.45"
+          marker-end="url(#arrow-muted)"
+        />
+        <text x="300" y="34" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.6" font-style="italic">
+          regenerates for every new processor generation
+        </text>
+
+        {/* Bottom caption */}
+        <text x="300" y="240" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.55">
+          One symbolic spec · production-grade native code
+        </text>
+      </svg>
+    </figure>
+  </div>
+</Section>

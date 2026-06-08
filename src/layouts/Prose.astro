@@ -1,0 +1,26 @@
+---
+import Base from './Base.astro';
+// Works both for blog posts (props passed directly) and Markdown pages
+// (frontmatter passed via Astro's layout mechanism).
+const fm: any = (Astro.props as any).frontmatter ?? Astro.props;
+const { title, description, date, author } = fm;
+---
+<Base title={title} description={description}>
+  <article class="container-x py-24 max-w-3xl">
+    <header class="mb-10">
+      <h1 class="text-4xl md:text-5xl font-extrabold text-ink text-balance">{title}</h1>
+      {(date || author) && (
+        <p class="mt-4 text-sm text-muted font-mono">
+          {date && (
+            <time datetime={new Date(date).toISOString()}>
+              {new Date(date).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}
+            </time>
+          )}
+          {date && author && ' · '}
+          {author}
+        </p>
+      )}
+    </header>
+    <div class="prose"><slot /></div>
+  </article>
+</Base>

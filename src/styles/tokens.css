@@ -1,0 +1,62 @@
+/*
+ * Consolidated baseline tokens (Round 2, 2026-05-26).
+ * Promoted from the former dark-enterprise variant after the team review
+ * concluded that the three palette-only variants had collapsed once the
+ * light/dark toggle was added. Round 2 explores STRUCTURAL variation instead
+ * (see variant/dev-tool, variant/enterprise, variant/narrative, variant/two-tier).
+ *
+ * Dual-mode, brand teal #55c6a3 locked across modes.
+ * Dark primary character (deeper navy + heavier wavefield hero);
+ * light mode is cleanly enterprise with a slight cool tint.
+ */
+
+:root, :root[data-theme="light"] {
+  color-scheme: light;
+
+  --c-base:      #FAFBFD;
+  --c-surface:   #F2F4F8;
+  --c-elevated:  #FFFFFF;
+  --c-ink:       #0B1220;
+  --c-muted:     #566174;
+  --c-line:      #E2E6ED;
+  --c-accent:    #55c6a3;
+  --c-accent2:   #34D399;
+  --c-onaccent:  #04121A;
+
+  --tone-band:   #0B1220;
+  --hero-img-opacity: 0.18;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --c-base:      #090D17;
+  --c-surface:   #111728;
+  --c-elevated:  #18213b;
+  --c-ink:       #EAF0FA;
+  --c-muted:     #98A6BD;
+  --c-line:      #222C45;
+  --c-accent:    #55c6a3;
+  --c-accent2:   #34D399;
+  --c-onaccent:  #04121A;
+
+  --tone-band:   #F6F8FB;
+  --hero-img-opacity: 0.30;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+
+    --c-base:      #090D17;
+    --c-surface:   #111728;
+    --c-elevated:  #18213b;
+    --c-ink:       #EAF0FA;
+    --c-muted:     #98A6BD;
+    --c-line:      #222C45;
+    --c-onaccent:  #04121A;
+
+    --tone-band:   #F6F8FB;
+    --hero-img-opacity: 0.30;
+  }
+}

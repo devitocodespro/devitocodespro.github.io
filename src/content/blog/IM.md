@@ -1,0 +1,126 @@
+---
+title: Accurate and Robust Propagators and Gradients for Land Seismic Imaging
+date: '2024-08-21T00:01:00+00:00'
+subtitle: Immersed Boundary Method in Finite-Differences for Accurate Land-Air Boundary
+  Conditions
+description: Devito Codes has developed a new module to improve land seismic imaging
+  by accurately modeling wavefields in complex topographies without the need for unstructured
+  mesh generation. This innovation uses an immersed boundary method, representing
+  free surfaces on a regular grid and enforcing boundary conditions through field
+  extensions. This approach, showcased in their recent paper and collaboration with
+  S-Cube, allows seamless integration into existing seismic data processing pipelines.
+  Schism’s flexibility and efficiency make it ideal for handling topography in seismic
+  imaging. Learn more at IMAGE'24, where Dr. Ed Caunt will present these advancements.
+image: /images/land-waves.png
+optimized_image: /images/land-waves-opt.png
+category: RTM/FWI
+author: ecaunt
+tags:
+- DSL
+- Python
+- HPC
+- RTM
+- FWI
+- Seismic
+slug: IM
+---
+
+At Devito Codes, we continue to push the boundaries of seismic imaging and wave
+propagation. Our latest innovation, to be showcased at IMAGE'24, addresses one
+of the most challenging aspects of land seismic imaging: accurately modeling
+wavefields in the presence of complex topography using finite-difference
+methods, all without the need for unstructured mesh generation.
+
+## Imaging from Topography
+
+High-quality topography handling enables calculation of accurate gradients and FWI topographic updates, even in settings where topographic variation is extreme. If forward and adjoint modeling can capture the physics of the free-surface, these effects become data rather than noise; leveraging this data enhances resolution and illumination, whilst minimizing the requisite preprocessing and streamlining imaging workflows. However, failure to accurately account for the effects of topographic variation leads to images which are unfocused and artefact-prone at best, and entirely incoherent at worst. It follows that for confident and robust land seismic imaging, accurate topography implementation is crucial.
+
+#### Illumination-corrected gradient for an FWI tomographic update
+![Example of a corrected gradient for an FWI tomographic update](/images/corrected_fwi_gradient.png)
+
+#### Corresponding inverse-scattering imaging condition
+![Example of an inverse-scattering imaging condition](/images/gradient_laplacian_alt_cmap.png)
+
+## Understanding the Challenge
+
+Traditionally, incorporating topography into solvers has been a complex and
+time-consuming task, often requiring the development of bespoke solutions that
+are difficult to generalize across different wave equations. While
+finite-element methods and mesh generation offer potential solutions, they come
+with significant challenges, including a lack of software and practical
+experience in developing finite-element inversion methods for exploration
+geophysics and the absence of robust automatic mesh generation techniques. These
+factors make finite-element approaches less attractive for building efficient
+seismic imaging processing pipelines, further complicating the incorporation of
+complex topography for land seismic imaging.
+
+## A General Approach to Modelling Complex Topography
+
+To solve this problem, we’ve developed Schism, a module that automatically
+generates immersed-boundary operators for Devito. Schism simplifies the
+integration of complex topographies into wave propagation models, separating
+topography specification from numerical implementation. This allows imaging
+algorithms to leverage sophisticated topography handling routines without added
+complexity.
+
+Immersed boundaries represent free surfaces as sharp interfaces on a regular
+grid, accurately reflecting the true surface position. This method eliminates
+the need for mesh generation or curvilinear grids, by constructing suitable
+field extensions beyond the boundary, which are incorporated into
+surface-adjacent FD operators, enforcing the necessary boundary conditions.
+
+Our paper, [A Novel Immersed Boundary Approach for Irregular Topography with
+Acoustic Wave Equations](https://doi.org/10.1190/geo2023-0515.1), published
+earlier this year in *Geophysics*, demonstrates this approach by modeling wave
+propagation around the complex topography of Mount St. Helens.
+
+As illustrated below, the 3D free-surface wavefield is accurately rendered,
+capturing the intricate interactions of the wavefield with steep, uneven
+terrain. This showcases the power of the immersed boundary method in addressing
+real-world seismic challenges.
+
+![Wave propagation around the complex topography of Mount St. Helens](/images/StHelens.png)
+
+## Applying to Land Seismic Data
+
+We are collaborating with service companies like
+[S-Cube](https://www.s-cube.com/partnerships/xwi-plus-devito/) to apply these methods to
+real-world land seismic applications. Accurately modeling acoustic and elastic
+TTI wavefield behavior in environments with pronounced and irregular topography
+is essential. Our immersed boundary method effectively captures topographic
+effects such as surface multiples, amplitude variations, and diffraction around
+obstacles while maintaining the regular computational grids commonly used in
+imaging applications. This makes it an ideal choice for integrating topography
+handling into existing solvers and imaging workflows.
+
+The innovation here lies in the robustness and generality of the approach,
+allowing integration into existing seismic data processing pipelines. The
+boundary treatment is tied to the discretization, boundary conditions, and
+geometry but not to the governing equations. Through symbolic computation and a
+generalized mathematical approach, immersed boundary treatments can be generated
+for various equations and boundary conditions, ensuring flexibility and ease of
+use. For example, higher-order free surface conditions derived from isotropic
+acoustic wave equations behave similarly in acoustic TTI contexts, offering a
+computationally efficient alternative.
+
+## Join Us at IMAGE'24
+
+Our immersed boundary support is now available as an experimental feature in
+DevitoPRO. If you are interested in learning more about Schism, Devito, or
+DevitoPRO, we invite you to go and see Dr. Ed Caunt at his IMAGE'24 presentations:
+
+#### Wednesday 28/08 10:00
+
+**S-Cube & Devito Codes: New Developments for Advanced Physics**, S-Cube & ThinkOnward Booth (1659) in the Digitalisation Pavillion.
+
+#### Thursday 29/08 08:00-09:40AM
+
+**Recent Advances in Seismic Modeling 1**, (Session ID: SMT P1) Poster Station 3 (3rd Level) A, in the George R. Brown Convention Center
+* **An immersed boundary topography approach for TTI acoustic propagation**
+* **Towards elastic-free surface topography with immersed boundaries**
+
+
+
+
+
+

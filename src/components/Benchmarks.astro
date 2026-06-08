@@ -1,0 +1,20 @@
+---
+import Section from './Section.astro';
+import Button from './Button.astro';
+import { benchmarks } from '../data/content';
+interface Props { tone?: 'base' | 'surface'; }
+const { tone = 'surface' } = Astro.props;
+---
+<Section id="performance" tone={tone} eyebrow={benchmarks.eyebrow} title={benchmarks.title} intro={benchmarks.intro}>
+  <div class="mt-12 grid gap-6 sm:grid-cols-2">
+    {benchmarks.cards.map((c) => (
+      <article class="card p-7 flex flex-col">
+        <h3 class="text-lg font-bold text-ink">{c.title}</h3>
+        <p class="mt-3 text-muted leading-relaxed">{c.body}</p>
+      </article>
+    ))}
+  </div>
+  <div class="mt-10 flex flex-wrap items-center gap-4 text-muted">
+    <Button href={benchmarks.cta.href} variant="primary">{benchmarks.cta.label} →</Button>
+  </div>
+</Section>

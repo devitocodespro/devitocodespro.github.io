@@ -1,0 +1,77 @@
+---
+import Base from '../layouts/Base.astro';
+import Section from '../components/Section.astro';
+import { site } from '../data/site';
+
+const field = 'w-full rounded-lg bg-page border border-line px-3 py-2 text-ink focus:border-accent outline-none';
+---
+<Base title="Contact" description="Talk to Devito Codes about your wave-propagation workload.">
+  <Section eyebrow="Contact" title="Discuss your workload." intro="Tell us about your target hardware, cloud and imaging pipeline — we'll benchmark it and show you what DevitoPRO can do." class="pt-28">
+    <div class="mt-10 grid gap-10 lg:grid-cols-2">
+      <!-- No backend: on submit, JS opens the visitor's mail client with the fields
+           pre-filled (mailto). Zero third-party service; mail goes straight to us. -->
+      <form id="contact-form" data-to={site.email} class="card p-7 space-y-4 max-w-xl">
+        <div>
+          <label class="block text-sm text-muted mb-1" for="name">Name</label>
+          <input id="name" name="name" required class={field} />
+        </div>
+        <div>
+          <label class="block text-sm text-muted mb-1" for="email">Email</label>
+          <input id="email" type="email" name="email" required class={field} />
+        </div>
+        <div>
+          <label class="block text-sm text-muted mb-1" for="company">Company</label>
+          <input id="company" name="company" class={field} />
+        </div>
+        <div>
+          <label class="block text-sm text-muted mb-1" for="message">How can we help?</label>
+          <textarea id="message" name="message" rows="5" required class={field}></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Email to schedule a call</button>
+        <p id="contact-status" class="text-sm text-muted hidden" role="status" aria-live="polite"></p>
+        <noscript>
+          <p class="text-sm text-muted">JavaScript is off — email us directly at
+            <a class="text-accent" href={`mailto:${site.email}`}>{site.email}</a>.</p>
+        </noscript>
+      </form>
+      <div class="text-muted leading-relaxed">
+        <p>Submitting opens your email client with the details pre-filled — your message
+          goes straight to us, with nothing routed through a third-party service.</p>
+        <p class="mt-4">Prefer to email directly?
+          <a class="text-accent" href={`mailto:${site.email}`}>{site.email}</a></p>
+        <p class="mt-4">For open-source Devito questions, head to
+          <a class="text-accent" href={site.openSource} target="_blank" rel="noopener noreferrer">devitoproject.org</a>.</p>
+        <p class="mt-4">Join the community on
+          <a class="text-accent" href={site.social.slack} target="_blank" rel="noopener noreferrer">Slack</a>.</p>
+      </div>
+    </div>
+  </Section>
+</Base>
+
+<script>
+  const form = document.getElementById('contact-form');
+  if (form instanceof HTMLFormElement) {
+    const to = form.dataset.to ?? '';
+    const val = (id: string) =>
+      (document.getElementById(id) as HTMLInputElement | HTMLTextAreaElement | null)?.value.trim() ?? '';
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const name = val('name');
+      const email = val('email');
+      const company = val('company');
+      const message = val('message');
+      const subject = `DevitoPRO enquiry — ${name}${company ? ` (${company})` : ''}`;
+      const body =
+        `Name: ${name}\n` +
+        `Email: ${email}\n` +
+        (company ? `Company: ${company}\n` : '') +
+        `\n${message}\n`;
+      const status = document.getElementById('contact-status');
+      if (status) {
+        status.textContent = `Opening your email client… if nothing happens, email ${to} directly.`;
+        status.classList.remove('hidden');
+      }
+      window.location.href = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    });
+  }
+</script>

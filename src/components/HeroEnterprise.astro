@@ -1,0 +1,50 @@
+---
+/*
+ * Consolidated hero (Round 3, 2026-05-27).
+ * Promoted from the former variant/enterprise after team review.
+ *
+ * Text-led + qualifier-dense, Cerebras/IBM-research/Intel-Foundry aesthetic.
+ * No imagery in the hero (kept clean and "spec-sheet"); the trust band
+ * immediately follows so vendor coverage is visible above the fold. Three
+ * CTAs: primary "Request a benchmark report" + two softer actions.
+ *
+ * Vendor lists are kept in strict alphabetical order — no signal of bias
+ * toward any one partner. The Workloads slot keeps the familiar RTM/FWI
+ * anchors but explicitly opens the door to custom propagators ("and
+ * workflows" gestures at the Decoupler / embed-in-your-stack story).
+ */
+import { hero } from '../data/content';
+import { site } from '../data/site';
+import Button from './Button.astro';
+
+const qualifiers = [
+  { label: 'Architectures', value: 'AMD · Arm · Intel · NextSilicon · NVIDIA' },
+  { label: 'Programming models', value: 'CUDA · HIP · MPI · OpenACC · OpenMP · SYCL' },
+  { label: 'Deploy', value: 'AWS · Azure · GCP · On-prem' },
+  { label: 'Workloads', value: 'RTM · FWI · custom propagators and workflows' },
+];
+---
+<section class="bg-surface border-b border-line">
+  <div class="container-x pt-28 pb-16 md:pt-32 md:pb-20">
+    <p class="font-mono text-xs uppercase tracking-[0.18em] text-accent">{hero.eyebrow}</p>
+    <h1 class="mt-5 max-w-5xl text-4xl md:text-6xl font-extrabold text-ink text-balance leading-[1.05]">
+      {hero.title}
+    </h1>
+    <p class="mt-6 max-w-3xl text-lg md:text-xl text-muted leading-relaxed">{hero.subtitle}</p>
+
+    {/* Spec-sheet qualifier strip — what evaluators want above the fold */}
+    <dl class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 max-w-5xl">
+      {qualifiers.map((q) => (
+        <div class="border-l-2 border-accent/60 pl-4">
+          <dt class="font-mono text-[11px] uppercase tracking-wider text-muted">{q.label}</dt>
+          <dd class="mt-1 text-sm md:text-base font-semibold text-ink">{q.value}</dd>
+        </div>
+      ))}
+    </dl>
+
+    <div class="mt-10 flex flex-wrap gap-3">
+      <Button href="/contact" variant="primary">Request a benchmark report</Button>
+      <Button href={site.primaryCta.href} variant="ghost">Schedule a call</Button>
+    </div>
+  </div>
+</section>
