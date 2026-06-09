@@ -6,11 +6,12 @@
 
 export const productHero = {
   eyebrow: 'The Devito stack · seismic imaging & inversion',
-  title: 'One performance-portable core. Put it to work your way.',
+  title: 'Write the physics once. Run it everywhere.',
   subtitle:
-    'Open-source Devito turns symbolic physics into optimized code. The Devito product ' +
-    'family makes wave-equation solves fast and portable on any CPU or GPU, and builds ' +
-    'complete FWI and imaging inversion on top — in Python, Julia and beyond.',
+    'Open-source Devito turns symbolic physics into optimized code — the one DSL behind ' +
+    'every product. The Devito product family makes wave-equation solves fast and portable ' +
+    'on any CPU or GPU, and builds complete FWI and imaging inversion on top — in Python, ' +
+    'Julia and beyond.',
 };
 
 export const devitoCore = {
